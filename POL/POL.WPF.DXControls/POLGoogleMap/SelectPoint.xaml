@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="POL.WPF.DXControls.POLGoogleMap.SelectPoint"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+
+             xmlns:local="clr-namespace:POLGoogleMap" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <telerik:RadMap x:Name="map" ZoomBarVisibility="Visible" CommandBarVisibility="Collapsed"
+                        MouseLocationIndicatorVisibility="Collapsed"
+                        telerik:RadMap.MapMouseClick="map_MapMouseClick"
+                        Center="32,54" ZoomLevel="{Binding ZoomLevel}" Cursor="Cross" UseSpringAnimations="False">
+            <telerik:RadMap.Provider>
+                <telerik:OpenStreetMapProvider IsTileCachingEnabled="True">
+                    <telerik:OpenStreetMapProvider.CacheStorage>
+                        <telerik:FileSystemCache x:Name="fsc" CachePath="C:\\P30OfficeMapCach" MaxSize="5000000000" />
+                    </telerik:OpenStreetMapProvider.CacheStorage>
+                </telerik:OpenStreetMapProvider>
+                <!--<local:GoogleMapProvider IsTileCachingEnabled="True" >
+                    <local:GoogleMapProvider.CacheStorage>
+                        <telerik:IsolatedStorageCache MaxSize="5000000000" />
+                    </local:GoogleMapProvider.CacheStorage>
+                </local:GoogleMapProvider>-->
+            </telerik:RadMap.Provider>
+            <telerik:InformationLayer x:Name="infoLayer">
+                <telerik:Pushpin Name="pp" />
+                <!--telerik:MapLayer.Location="{Binding Path=SelectedPointLocation}" Visibility="{Binding Path=SelectedPointVisibility}"-->
+            </telerik:InformationLayer>
+        </telerik:RadMap>
+    </Grid>
+</UserControl>

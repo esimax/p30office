@@ -1,0 +1,98 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             x:Class="POC.Module.Call.Views.DashboardUnits.UMultiChart"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Width="800" Height="400"
+    >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="toolbarCustomization">
+                <dxb:BarManagerActionContainer>
+                    <dxb:RemoveBarItemAndLinkAction ItemName="exportToWindow" />
+                    <dxb:RemoveBarItemAndLinkAction ItemName="open" />
+                    <dxb:RemoveBarItemAndLinkAction ItemName="save" />
+                    <dxb:RemoveBarItemAndLinkAction ItemName="email" />
+                </dxb:BarManagerActionContainer>
+            </DataTemplate>
+            <DataTemplate x:Key="ChartTemplate">
+                <Grid>
+                    <StackPanel>
+                        <dxe:ImageEdit IsPrintingMode="True" Source="{Binding Content}" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <dxlc:GroupBox Header="نمودار تماسها به تفكیك خط، داخلی و كد مخابراتی" >
+        <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,*" 
+			pol_ap:ApGrid.ColumnDefinitions="auto,auto,*">
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="نوع تماس :"/>
+            <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="1" Margin="3" Width="120" Name="cbeChartCallType" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEditItem Content="همه"/>
+                <dxe:ComboBoxEditItem Content="دریافتی"/>
+                <dxe:ComboBoxEditItem Content="ارسالی"/>
+            </dxe:ComboBoxEdit>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="محور عمودی :"/>
+            <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="1" Margin="3" Width="120" Name="cbeChartStatType" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEditItem Content="تعداد تماس"/>
+                <dxe:ComboBoxEditItem Content="مدت مكالمه"/>
+            </dxe:ComboBoxEdit>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="تفكیك :"/>
+            <dxe:ComboBoxEdit Grid.Row="2" Grid.Column="1" Margin="3" Width="120" Name="cbeChartGroup" IsTextEditable="False" SelectedIndex="0" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEditItem Content="خط"/>
+                <dxe:ComboBoxEditItem Content="آخرین داخلی"/>
+                <dxe:ComboBoxEditItem Content="كد مخابراتی"/>
+            </dxe:ComboBoxEdit>
+
+
+
+            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" Name="bPopulate">جمع آوری آطلاعات</Button>
+            <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" Name="bPrint">چاپ</Button>
+
+            <Border Grid.Row="0" Grid.RowSpan="7" Grid.Column="3" Name="TheBorder">
+                <dxc:ChartControl  Margin="3" Name="ccChart">
+                    <dxc:ChartControl.Legend>
+                        <dxc:Legend Visibility="Collapsed"/>
+                    </dxc:ChartControl.Legend>
+                    <dxc:XYDiagram2D>
+                        <dxc:XYDiagram2D.AxisY>
+                            <dxc:AxisY2D>
+                                <dxc:AxisY2D.Title>
+                                    <dxc:AxisTitle Name="AxisYTitle" Content="تعداد ثبت" />
+                                </dxc:AxisY2D.Title>
+                            </dxc:AxisY2D>
+                        </dxc:XYDiagram2D.AxisY>
+                        <dxc:BarSideBySideSeries2D Name="MainSeries" ArgumentDataMember="Data" ValueDataMember="Value">
+                            <dxc:BarSideBySideSeries2D.PointOptions>
+                                <dxc:PointOptions>
+                                    <dxc:PointOptions.ValueNumericOptions>
+                                        <dxc:NumericOptions Format="Number" Precision="0"/>
+                                    </dxc:PointOptions.ValueNumericOptions>
+                                </dxc:PointOptions>
+                            </dxc:BarSideBySideSeries2D.PointOptions>
+                            <dxc:BarSideBySideSeries2D.Label>
+                                <dxc:SeriesLabel dxc:MarkerSeries2D.Angle="60" Indent="25" ResolveOverlappingMode="Default" Visible="True" />
+                            </dxc:BarSideBySideSeries2D.Label>
+                        </dxc:BarSideBySideSeries2D>
+                    </dxc:XYDiagram2D>
+                </dxc:ChartControl>
+            </Border>
+
+
+
+
+        </Grid>
+    </dxlc:GroupBox>
+</UserControl>

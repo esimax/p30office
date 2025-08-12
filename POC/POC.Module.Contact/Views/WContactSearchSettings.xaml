@@ -1,0 +1,136 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Contact.Views.WContactSearchSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Width="440"
+    Height="460" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+        <dx:DXTabControl Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="3">
+            <dx:DXTabItem Header="جستجو">
+                <ScrollViewer>
+                    <StackPanel>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در شماره تماس (فقط شماره و نكته)" IsChecked="{Binding SearchInPhone}" IsEnabled="{Binding CanSearchInPhone}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در آدرس (فقط متن آدرس)" IsChecked="{Binding SearchInAddress}" IsEnabled="{Binding CanSearchInAddress}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در فرمها (فقط اطلاعات متنی)" IsChecked="{Binding SearchInProfile}" IsEnabled="{Binding CanSearchInProfile}"/>
+                        <!--<dxe:CheckEdit Margin="3" Content="جستجو در ایمیل" IsChecked="{Binding SearchInEmail}" IsEnabled="{Binding CanSearchInEmail}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در پیامك" IsChecked="{Binding SearchInSMS}" IsEnabled="{Binding CanSearchInSMS}"/>-->
+
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری اول" IsChecked="{Binding SearchInCustCol1}"   IsEnabled="{Binding CanSearchInCustCol1}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری دوم" IsChecked="{Binding SearchInCustCol2}"   IsEnabled="{Binding CanSearchInCustCol2}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری سوم" IsChecked="{Binding SearchInCustCol3}"   IsEnabled="{Binding CanSearchInCustCol3}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری چهارم" IsChecked="{Binding SearchInCustCol4}" IsEnabled="{Binding CanSearchInCustCol4}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری پنجم" IsChecked="{Binding SearchInCustCol5}"   IsEnabled="{Binding CanSearchInCustCol5}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری ششم" IsChecked="{Binding SearchInCustCol6}"   IsEnabled="{Binding CanSearchInCustCol6}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری هفتم" IsChecked="{Binding SearchInCustCol7}"   IsEnabled="{Binding CanSearchInCustCol7}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری هشتم" IsChecked="{Binding SearchInCustCol8}"   IsEnabled="{Binding CanSearchInCustCol8}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری نهم" IsChecked="{Binding SearchInCustCol9}"   IsEnabled="{Binding CanSearchInCustCol9}"/>
+                        <dxe:CheckEdit Margin="3" Content="جستجو در ستون اختیاری دهم" IsChecked="{Binding SearchInCustCol0}"   IsEnabled="{Binding CanSearchInCustCol0}"/>
+
+
+                    </StackPanel>
+                </ScrollViewer>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="تنظیم ستون">
+                <ScrollViewer>
+                    <StackPanel>
+                        <dxe:CheckEdit Margin="3" Content="نمایش نام ثبت كننده" IsChecked="{Binding ShowCreatorName}" IsEnabled="{Binding CanShowCreatorName}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش تاریخ ثبت " IsChecked="{Binding ShowCreatedDate}" IsEnabled="{Binding CanShowCreatedDate}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش نام ویرایش كننده" IsChecked="{Binding ShowEditorName}" IsEnabled="{Binding CanShowEditorName}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش تاریخ ویرایش" IsChecked="{Binding ShowEditedDate}" IsEnabled="{Binding CanShowEditedDate}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری اول" IsChecked="{Binding ShowCustCol1}" IsEnabled="{Binding CanShowCustCol1}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری دوم" IsChecked="{Binding ShowCustCol2}" IsEnabled="{Binding CanShowCustCol2}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری سوم" IsChecked="{Binding ShowCustCol3}" IsEnabled="{Binding CanShowCustCol3}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری چهارم" IsChecked="{Binding ShowCustCol4}" IsEnabled="{Binding CanShowCustCol4}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری پنجم" IsChecked="{Binding ShowCustCol5}" IsEnabled="{Binding CanShowCustCol5}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری ششم" IsChecked="{Binding ShowCustCol6}" IsEnabled="{Binding CanShowCustCol6}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری هفتم" IsChecked="{Binding ShowCustCol7}" IsEnabled="{Binding CanShowCustCol7}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری هشتم" IsChecked="{Binding ShowCustCol8}" IsEnabled="{Binding CanShowCustCol8}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری نهم" IsChecked="{Binding ShowCustCol9}" IsEnabled="{Binding CanShowCustCol9}"/>
+                        <dxe:CheckEdit Margin="3" Content="نمایش ستون اختیاری دهم" IsChecked="{Binding ShowCustCol0}" IsEnabled="{Binding CanShowCustCol0}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="متفرقه">
+                <ScrollViewer>
+                    <StackPanel>
+                        <Grid pol_ap:ApGrid.ColumnDefinitions="auto,*" pol_ap:ApGrid.RowDefinitions="auto,auto,auto,200,*" >
+                            <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" Text="اطلاعات پیش فرض:" VerticalAlignment="Center"/>
+                            <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="1" Margin="3" IsTextEditable="False" 
+                                      SelectedItem="{Binding SelectedContactModule}" 
+                                      ItemsSource="{Binding ContactModuleList}" AllowSpinOnMouseWheel="False"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="ذخیره اتوماتیك تغییرات فرم:" VerticalAlignment="Center"/>
+                            <dxe:CheckEdit Grid.Row="1" Grid.Column="1" Margin="3" VerticalAlignment="Center" IsChecked="{Binding AutoSaveProfile}"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" Text="دسته پیش فرض هنگام ثبت پرونده جدید:" VerticalAlignment="Center"/>
+                            <dxe:ListBoxEdit Name="lbeCat" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" ItemsSource="{Binding ContactCatList}" ShowCustomItems="False" HorizontalContentAlignment="Stretch"  >
+                                <dxe:ListBoxEdit.StyleSettings>
+                                    <dxe:CheckedListBoxEditStyleSettings/>
+                                </dxe:ListBoxEdit.StyleSettings>
+                                <dxe:ListBoxEdit.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid pol_ap:ApGrid.ColumnDefinitions="*,auto">
+                                            <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding Title}"/>
+                                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Role}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </dxe:ListBoxEdit.ItemTemplate>
+                            </dxe:ListBoxEdit>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" Text="استفاده از فرم ثبت سریع:" VerticalAlignment="Center"/>
+                            <dxe:CheckEdit Grid.Row="4" Grid.Column="1" Margin="3" VerticalAlignment="Center" IsChecked="{Binding ContactFastRegistration}"/>
+                        </Grid>
+                        
+                    </StackPanel>
+                </ScrollViewer>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+
+
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</dx:DXWindow>

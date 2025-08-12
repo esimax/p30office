@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfMessagingItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessagingItem" nillable="true" type="tns:MessagingItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessagingItem" nillable="true" type="tns:ArrayOfMessagingItem" />
+  <xs:complexType name="MessagingItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="From" type="ser:guid" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MessageData" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="MessageDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MessageKind" type="tns:EnumMessageKind" />
+      <xs:element minOccurs="0" name="Oid" type="ser:guid" />
+      <xs:element minOccurs="0" name="PermissionBaseType" type="tns:EnumPermissionBaseType" />
+      <xs:element minOccurs="0" name="PermissionValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="To" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessagingItem" nillable="true" type="tns:MessagingItem" />
+  <xs:simpleType name="EnumMessageKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CallerID" />
+      <xs:enumeration value="CallTrans" />
+      <xs:enumeration value="CallEnd" />
+      <xs:enumeration value="MissCall" />
+      <xs:enumeration value="ShoutDown" />
+      <xs:enumeration value="EmailSend" />
+      <xs:enumeration value="EmailReceive" />
+      <xs:enumeration value="SMSSend" />
+      <xs:enumeration value="SMSReceive" />
+      <xs:enumeration value="Fax" />
+      <xs:enumeration value="Chat" />
+      <xs:enumeration value="TaskAlert" />
+      <xs:enumeration value="VoiceMessage" />
+      <xs:enumeration value="CacheChanged" />
+      <xs:enumeration value="ApplicationUpdate" />
+      <xs:enumeration value="BlackList" />
+      <xs:enumeration value="Support" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumMessageKind" nillable="true" type="tns:EnumMessageKind" />
+  <xs:simpleType name="EnumPermissionBaseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoOne" />
+      <xs:enumeration value="EveryOne" />
+      <xs:enumeration value="RoleBase" />
+      <xs:enumeration value="UserBase" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumPermissionBaseType" nillable="true" type="tns:EnumPermissionBaseType" />
+</xs:schema>

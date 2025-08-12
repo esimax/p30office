@@ -1,0 +1,82 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Contact.Views.WContactAddEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    
+    Width="440"
+    Height="480" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,*,auto,auto,auto,auto,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*,auto" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="عنوان پرونده :"/>
+        <dxe:TextEdit Grid.Row="0" Grid.Column="1" Margin="3" Name="firstFocused"
+                EditValue="{Binding Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                MaxLength="128" />
+        <TextBlock Grid.Row="0" Grid.Column="2" Margin="3" VerticalAlignment="Center" Text="تكراری" FontWeight="Bold" Foreground="Red" Visibility="{Binding TitleVisibility}"/>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3,6" VerticalAlignment="Top" Text="دسته :"/>
+        <dxe:ListBoxEdit Name="lbeCat" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" ItemsSource="{Binding ContactCatList}" ShowCustomItems="False" HorizontalContentAlignment="Stretch"  >
+            <dxe:ListBoxEdit.StyleSettings>
+                <dxe:CheckedListBoxEditStyleSettings/>
+            </dxe:ListBoxEdit.StyleSettings>
+            <dxe:ListBoxEdit.ItemTemplate>
+                <DataTemplate>
+                    <Grid pol_ap:ApGrid.ColumnDefinitions="*,auto">
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding Title}"/>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Role}" />
+                    </Grid>
+                </DataTemplate>
+            </dxe:ListBoxEdit.ItemTemplate>
+        </dxe:ListBoxEdit>
+
+        <dxe:CheckEdit Grid.Row="2" Grid.Column="1" Margin="3" IsChecked="{Binding AutoProfileGenerate}" IsEnabled="{Binding CanAutoProfileGenerate}" Content="ایجاد اتوماتیك فرم با توجه به دسته انتخاب شده"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Margin="3" VerticalAlignment="Top" Text="فهرست فرم های مربوط :" IsEnabled="{Binding AutoProfileGenerate}" />
+        <dxe:ListBoxEdit Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" ItemsSource="{Binding AddingProfilesList}" 
+                         Height="80" ShowCustomItems="False" IsEnabled="{Binding AutoProfileGenerate}" 
+                         />
+        
+        <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="ثبت كننده :" />
+        <dxe:ComboBoxEdit Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" ItemsSource="{Binding UserList}" SelectedItem="{Binding SelectedUser}" IsEnabled="{Binding CanChangeCreator}" IsTextEditable="False" AllowSpinOnMouseWheel="False"/>
+        
+        
+        
+        
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

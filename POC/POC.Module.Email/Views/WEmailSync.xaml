@@ -1,0 +1,131 @@
+﻿<dx:DXWindow xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+    x:Class="POC.Module.Email.Views.WEmailSync"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Height="540" Width="600"
+    
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+    <Grid pol_ap:ApGrid.RowDefinitions="*,auto,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+        <dx:DXTabControl Grid.Row="0" Grid.ColumnSpan="2" Margin="3" SelectedIndex="{Binding SelectedTabIndex}">
+            <dx:DXTabItem Header="ثبت در پرونده جدید">
+                <Grid pol_ap:ApGrid.RowDefinitions="auto,*,auto" 
+                      pol_ap:ApGrid.ColumnDefinitions="auto,*"  
+                    >
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="عنوان پرونده :"/>
+                    <dxe:TextEdit Grid.Row="0" Grid.Column="1" Margin="3" Name="firstFocused"
+                                    EditValue="{Binding ContactTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                    MaxLength="128" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3,6" VerticalAlignment="Top" Text="دسته :"/>
+                    <dxe:ListBoxEdit Name="lbeCat" Grid.Row="1" Grid.Column="1" Margin="3" ItemsSource="{Binding ContactCatList}" ShowCustomItems="False"  >
+                        <dxe:ListBoxEdit.StyleSettings>
+                            <dxe:CheckedListBoxEditStyleSettings/>
+                        </dxe:ListBoxEdit.StyleSettings>
+                    </dxe:ListBoxEdit>
+                </Grid>
+            </dx:DXTabItem>
+
+            <dx:DXTabItem Header="الحاق به پرونده موجود" >
+                <Grid pol_ap:ApGrid.RowDefinitions="auto,*,auto" 
+                      pol_ap:ApGrid.ColumnDefinitions="auto,*"  
+                    >
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="جستجوی پرونده :"/>
+                    <dxe:TextEdit Grid.Row="0" Grid.Column="1" Margin="3" 
+                                    EditValue="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                    MaxLength="32" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3,6" VerticalAlignment="Top" Text="دسته :"/>
+
+                    <dxg:GridControl Grid.Row="1" Grid.ColumnSpan="2" Margin="3" DataSource="{Binding ContactList}" >
+                        <dxg:GridControl.TotalSummary>
+                            <dxg:GridSummaryItem FieldName="Code" ShowInColumn="Code" SummaryType="Count" DisplayFormat=" {0}" />
+                        </dxg:GridControl.TotalSummary>
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="Code" Header="كد" Name="colCode" Width="80" SortMode="Value"/>
+                            <dxg:GridColumn FieldName="Title" Header="عنوان" Name="colTitle" Width="460"/>
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.View>
+                            <dxg:TableView 
+                                            AllowGrouping="False" 
+                                            IsGroupPanelMenuEnabled="False" 
+                                            ShowGroupPanel="False" 
+                                            ShowIndicator="False" 
+                                            AllowColumnFiltering="False" 
+                                            AllowFilterEditor="False" 
+                                            MultiSelectMode="Row" 
+                                            AllowEditing="False" 
+                                            BestFitMode="VisibleRows" 
+                                            ShowTotalSummary="True" 
+                                            IsColumnMenuEnabled="False" 
+                                            IsTotalSummaryMenuEnabled="False" 
+                                            FocusedRow="{Binding FocusedContact,Mode=TwoWay}"
+                                            AutoWidth="True">
+                            </dxg:TableView>
+                        </dxg:GridControl.View>
+                    </dxg:GridControl>
+                </Grid>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+        
+        <dxlc:GroupBox Grid.Row="1" Grid.ColumnSpan="2" Margin="3" Header="مشخصات ایمیل" >
+            <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto" 
+                  pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="3">
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="آدرس :" VerticalAlignment="Center" Margin="3"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedEmailAddress}" FontWeight="Bold" VerticalAlignment="Center" FlowDirection="LeftToRight" HorizontalAlignment="Left"/>
+                
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="عنوان :" VerticalAlignment="Center" Margin="3" />
+                <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="1" Margin="3" ItemsSource="{Binding EmailTitleList}" AllowSpinOnMouseWheel="False"
+                EditValue="{Binding EmailTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="True" AutoComplete="True" 
+                ImmediatePopup="True" MaxLength="32">
+                    <dxe:ComboBoxEdit.Buttons>
+                        <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandManageEmailTitle}"/>
+                    </dxe:ComboBoxEdit.Buttons>
+                </dxe:ComboBoxEdit>
+            </Grid>
+        </dxlc:GroupBox>
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>
+

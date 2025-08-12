@@ -1,0 +1,178 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Phone.Views.WPhoneAddEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    
+    Width="480"
+    Height="400" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+    <dx:DXWindow.Resources>
+        <ControlTemplate x:Key="ct">
+            <dxg:GridControl Name="PART_GridControl">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="TitleXX" Header="عنوان"/>
+                    <dxg:GridColumn FieldName="TeleCode" Header="كد مخابراتی"/>
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView AutoWidth="True" AllowGrouping="False" AllowColumnFiltering="false" AllowColumnMoving="False" AllowEditing="False"/>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </ControlTemplate>
+    </dx:DXWindow.Resources>
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="شماره :" />
+        <dxe:TextEdit Grid.Row="0" Grid.Column="1" Margin="3" EditValue="{Binding PhoneNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="200" MaxLength="16" 
+                      Name="firstFocused" pol_ap:ApUIElement.EnKeyboardLayout="" FlowDirection="LeftToRight" />
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" >
+            <ToggleButton Margin="3" Grid.Column="1" IsChecked="{Binding IsPhoneFax}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="3" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Phone2.png"/>
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="ثابت / فكس"/>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Margin="3" Grid.Column="2" IsChecked="{Binding IsMobile}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="3" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Mobile.png"/>
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="موبایل"/>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Margin="3" Grid.Column="3" IsChecked="{Binding IsSMS}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="3" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_SMS.png"/>
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="پیامك"/>
+                </StackPanel>
+            </ToggleButton>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="كشور :" />
+        <dxg:LookUpEdit Grid.Row="2" Grid.Column="1" Margin="3" HorizontalAlignment="Stretch" DisplayMember="TitleXX" 
+                              ValueMember="Oid" AutoPopulateColumns="False" IncrementalFiltering="True" ImmediatePopup="True" ItemsSource="{Binding CountryList}"
+                              SelectedItem="{Binding SelectedCountry}" PopupMinWidth="320" IsEnabled="{Binding CountryEnable}"
+                            PopupContentTemplate="{StaticResource ct}"
+                        >
+            <dxg:LookUpEdit.StyleSettings>
+                <dxg:SearchLookUpEditStyleSettings />
+            </dxg:LookUpEdit.StyleSettings>
+
+            <!--<dxg:LookUpEdit.PopupContentTemplate>
+                <ControlTemplate>
+                    <dxg:GridControl Name="PART_GridControl">
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="TitleXX" Header="عنوان"/>
+                            <dxg:GridColumn FieldName="TeleCode" Header="كد مخابراتی"/>
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.View>
+                            <dxg:TableView AutoWidth="True" AllowGrouping="False" AllowColumnFiltering="false" AllowColumnMoving="False" AllowEditing="False"/>
+                        </dxg:GridControl.View>
+                    </dxg:GridControl>
+                </ControlTemplate>
+            </dxg:LookUpEdit.PopupContentTemplate>-->
+        </dxg:LookUpEdit>
+
+
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="شهر :" />
+        <dxg:LookUpEdit Grid.Row="3" Grid.Column="1" Margin="3" HorizontalAlignment="Stretch" DisplayMember="TitleXX" 
+                              ValueMember="Oid" AutoPopulateColumns="False" IncrementalFiltering="True" ImmediatePopup="True"
+                              ItemsSource="{Binding CityList}" SelectedItem="{Binding SelectedCity}" PopupMinWidth="380" IsEnabled="{Binding CityEnable}">
+            <dxg:LookUpEdit.StyleSettings>
+                <dxg:SearchLookUpEditStyleSettings />
+            </dxg:LookUpEdit.StyleSettings>
+
+            <dxg:LookUpEdit.PopupContentTemplate>
+                <ControlTemplate>
+                    <dxg:GridControl Name="PART_GridControl">
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="StateTitle" Header="استان" AllowSearchPanel="False"/>
+                            <dxg:GridColumn FieldName="TitleXX" Header="عنوان"/>
+                            <dxg:GridColumn FieldName="PhoneCode" Header="كد مخابراتی"/>
+                            <dxg:GridColumn FieldName="PhoneLen" Header="ا.ش" ToolTip="اندازه شماره" Width="38" AllowSearchPanel="False"/>
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.View>
+                            <dxg:TableView AutoWidth="True" AllowGrouping="False" AllowColumnFiltering="false" AllowColumnMoving="False" AllowEditing="False"/>
+                        </dxg:GridControl.View>
+                    </dxg:GridControl>
+                </ControlTemplate>
+            </dxg:LookUpEdit.PopupContentTemplate>
+
+            <dxg:LookUpEdit.Buttons>
+                <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandManageCity}" />
+            </dxg:LookUpEdit.Buttons>
+        </dxg:LookUpEdit>
+
+
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="عنوان :" VerticalAlignment="Center" Margin="3" />
+        <dxe:ComboBoxEdit Grid.Row="4" Grid.Column="1" Margin="3" ItemsSource="{Binding PhoneTitleList}" AllowSpinOnMouseWheel="False"
+                EditValue="{Binding PhoneTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="True" AutoComplete="True" 
+                ImmediatePopup="True" MaxLength="32">
+            <dxe:ComboBoxEdit.Buttons>
+                <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandManagePhoneTitle}"/>
+            </dxe:ComboBoxEdit.Buttons>
+        </dxe:ComboBoxEdit>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="توضیحات :" VerticalAlignment="Center" Margin="3"/>
+        <dxe:TextEdit
+                Grid.Row="5" 
+                Grid.Column="1" 
+                Margin="3" 
+                EditValue="{Binding Note,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                MaxLength="256" 
+                InvalidValueBehavior="AllowLeaveEditor" VerticalScrollBarVisibility="Visible" VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandSaveClose}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageSave16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="ذخیره و بستن"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandSaveContinue}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageSave16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="ذخیره و جدید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

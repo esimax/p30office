@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="POC.Module.ABCalendar.Views.USettingPrayTime"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+              
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <dxlc:GroupBox Margin="3">
+        <dxlc:GroupBox.Header>
+            <StackPanel Orientation="Horizontal">
+                <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Special/19/_19_LaIlahaIlalah.png"/>
+                <TextBlock Style="{DynamicResource TextBlockNormal}" Text="اوقات شرعی" />
+            </StackPanel>
+        </dxlc:GroupBox.Header>
+        <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="*,auto" HorizontalAlignment="Stretch" >
+
+            <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="0" Margin="3" SelectedItem="{Binding SelectedTimeZone}" ItemsSource="{Binding TimeZoneList}" DisplayMember="DisplayName" FlowDirection="LeftToRight" IsTextEditable="False" AllowSpinOnMouseWheel="False"/>
+            <Image Grid.Row="0" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="منطقه زمانی"/>
+
+            <dxe:TextEdit Grid.Row="1" Grid.Column="0" Margin="3" EditValue="{Binding Latitude}" MaxLength="5" FlowDirection="LeftToRight" NullText="عرض جغرافیایی" pol_ap:ApUIElement.EnKeyboardLayout=""/>
+            <Image Grid.Row="1" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="عرض جغرافیایی"/>
+
+            <dxe:TextEdit Grid.Row="2" Grid.Column="0" Margin="3" EditValue="{Binding Longitude}" MaxLength="5" FlowDirection="LeftToRight" NullText="طول جغرافیایی" pol_ap:ApUIElement.EnKeyboardLayout=""/>
+            <Image Grid.Row="2" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="طول جغرافیایی"/>
+
+            <Button Grid.Row="3" Grid.Column="0" Margin="3" Content="انتخاب از نقشه" Command="{Binding CommandSelectLatLong}"/>
+
+
+            <dxe:ComboBoxEdit Grid.Row="4" Grid.Column="0" Margin="3" SelectedIndex="{Binding SelectedCalculationMethod}" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEditItem Content="به روش جعفری" ToolTip="Jafari"/>
+                <dxe:ComboBoxEditItem Content="دانشگاه اسلامی كراچی" ToolTip="University of Islamic Sciences, Karachi"/>
+                <dxe:ComboBoxEditItem Content="انجمن اسلامی آمریكای شمالی" ToolTip="Islamic Society of North America (ISNA)"/>
+                <dxe:ComboBoxEditItem Content="اتحادیه جهان اسلام" ToolTip="Muslim World League"/>
+                <dxe:ComboBoxEditItem Content="دانشگاه ام القری مكه"/>
+                <dxe:ComboBoxEditItem Content="اداره كل مصر" ToolTip="Egyptian General Authority of Survey"/>
+                <dxe:ComboBoxEditItem Content="موسسه ژئوفیزیك دانشگاه تهران" ToolTip="Institute of Geophysics, University of Tehran"/>
+            </dxe:ComboBoxEdit>
+            <Image Grid.Row="4" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="روش محاسبه"/>
+
+
+            <dxe:ComboBoxEdit Grid.Row="5" Grid.Column="0" Margin="3" SelectedIndex="{Binding SelectedJuristicMethod}" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEditItem Content="استاندارد" ToolTip="Shafii (standard)"/>
+                <dxe:ComboBoxEditItem Content="حنفی" ToolTip="Hanafi"/>
+            </dxe:ComboBoxEdit>
+            <Image Grid.Row="5" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="روش فقهی"/>
+
+
+            <dxe:ComboBoxEdit Grid.Row="6" Grid.Column="0" Margin="3" SelectedIndex="{Binding SelectedHigherLatitude}" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEditItem Content="بدون تنظیم" ToolTip="No adjustment"/>
+                <dxe:ComboBoxEditItem Content="نیمه شب" ToolTip="Middle of night"/>
+                <dxe:ComboBoxEditItem Content="یك هفتم شب" ToolTip="1/7th of night"/>
+                <dxe:ComboBoxEditItem Content="بر حسب زاویه" ToolTip="Angle/60th of night"/>
+            </dxe:ComboBoxEdit>
+            <Image Grid.Row="6" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="روش ها تنظیم برای عرض های جغرافیایی بالاتر"/>
+
+        </Grid>
+    </dxlc:GroupBox>
+
+</UserControl>

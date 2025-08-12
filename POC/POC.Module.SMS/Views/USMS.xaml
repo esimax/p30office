@@ -1,0 +1,279 @@
+﻿<UserControl x:Class="POC.Module.SMS.Views.USMS"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600"
+             
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:pol_comm="clr-namespace:POL.Lib.Common;assembly=POL.Lib.Common"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <pol_comm:ConvSMSType x:Key="convSMSType"/>
+            <pol_comm:ConvTransDate x:Key="convTransDate"/>
+            <!--<pol_comm:ConvSMSDelivery x:Key="convSMSDelivery"/>-->
+
+            <!--<pol_comm:ConvCallNoteFlag x:Key="convCallNoteFlag"/>-->
+            <!--<models:ConvBoolToFlowDirection x:Key="convBoolToFlowDirection" />-->
+
+            <DataTemplate x:Key="ctSMSType">
+                <Ellipse Fill="{Binding DataContext.Value, Converter={StaticResource convSMSType}, RelativeSource={RelativeSource TemplatedParent}}" Height="16" Width="16" StrokeThickness="1" Stroke="Black"/>
+            </DataTemplate>
+            <DataTemplate x:Key="ctTransDate">
+                <TextBlock
+                    Margin="3,1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    FlowDirection="LeftToRight"
+                    Text="{Binding DataContext.Value, Converter={StaticResource convTransDate}, RelativeSource={RelativeSource TemplatedParent}}"/>
+            </DataTemplate>
+            <!--<DataTemplate x:Key="ctSMSDelivery">
+                <Ellipse Fill="{Binding DataContext.Value, Converter={StaticResource convSMSDelivery}, RelativeSource={RelativeSource TemplatedParent}}" Height="16" Width="16" StrokeThickness="1" Stroke="Black"/>
+            </DataTemplate>-->
+            <DataTemplate x:Key="ctNumber">
+                <TextBlock
+                    Margin="3,1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    FlowDirection="LeftToRight"
+                    Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}"/>
+            </DataTemplate>
+            <!--<DataTemplate x:Key="ctNoteFlag">
+                <Image Width="16" Height="16" Source="{Binding DataContext.Value, Converter={StaticResource convCallNoteFlag}, RelativeSource={RelativeSource TemplatedParent}}"/>
+            </DataTemplate>-->
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <dxb:BarManager>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem Content="بازخوانی" Name="biRefresh" 
+                               Command="{Binding CommandRefresh}" 
+                               LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Refresh.png" 
+                               />
+
+            <dxb:BarCheckItem Content="فقط ارسالی" Name="biShowSMSOut" IsChecked="{Binding IsShowSMSOut}"
+                              Command="{Binding CommandShowSMSOut}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_CallOut.png" BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarCheckItem Content="فقط دریافتی" Name="biShowSMSIn" IsChecked="{Binding IsShowSMSIn}"
+                              Command="{Binding CommandShowSMSIn}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_CallIn.png" BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarCheckItem Content="همه پیامك ها" Name="biShowAll" IsChecked="{Binding IsShowAll}"
+                              Command="{Binding CommandShowAll}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_CallAll.png" BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarButtonItem Content="حذف" Name="biSMSDeleteSingle" 
+                               Command="{Binding CommandSMSDeleteSingle}" 
+                               Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Delete2.png" 
+                               GlyphSize="Small" BarItemDisplayMode="ContentAndGlyph"
+                               />
+            <dxb:BarButtonItem Content="حذف همه" Name="biSMSDeleteAll" 
+                               Command="{Binding CommandSMSDeleteAll}" 
+                               Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Delete2.png" 
+                               GlyphSize="Small" BarItemDisplayMode="ContentAndGlyph"/>
+
+
+            <dxb:BarButtonItem Content="جدید" Name="biNew" Command="{Binding CommandNew}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Add.png"/>
+            <dxb:BarButtonItem Content="كپی متن" Name="biCopyText" Command="{Binding CommandCopyText}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_copy.png"/>
+
+
+            <dxb:BarButtonItem Content="تطبیق" Name="biSyncSingle"
+                               Command="{Binding CommandSyncSingle}" 
+                               Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Sync.png" 
+                               GlyphSize="Small" BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarButtonItem Content="تطبیق همه" Name="biSyncAll"
+                               Command="{Binding CommandSyncAll}" 
+                               Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Sync.png" 
+                               GlyphSize="Small" BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarButtonItem Content="ارجاع به پرونده" Name="biGotoContact"
+                               Command="{Binding CommandGotoContact}" 
+                               Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_GotoFirst.png" 
+                               GlyphSize="Small" BarItemDisplayMode="ContentAndGlyph"/>
+            <!--
+            <dxb:BarButtonItem Content="چاپ" Name="biPrint" Command="{Binding CommandPrint}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Printer.png"/>
+            -->
+
+            <!--<dxb:BarButtonItem Content="ثبت نكته" Name="biSetCallNote" 
+                               Command="{Binding CommandSetCallNote}" 
+                               Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_FlagGreen.png" 
+                               LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_FlagGreen.png" 
+                               />-->
+            <dxb:BarButtonItem Content="ارسال مجدد" Name="biSMSResend" 
+                               Command="{Binding CommandSMSResend}" 
+                               Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_sms.png" 
+                               GlyphSize="Small" BarItemDisplayMode="ContentAndGlyph"
+                               />
+            <dxb:BarButtonItem Content="راهنما" Name="biHelp" Command="{Binding CommandHelp}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Help.png"/>
+
+            <dxb:BarButtonItem Content="استخراج به اكسل" Name="biExportExcel" Command="{Binding CommandExportExcel}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_ExportExcel.png"/>
+        </dxb:BarManager.Items>
+
+        <Grid  pol_ap:ApGrid.RowDefinitions="auto,auto,2*,*">
+            <dxr:RibbonControl x:Name="smsRibbon" Grid.Row="0" RibbonStyle="Office2010">
+                <!--<dxr:RibbonDefaultPageCategory>-->
+                <dxr:RibbonDefaultPageCategory Name="rpcSMS">
+                    <dxr:RibbonPage Name="rpSMS" Caption="پیامك" MergeOrder="4">
+                        <!--MergeOrder="7"-->
+                        <dxr:RibbonPageGroup Caption="فیلتر" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biNew" />
+                            <dxb:BarButtonItemLink BarItemName="biRefresh"/>
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarCheckItemLink BarItemName="biShowAll" />
+                            <dxb:BarCheckItemLink BarItemName="biShowSMSOut" />
+                            <dxb:BarCheckItemLink BarItemName="biShowSMSIn" />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="مدیریت" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biSMSDeleteSingle"/>
+                            <dxb:BarButtonItemLink BarItemName="biSMSDeleteAll"/>
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biSyncSingle"/>
+                            <dxb:BarButtonItemLink BarItemName="biSyncAll"/>
+                            <dxb:BarButtonItemLink BarItemName="biGotoContact"/>
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biExportExcel" />
+                            <!--<dxb:BarButtonItemLink BarItemName="biSetCallNote"/>-->
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="راهنما" >
+                            <dxb:BarButtonItemLink BarItemName="biHelp" />
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <TextBlock Text="دسته :" Margin="6"/>
+
+                <dxe:ComboBoxEdit Name="cbeContactCat" Margin="3" IsTextEditable="False"  Width="300" AllowSpinOnMouseWheel="False"
+                                      ApplyItemTemplateToSelectedItem="True" ItemsSource="{Binding ContactCatList}"
+                                      SelectedItem="{Binding SelectedContactCat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                      NullText="(همه دسته ها)">
+                    <dxe:ComboBoxEdit.Buttons>
+                        <dxe:ButtonInfo GlyphKind="Refresh" ToolTip="بازخوانی مجدد" Command="{Binding CommandCategoryRefresh}"/>
+                    </dxe:ComboBoxEdit.Buttons>
+                    <dxe:ComboBoxEdit.EditNonEditableTemplate>
+                        <ControlTemplate>
+                            <TextBlock Text="{Binding EditValue}" Margin="3"/>
+                        </ControlTemplate>
+                    </dxe:ComboBoxEdit.EditNonEditableTemplate>
+                </dxe:ComboBoxEdit>
+
+                <TextBlock Text="جستجو :" Margin="6"/>
+                <dxe:ButtonEdit Margin="3" Width="180" NullText="جستجو" AllowDefaultButton="False" EditValue="{Binding QuickSearchText, UpdateSourceTrigger=PropertyChanged}">
+                    <dxe:ButtonInfo GlyphKind="Cancel" Command="{Binding CommandQuickSearchClear}"/>
+                </dxe:ButtonEdit>
+            </StackPanel>
+
+
+
+            <dxg:GridControl Grid.Row="2"  ItemsSource="{Binding SMSList}" Name="gridSMS" >
+
+                <dxg:GridControl.View>
+                    <dxg:TableView  Name="tvSMS"
+
+                                                AllowGrouping="false"
+                                                AllowColumnFiltering="true"
+                                                AllowFilterEditor="true"
+                                                AllowEditing="False"
+
+                                                ShowGroupPanel="false"
+                                                ShowIndicator="False"
+                                                ShowTotalSummary="True"
+                                                
+
+                                                IsGroupPanelMenuEnabled="True"
+                                                IsColumnMenuEnabled="True"
+                                                IsTotalSummaryMenuEnabled="False"
+
+                                                MultiSelectMode="Row"
+
+                                                BestFitArea="All"
+                                                BestFitMode="VisibleRows"
+
+                                                FocusedRow="{Binding FocusedSMS,Mode=TwoWay}"
+
+                                                RowAnimationKind="None"
+                                                UseAnimationWhenExpanding="False" 
+                                                ShowSearchPanelMode="Never"
+                                                >
+
+                        <dxg:TableView.CellStyle>
+                            <Style TargetType="dxg:CellContentPresenter">
+                                <Setter Property="FontFamily" Value="{DynamicResource ApplicationFontFamily}" />
+                                <Setter Property="FontSize" Value="{DynamicResource ApplicationFontSize}" />
+                            </Style>
+                        </dxg:TableView.CellStyle>
+                        <dxg:TableView.TotalSummaryContentStyle>
+                            <Style TargetType="dx:DataContentPresenter">
+                                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            </Style>
+                        </dxg:TableView.TotalSummaryContentStyle>
+
+                        <dxg:TableView.RowCellMenuCustomizations>
+                            <!--<dxb:BarButtonItemLink BarItemName="biSetCallNote"/>-->
+                            <dxb:BarButtonItemLink BarItemName="biSMSResend"/>
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biSMSDeleteSingle"/>
+                            <dxb:BarButtonItemLink BarItemName="biSMSDeleteAll"/>
+                            <dxb:BarButtonItemLink BarItemName="biCopyText"/>
+                            <dxb:BarItemSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biSyncSingle"/>
+                            <dxb:BarButtonItemLink BarItemName="biSyncAll"/>
+                            <dxb:BarButtonItemLink BarItemName="biGotoContact"/>
+                        </dxg:TableView.RowCellMenuCustomizations>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+
+                <dxg:GridControl.TotalSummary>
+                    <dxg:GridSummaryItem FieldName="TransDate" ShowInColumn="TransDate" SummaryType="Count" DisplayFormat=" {0}" />
+                </dxg:GridControl.TotalSummary>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="SmsType" Header=""  Name="colSmsType" CellTemplate="{StaticResource ctSMSType}" Width="24" FixedWidth="True" Fixed="Left" ColumnChooserHeaderCaption="نوع پیامك"
+                                    dxg:BandedViewBehavior.IsBand="True" dxg:BandedViewBehavior.Column="0" >
+                        <dxg:GridColumn.FilterEditorHeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="نوع پیامك"/>
+                            </DataTemplate>
+                        </dxg:GridColumn.FilterEditorHeaderTemplate>
+                    </dxg:GridColumn>
+
+                    <dxg:GridColumn FieldName="Phone.Contact.Code" Header="كد" Name="colContactCode" AllowGrouping="False" />
+                    <dxg:GridColumn FieldName="Phone.Contact.Title" Header="عنوان" Name="colContactTitle" AllowGrouping="False" />
+
+                    <dxg:GridColumn FieldName="TransDate" Header="تاریخ" Name="colTransDate" CellTemplate="{StaticResource ctTransDate}" AllowGrouping="False" SortOrder="Descending" SortIndex="0"/>
+
+                    <dxg:GridColumn FieldName="From" Header="از" Name="colFrom" CellTemplate="{StaticResource ctNumber}" />
+                    <dxg:GridColumn FieldName="To" Header="به" Name="colTo" CellTemplate="{StaticResource ctNumber}" />
+                    <!--CellTemplate="{StaticResource ctNumber}"-->
+                    <!--<dxg:GridColumn FieldName="SMSDelivery" Header="وضعیت" Name="colSMSDelivery" CellTemplate="{StaticResource ctSMSDelivery}"/>-->
+                    <dxg:GridColumn FieldName="Sender" Header="كاربر" Name="colSender" />
+                    <dxg:GridColumn FieldName="Body" Header="متن" Name="colBody" />
+                    <dxg:GridColumn FieldName="SmsResult" Header="نتیجه" Name="colSmsResult" />
+                    <dxg:GridColumn FieldName="DelivaryResult" Header="تاییدیه" Name="colDelivaryResult" />
+                    
+
+                    <!--<dxg:GridColumn FieldName="NoteText" Header="نكته" Name="colNoteText"/>
+                    <dxg:GridColumn FieldName="NoteFlag" Name="colNoteFlag" CellTemplate="{StaticResource ctNoteFlag}" ColumnChooserHeaderCaption="پرچم" Header="پرچم">
+                        <dxg:GridColumn.FilterEditorHeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="پرچم"/>
+                            </DataTemplate>
+                        </dxg:GridColumn.FilterEditorHeaderTemplate>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="NoteWriter" Header="كاربر" Name="colNoteWriter"/>-->
+
+                </dxg:GridControl.Columns>
+
+            </dxg:GridControl>
+            <dxe:TextEdit Grid.Row="3" Margin="0,6,0,0" Name="teBody" IsReadOnly="True"
+                      AcceptsReturn="True" AcceptsTab="False" VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"
+                      EditValue="{Binding FocusedSMS.Body}" MaxLength="1600" 
+                       TextWrapping="Wrap"/>
+
+            <!--FlowDirection="{Binding IsRTL,Converter={StaticResource convBoolToFlowDirection}}"-->
+        </Grid>
+    </dxb:BarManager>
+</UserControl>

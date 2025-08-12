@@ -1,0 +1,150 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+            
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:System="clr-namespace:System;assembly=mscorlib" 
+             x:Class="POC.Module.ABSettings.Views.UApplicationBarSettings" 
+             mc:Ignorable="d" 
+             d:DesignHeight="1000" d:DesignWidth="300"
+             FlowDirection="{DynamicResource ResourceKey=ApplicationFlowDirection}"
+             FontFamily="{DynamicResource ResourceKey=ApplicationFontFamily}"
+             FontSize="{DynamicResource ApplicationFontSize}"
+            
+             >
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,*">
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="6">
+            <Image Style="{DynamicResource ImageAny32}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Settings.png"/>
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="تنظیمات" FontFamily="{DynamicResource ApplicationFontFamilyH2}" FontSize="{DynamicResource ApplicationFontSizeH2}"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" Style="{DynamicResource BlendScrollViewerStyle}">
+            <StackPanel>
+
+                <dxlc:GroupBox Margin="3">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Network.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}" Text="ارتباط با سرور" />
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="*,auto" HorizontalAlignment="Stretch" >
+                        <!--<TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="نام / آی پی سرور :"/>-->
+                        <dxe:TextEdit Grid.Row="0" Grid.Column="0" Margin="3" EditValue="{Binding ServerName}" MaxLength="32" FlowDirection="LeftToRight" NullText="نام سرور" pol_ap:ApUIElement.EnKeyboardLayout=""/>
+                        <Image Grid.Row="0" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="نام و یا آی پی سرور"/>
+
+                        <!--<TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="پورت :"/>-->
+                        <dxe:TextEdit Grid.Row="1" Grid.Column="0" Margin="3" EditValue="{Binding ServerPort}" MaxLength="5" FlowDirection="LeftToRight" NullText="پورت سرور" pol_ap:ApUIElement.EnKeyboardLayout=""/>
+                        <Image Grid.Row="1" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="شماره پورت ارتباطی با سرور (عدد بین 4000 تا 64000)"/>
+
+                        <dxe:CheckEdit Grid.Row="2" Grid.Column="0" Margin="3" IsChecked="{Binding UseMSSQLServer2}" Content="استفاده از سرور دوم"/>
+                    </Grid>
+                </dxlc:GroupBox>
+
+                <!--<dxlc:GroupBox Margin="3">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_monitor.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}" Text="محیط برنامه" />
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="*,auto" HorizontalAlignment="Stretch" >
+                        <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="0" Margin="3" ItemsSource="{Binding LanguageList}" DisplayMember="NativeName"  SelectedItem="{Binding LanguageSelected}" IsTextEditable="False"  NullText="انتخاب زبان" />
+                        <Image Grid.Row="0" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="از فهرست مقابل زبان مورد نظر را انتخاب كنید"/>
+
+                        <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="0" Margin="3" ItemsSource="{Binding DirectionList}" SelectedIndex="{Binding DirectionSelected}" IsTextEditable="False"  NullText="انتخاب جهت" />
+                        <Image Grid.Row="1" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="از فهرست مقابل جهت چیدمان را انتخاب كنید"/>
+
+                        <dxe:ComboBoxEdit Grid.Row="2" Grid.Column="0" Margin="3" ItemsSource="{Binding FontFamilyList}" SelectedItem="{Binding FontFamilySelected}" IsTextEditable="False"  NullText="انتخاب قلم" />
+                        <Image Grid.Row="2" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="از فهرست مقابل قلم مورد نظر را انتخاب كنید"/>
+
+                        <dxe:ComboBoxEdit Grid.Row="3" Grid.Column="0" Margin="3" ItemsSource="{Binding FontSizeList}" SelectedItem="{Binding FontSizeSelected}" IsTextEditable="False"  NullText="اندازه قلم" />
+                        <Image Grid.Row="3" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="از فهرست مقابل اندازه قلم مورد نظر را انتخاب كنید"/>
+                    </Grid>
+
+                </dxlc:GroupBox>-->
+
+                <dxlc:GroupBox Margin="3">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_keyboard.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}" Text="كیبورد" />
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="*,auto" HorizontalAlignment="Stretch" >
+                        <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="0" Margin="3" ItemsSource="{Binding KeyboardLayoutList}"  SelectedItem="{Binding KBLayoutDefault}" IsTextEditable="False"  NullText="انتخاب كیبورد" DisplayMember="LayoutName" FlowDirection="LeftToRight" AllowSpinOnMouseWheel="False"/>
+                        <Image Grid.Row="0" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="از فهرست مقابل كیبورد پیش فرض برنامه را انتخاب كنید"/>
+
+                        <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="0" Margin="3" ItemsSource="{Binding KeyboardLayoutList}" SelectedItem="{Binding KBLayoutLTR}" IsTextEditable="False"  NullText="انتخاب كیبورد" DisplayMember="LayoutName" FlowDirection="LeftToRight" AllowSpinOnMouseWheel="False"/>
+                        <Image Grid.Row="1" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="از فهرست مقابل كیبورد چپ به راست را انتخاب كنید"/>
+
+                        <dxe:ComboBoxEdit Grid.Row="2" Grid.Column="0" Margin="3" ItemsSource="{Binding KeyboardLayoutList}" SelectedItem="{Binding KBLayoutRTL}" IsTextEditable="False"  NullText="انتخاب كیبورد" DisplayMember="LayoutName" FlowDirection="LeftToRight" AllowSpinOnMouseWheel="False"/>
+                        <Image Grid.Row="2" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="از فهرست مقابل كیبورد راست به چپ را انتخاب كنید"/>
+                    </Grid>
+                </dxlc:GroupBox>
+
+                <dxlc:GroupBox Margin="3">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_calendar.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}" Text="تقویم" />
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="*,auto" HorizontalAlignment="Stretch" >
+                        <!--<dxe:ComboBoxEdit Grid.Row="0" Grid.Column="0" Margin="3" ItemsSource="{Binding CalendarList}"  SelectedIndex="{Binding CalendarSelected}" IsTextEditable="False"  NullText="انتخاب تقویم" AllowSpinOnMouseWheel="False"/>-->
+                        <!--<Image Grid.Row="0" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="از فهرست مقابل تقویم پیش فرض برنامه را انتخاب كنید"/>-->
+
+                        <!--<dxe:ComboBoxEdit Grid.Row="1" Grid.Column="0" Margin="3" ItemsSource="{Binding DateFormatList}" SelectedItem="{Binding DateFormatSelected}" IsTextEditable="False"  NullText="انتخاب نحوه نمایش تاریخ" FlowDirection="LeftToRight" AllowSpinOnMouseWheel="False"/>-->
+                        <!--<Image Grid.Row="1" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="از فهرست مقابل نحوه نمایش تاریخ را انتخاب كنید"/>-->
+
+                        <dxe:ComboBoxEdit Grid.Row="2" Grid.Column="0" Margin="3" 
+                                          ItemsSource="{Binding HijriOffsetList}" 
+                                          SelectedItem="{Binding HijriOffset}" IsTextEditable="False" 
+                                          FlowDirection="LeftToRight" AllowSpinOnMouseWheel="False"/>
+                        <Image Grid.Row="2" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="اختلاف روز جهت تنظیم تقویم قمری"/>
+                    </Grid>
+                </dxlc:GroupBox>
+
+                <dxlc:GroupBox Margin="3">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_playblue.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}" Text="شروع" />
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="*,auto" HorizontalAlignment="Stretch" >
+                        <dxe:CheckEdit Grid.Row="0" Grid.Column="0" Margin="3" IsChecked="{Binding AutoStartEnable}" Content="شروع برنامه با شروع ویندوز"/>
+                        <Image Grid.Row="0" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="اگر می خواهید كه برنامه پس از ریستارت ویندوز شروع شود، این گزینه را انتخاب كنید"/>
+
+                        <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="0" Margin="3" ItemsSource="{Binding AutoStartDelayList}" SelectedItem="{Binding AutoStartDelaySelected}" IsTextEditable="False"  NullText="انتخاب تاخیر اولیه" FlowDirection="LeftToRight" AllowSpinOnMouseWheel="False"/>
+                        <Image Grid.Row="1" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="مقدار تاخیر بر حسب ثانیه جهت شروع برنامه"/>
+                    </Grid>
+                </dxlc:GroupBox>
+
+                <dxlc:GroupBox Margin="3">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_xoffice.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}"  Name="tbAppPanel"/>
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="*,auto" HorizontalAlignment="Stretch" >
+                        <dxe:CheckEdit Grid.Row="0" Grid.Column="0" Margin="3" IsChecked="{Binding DockIsFixed}" Content="ثابت باشد"/>
+                        <Image Grid.Row="0" Grid.Column="1" Style="{DynamicResource ImageHint}" Name="imgHint1"/>
+
+                        <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="0" Margin="3" ItemsSource="{Binding DockWidthList}" SelectedItem="{Binding DockWidthSelected}" IsTextEditable="False"  NullText="انتخاب اندازه پنل" FlowDirection="LeftToRight" AllowSpinOnMouseWheel="False"/>
+                        <Image Grid.Row="1" Grid.Column="1" Style="{DynamicResource ImageHint}" Name="imgHint2"/>
+                    </Grid>
+                </dxlc:GroupBox>
+
+                <ItemsControl ItemsSource="{Binding OtherSettingUserControls}"/>
+
+                <Button Margin="3" Command="{Binding CommandHelp}">راهنما</Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

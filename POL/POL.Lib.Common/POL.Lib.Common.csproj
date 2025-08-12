@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09107088-5C29-4EDD-9EF5-3D121944F735}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POL.Lib.Common</RootNamespace>
+    <AssemblyName>POL.Lib.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs496C.tmp\Debug\</IntermediateOutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs496C.tmp\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'YaraOffice|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;YaraOffice</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs496C.tmp\YaraOffice\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SahbaCRM|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;SahbaCRM</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs496C.tmp\SahbaCRM\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'iChista|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;iChista</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs496C.tmp\iChista\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ictcrm24|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;ictcrm24</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs496C.tmp\ictcrm24\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'RahyarModyran|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs496C.tmp\RahyarModyran\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v13.2">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Data.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Printing.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v13.2">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Grid.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v13.2.Core">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Grid.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Mvvm.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Mvvm.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Core.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Printing.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Printing.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v13.2">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpo.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism.Desktop.Net40, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Desktop.Net40.4.1.1\lib\net40\Prism.Desktop.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.UnityExtensions.Net40, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.UnityExtensions.Net40.4.1.1\lib\net40-client\Prism.UnityExtensions.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CityHolder.cs" />
+    <Compile Include="POLMembership\WMembershipUserCalcPermissions.xaml.cs">
+      <DependentUpon>WMembershipUserCalcPermissions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SmsPoxModel.cs" />
+    <Compile Include="ConvBoolToFontWeight.cs" />
+    <Compile Include="ConvCallDate.cs" />
+    <Compile Include="ConvCallDuration.cs" />
+    <Compile Include="ConvCallExtToBrush.cs" />
+    <Compile Include="ConvCallExtToName.cs" />
+    <Compile Include="ConvCallLine.cs" />
+    <Compile Include="ConvCallNoteFlag.cs" />
+    <Compile Include="ConvCallRecordRole.cs" />
+    <Compile Include="ConvCallRecordTag.cs" />
+    <Compile Include="ConvCallTeleCode.cs" />
+    <Compile Include="ConvCallType.cs" />
+    <Compile Include="ConvCardTableEndingDate.cs" />
+    <Compile Include="ConvCardTableResult.cs" />
+    <Compile Include="ConvCardTableStartingDate.cs" />
+    <Compile Include="ConvCardTableUserCreated.cs" />
+    <Compile Include="ConvContactDate.cs" />
+    <Compile Include="ConvFileSize.cs" />
+    <Compile Include="ConvSMSDelivery.cs" />
+    <Compile Include="ConvSmsStatusBrush.cs" />
+    <Compile Include="ConvSMSType.cs" />
+    <Compile Include="ConvTransDate.cs" />
+    <Compile Include="CountryHolder.cs" />
+    <Compile Include="HelperP30office.cs" />
+    <Compile Include="PhoneDecoder3Code.cs" />
+    <Compile Include="POLMembership\UMembershipUserManagment.xaml.cs">
+      <DependentUpon>UMembershipUserManagment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLMembership\WMembershipRoleAddEdit.xaml.cs">
+      <DependentUpon>WMembershipRoleAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLMembership\WMembershipSelectUser.xaml.cs">
+      <DependentUpon>WMembershipSelectUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLMembership\WMembershipUserAddEdit.xaml.cs">
+      <DependentUpon>WMembershipUserAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLMembership\WMembershipUserChangePassword.xaml.cs">
+      <DependentUpon>WMembershipUserChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLMembership\WMembershipUserResetPassword.xaml.cs">
+      <DependentUpon>WMembershipUserResetPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardPhoneDecoder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="POLMembership\UMembershipUserManagment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="POLMembership\WMembershipRoleAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="POLMembership\WMembershipUserCalcPermissions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="POLMembership\WMembershipSelectUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="POLMembership\WMembershipUserAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="POLMembership\WMembershipUserChangePassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="POLMembership\WMembershipUserResetPassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\POL.DB.General\POL.DB.General.csproj">
+      <Project>{cc6c9747-809d-4650-8041-cf430ef5196a}</Project>
+      <Name>POL.DB.General</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.DB.Membership\POL.DB.Membership.csproj">
+      <Project>{0eea7939-a2c6-4c21-aa80-c434e9b16595}</Project>
+      <Name>POL.DB.Membership</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.DB.P30Office\POL.DB.P30Office.csproj">
+      <Project>{bd5e7ef1-9beb-4b22-90ba-662d813337df}</Project>
+      <Name>POL.DB.P30Office</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.DB.Root\POL.DB.Root.csproj">
+      <Project>{d58f23a7-a7e5-482b-ab63-8a0ad4db48d1}</Project>
+      <Name>POL.DB.Root</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.Lib.Interfaces\POL.Lib.Interfaces.csproj">
+      <Project>{bbbcaf6e-dfa0-4484-9807-789f5c4990c8}</Project>
+      <Name>POL.Lib.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.Lib.P30Office\POL.Lib.XOffice.csproj">
+      <Project>{6198d4b4-c334-4339-bf09-3031410d1901}</Project>
+      <Name>POL.Lib.XOffice</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.Lib.Prism\POL.Lib.Prism.csproj">
+      <Project>{77ea0a71-6cbb-4b70-9d6a-bdb8e137a038}</Project>
+      <Name>POL.Lib.Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.Lib.Resources\POL.Lib.Resources.csproj">
+      <Project>{7a1ce952-eb1c-483c-97ec-3ec2ceba1582}</Project>
+      <Name>POL.Lib.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.Lib.Utils\POL.Lib.Utils.csproj">
+      <Project>{73d646dc-4c9e-4e54-8660-08581b74c693}</Project>
+      <Name>POL.Lib.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.WPF.Controles\POL.WPF.Controles.csproj">
+      <Project>{78776bcc-caaf-4140-8375-0c3ad8cb060f}</Project>
+      <Name>POL.WPF.Controles</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.WPF.DXControls\POL.WPF.DXControls.csproj">
+      <Project>{d63f740b-bc0d-4e56-88c0-29b9c6224ff6}</Project>
+      <Name>POL.WPF.DXControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

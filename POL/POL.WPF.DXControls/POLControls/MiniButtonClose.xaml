@@ -1,0 +1,27 @@
+﻿<Button x:Class="POL.WPF.DXControls.POLControls.MiniButtonClose"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="14" Width="14" MinWidth="14"
+        MinHeight="14" MaxHeight="14" MaxWidth="14">
+    <Button.Template>
+        <ControlTemplate TargetType="{x:Type Button}">
+            <Grid Name="cn_grid">
+                <Image Name="cn_Image" Source="/POL.WPF.DXControls;component/Resources/_14_CloseNormal.png" />
+                <!--Source="pack://application:,,,/POL.Lib.Resources;component/Special/14/_14_CloseNormal.png" />-->
+                <Border BorderBrush="#e5c365" BorderThickness="1" Name="cn_border" Visibility="Hidden" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="cn_grid" Value="White" />
+                    <Setter Property="Visibility" TargetName="cn_border" Value="Visible" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="cn_grid" Value="#ffe8a6" />
+                    <Setter Property="Visibility" TargetName="cn_border" Value="Visible" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" TargetName="cn_Image" Value="0.2" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Button.Template>
+</Button>

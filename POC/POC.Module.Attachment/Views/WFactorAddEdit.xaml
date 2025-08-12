@@ -1,0 +1,283 @@
+﻿<dx:DXWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    x:Class="POC.Module.Attachment.Views.WFactorAddEdit"
+      
+    Width="780"
+    Height="600" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:polDateEdit="clr-namespace:POL.WPF.DXControls.POLDateEdit;assembly=POL.WPF.DXControls"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*,auto,16,2*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="كد :" />
+        <dxe:TextEdit Grid.Row="0" Grid.Column="1" Margin="3" EditValue="{Binding Code,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  MaxLength="8" Name="firstFocused"  
+                      HorizontalAlignment="Stretch" FlowDirection="LeftToRight" IsEnabled="{Binding IsFactorMode}" IsReadOnly="{Binding IsEditMode}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="تاریخ :" />
+        <polDateEdit:POLDateEdit Grid.Row="1" Grid.Column="1" Margin="3" DateEditValue="{Binding Date,Mode=TwoWay}"  HorizontalAlignment="Stretch" IsEnabled="{Binding IsFactorMode}"/>
+
+
+        <!--<dxe:TextEdit Grid.Row="1" Grid.Column="1" Margin="3" EditValue="{Binding Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="200" MaxLength="64"/>-->
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="پیش فاكتور :" />
+
+        <Grid Grid.Row="2" Grid.Column="1" pol_ap:ApGrid.RowDefinitions="auto" 
+              pol_ap:ApGrid.ColumnDefinitions="auto,16,auto,*">
+            <CheckBox  Grid.Column="0" Margin="3" IsChecked="{Binding IsPreFactor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsFactorMode}"/>
+
+            <TextBlock Grid.Column="2" Margin="3" VerticalAlignment="Center" Text="نمایش شماره فاکتور :" />
+            <CheckBox  Grid.Column="3" Margin="3" IsChecked="{Binding CodeShow,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="پرونده :" />
+        <dxe:ButtonEdit Grid.Row="3" Grid.Column="1" Margin="3" EditValue="{Binding SelectedContact,Mode=TwoWay}" 
+                                    AllowDefaultButton="False" IsEnabled="{Binding IsFactorMode}"
+                                    IsTextEditable="False"  HorizontalAlignment="Stretch">
+            <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandSelectContact}" ToolTip="انتخاب پرونده" />
+        </dxe:ButtonEdit>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="عنوان :" />
+        <dxe:ComboBoxEdit Grid.Row="4" Grid.Column="1" Margin="3" EditValue="{Binding TitleOfTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  MaxLength="64"  
+                      HorizontalAlignment="Stretch" IsEnabled="{Binding IsFactorMode}" IsTextEditable="true" ItemsSource="{Binding FactorTitleDataSource}" AllowSpinOnMouseWheel="False">
+            <!--<dxe:ComboBoxEditItem Content="شركت"/>
+            <dxe:ComboBoxEditItem Content="جناب آقای"/>
+            <dxe:ComboBoxEditItem Content="سركار خانم"/>-->
+        </dxe:ComboBoxEdit>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="عنوان چاپی :" />
+        <dxe:TextEdit Grid.Row="5" Grid.Column="1" Margin="3" EditValue="{Binding Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="64"  
+                      HorizontalAlignment="Stretch" IsEnabled="{Binding IsFactorMode}"/>
+
+
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="ارزش افزوده :" />
+        <dxe:TextEdit Grid.Row="6" Grid.Column="1" Margin="3" EditValue="{Binding PercentIncrease,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                      MinWidth="200" MaxLength="12" FlowDirection="LeftToRight" 
+                      Mask="p0" MaskType="Numeric" MaskUseAsDisplayFormat="True"  HorizontalAlignment="Stretch"
+                       IsEnabled="{Binding IsFactorMode}"/>
+        <TextBlock Grid.Row="6" Grid.Column="2" Margin="3" VerticalAlignment="Center" Text="درصد" />
+
+        <TextBlock Grid.Row="7" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="تخفیف :" />
+        <dxe:TextEdit Grid.Row="7" Grid.Column="1" Margin="3" EditValue="{Binding PercentDiscount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                      MinWidth="200" MaxLength="12" FlowDirection="LeftToRight" 
+                      Mask="p0" MaskType="Numeric" MaskUseAsDisplayFormat="True"  HorizontalAlignment="Stretch"
+                       IsEnabled="{Binding IsFactorMode}"/>
+        <TextBlock Grid.Row="7" Grid.Column="2" Margin="3" VerticalAlignment="Center" Text="درصد" />
+
+        <TextBlock Grid.Row="8" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="تخفیف :" />
+        <dxe:TextEdit Grid.Row="8" Grid.Column="1" Margin="3" EditValue="{Binding AmountDiscount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="200" MaxLength="12" FlowDirection="LeftToRight" 
+                      Mask="n0" MaskType="Numeric" MaskUseAsDisplayFormat="True"  HorizontalAlignment="Stretch"
+                       IsEnabled="{Binding IsFactorMode}"/>
+        <TextBlock Grid.Row="8" Grid.Column="2" Margin="3" VerticalAlignment="Center" Text="ریال" />
+
+        <dx:DXTabControl Grid.Row="0" Grid.Column="4" Grid.RowSpan="10">
+            <dx:DXTabItem Header="نکته">
+                <dxe:TextEdit EditValue="{Binding Note,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"  
+                       HorizontalAlignment="Stretch" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"
+                      VerticalContentAlignment="Top" TextWrapping="Wrap"
+                       IsEnabled="{Binding IsFactorMode}"/>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="اطلاعات تکمیلی" IsSelected="True">
+                <ScrollViewer MaxHeight="196">
+                    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" 
+                          pol_ap:ApGrid.ColumnDefinitions="auto,*,*">
+                        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <Button Margin="3" Content="قالب فاکتور" Command="{Binding CommandSaveTemplate}"/>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="3" VerticalAlignment="Center" Text="نام متغییر" />
+                        <TextBlock Grid.Row="1" Grid.Column="2" Margin="3" VerticalAlignment="Center" Text="مقدار" />
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="1 :" />
+                        <dxe:TextEdit Grid.Row="2" Grid.Column="1" Margin="3"  EditValue="{Binding T1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="2" Grid.Column="2" Margin="3"  EditValue="{Binding V1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="2 :" />
+                        <dxe:TextEdit Grid.Row="3" Grid.Column="1" Margin="3"  EditValue="{Binding T2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="3" Grid.Column="2" Margin="3"  EditValue="{Binding V2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="3 :" />
+                        <dxe:TextEdit Grid.Row="4" Grid.Column="1" Margin="3"  EditValue="{Binding T3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="4" Grid.Column="2" Margin="3"  EditValue="{Binding V3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="4 :" />
+                        <dxe:TextEdit Grid.Row="5" Grid.Column="1" Margin="3"  EditValue="{Binding T4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="5" Grid.Column="2" Margin="3"  EditValue="{Binding V4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+
+                        <TextBlock Grid.Row="6" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="5 :" />
+                        <dxe:TextEdit Grid.Row="6" Grid.Column="1" Margin="3"  EditValue="{Binding T5,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="6" Grid.Column="2" Margin="3"  EditValue="{Binding V5,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+
+                        <TextBlock Grid.Row="7" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="6 :" />
+                        <dxe:TextEdit Grid.Row="7" Grid.Column="1" Margin="3"  EditValue="{Binding T6,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="7" Grid.Column="2" Margin="3"  EditValue="{Binding V6,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+
+                        <TextBlock Grid.Row="8" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="7 :" />
+                        <dxe:TextEdit Grid.Row="8" Grid.Column="1" Margin="3"  EditValue="{Binding T7,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="8" Grid.Column="2" Margin="3"  EditValue="{Binding V7,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+
+                        <TextBlock Grid.Row="9" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="8 :" />
+                        <dxe:TextEdit Grid.Row="9" Grid.Column="1" Margin="3"  EditValue="{Binding T8,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="9" Grid.Column="2" Margin="3"  EditValue="{Binding V8,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+
+                        <TextBlock Grid.Row="10" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="9 :" />
+                        <dxe:TextEdit Grid.Row="10" Grid.Column="1" Margin="3"  EditValue="{Binding T9,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="10" Grid.Column="2" Margin="3"  EditValue="{Binding V9,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+
+                        <TextBlock Grid.Row="11" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="10 :" />
+                        <dxe:TextEdit Grid.Row="11" Grid.Column="1" Margin="3"  EditValue="{Binding T10,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="100"/>
+                        <dxe:TextEdit Grid.Row="11" Grid.Column="2" Margin="3"  EditValue="{Binding V10,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1024"/>
+                    </Grid>
+                </ScrollViewer>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+
+        <!--<TabControl >
+        <tabpaTabControl.Items>
+            
+        </tabpaTabControl.Items>
+</TabControl>-->
+        <!--<TextBlock Grid.Row="0" Grid.Column="4" Margin="3" VerticalAlignment="Center" Text="نكات :" />-->
+
+
+
+        <Button Grid.Row="10" Grid.Column="1" Margin="3" Padding="3" Command="{Binding CommandSaveFactor}">ثبت فاكتور و ادامه جهت افزودن اقلام</Button>
+
+        <StackPanel Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button Margin="3" Padding="3" Command="{Binding CommandItemAdd}">افزودن كالا</Button>
+            <Button Margin="3" Padding="3" Command="{Binding CommandItemEdit}">ویرایش كالا</Button>
+            <Button Margin="3" Padding="3" Command="{Binding CommandItemDelete}">حذف كالا</Button>
+        </StackPanel>
+        <dxg:GridControl Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="5" Margin="3" ItemsSource="{Binding FactorItemList}" >
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem DisplayFormat=" {0}" FieldName="Title" ShowInColumn="Title" SummaryType="Count" />
+            </dxg:GridControl.TotalSummary>
+
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Name="colProductTitle" FieldName="Product.Title" Header="كالا" />
+                <dxg:GridColumn Name="colCount" FieldName="Count" Header="تعداد" AllowGrouping="True"/>
+                <dxg:GridColumn Name="colPrice" FieldName="Price" Header="قیمت" AllowGrouping="True">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings Mask="n0" MaskType="Numeric" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <!--<dxg:GridColumn Name="colPercentIncrease" FieldName="PercentIncrease" Header="ارزش افزوده" AllowGrouping="True">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings Mask="p0" MaskType="Numeric" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>-->
+
+                <!--<dxg:GridColumn Name="colPercentDiscount" FieldName="PercentDiscount" Header="درصد تخفیف" AllowGrouping="True">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings Mask="p0" MaskType="Numeric" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>-->
+                <!--<dxg:GridColumn Name="colAmountDiscount" FieldName="AmountDiscount" Header="تخفیف" AllowGrouping="True">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings Mask="n0" MaskType="Numeric" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>-->
+                <dxg:GridColumn Name="colSum" FieldName="Sum" Header="جمع" AllowGrouping="True">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings Mask="n0" MaskType="Numeric" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+
+
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView Name="tvMain"
+                               AllowCascadeUpdate="True"
+                               AllowColumnFiltering="True"
+                               AllowEditing="False"
+                               AllowFilterEditor="True"
+                               AllowGrouping="False"
+                               AllowPerPixelScrolling="True"
+                                   
+                               BestFitMode="VisibleRows"
+                               BestFitArea="All"
+                               FocusedRow="{Binding FocusedFactorItem,Mode=TwoWay}"
+                               IsColumnMenuEnabled="True"
+                               IsGroupPanelMenuEnabled="True"
+                               IsTotalSummaryMenuEnabled="False"
+                               MultiSelectMode="Row"
+                               ShowGroupPanel="False"
+                               ShowIndicator="False"
+                               ShowTotalSummary="True" 
+                               ShowSearchPanelMode="Never"
+                               AutoWidth="False"    
+                               ShowColumnHeaders="True" 
+                               >
+
+                </dxg:TableView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+
+
+
+
+
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandPrintFromTemplate}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImagePrint16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="چاپ قالب"/>
+                </StackPanel>
+            </Button>
+
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandPrint}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImagePrint16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="چاپ"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandSave}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageSave16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="ثبت"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="بستن"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80"
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

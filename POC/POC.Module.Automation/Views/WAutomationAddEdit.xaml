@@ -1,0 +1,226 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Automation.Views.WAutomationAddEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    
+    Width="600"
+    Height="540" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="عنوان :" />
+        <dxe:TextEdit Grid.Row="0" Grid.Column="1" Margin="3" EditValue="{Binding Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="200" MaxLength="64" 
+                      Name="firstFocused"  />
+        
+
+        <dx:DXTabControl Grid.Row="1" Grid.ColumnSpan="2" Margin="3">
+            <dx:DXTabItem Header="پاپ آپ">
+                <Grid pol_ap:ApGrid.RowDefinitions="auto,*,auto,auto" pol_ap:ApGrid.ColumnDefinitions="auto,*" >
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="فعال :" />
+                    <dxe:CheckEdit Grid.Row="0" Grid.Column="1" IsChecked="{Binding PopupEnable}" />
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3,6" VerticalAlignment="Top" Text="متن :" />
+                    <dxe:TextEdit Grid.Row="1" Grid.Column="1" Margin="3" IsEnabled="{Binding PopupEnable}"
+                        MaxLength="1024" InvalidValueBehavior="AllowLeaveEditor" VerticalScrollBarVisibility="Visible" 
+                        VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True"
+                        EditValue="{Binding PopupText}"/>
+                    
+                    <!--<TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="ارسال برای :" />
+                    <dxe:ComboBoxEdit Grid.Row="2" Grid.Column="1" Margin="3" IsEnabled="{Binding PopupEnable}"
+                                      SelectedIndex="{Binding PopupType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                      InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="false" AutoComplete="false" 
+                                      ImmediatePopup="True" AllowSpinOnMouseWheel="False">
+                        <dxe:ComboBoxEditItem Content="همه"/>
+                        <dxe:ComboBoxEditItem Content="سطح دسترسی"/>
+                        <dxe:ComboBoxEditItem Content="كاربر"/>
+                    </dxe:ComboBoxEdit>
+                    <dxe:ComboBoxEdit Grid.Row="3" Grid.Column="1" Margin="3" ItemsSource="{Binding PopupSendToList}" IsEnabled="{Binding PopupSendToEnable}"
+                                      EditValue="{Binding PopupSendToData,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                      InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="false"  
+                                      ImmediatePopup="True" AllowSpinOnMouseWheel="False">
+                    </dxe:ComboBoxEdit>-->
+                </Grid>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="پیامك">
+                <Grid pol_ap:ApGrid.RowDefinitions="auto,*,auto,auto,auto,auto,auto,auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="auto,auto,*,auto,auto" >
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="فعال :" />
+                    <dxe:CheckEdit Grid.Row="0" Grid.Column="1" IsChecked="{Binding SMSEnable}" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3,6" VerticalAlignment="Top" Text="متن :" />
+                    <dxe:TextEdit Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Margin="3" IsEnabled="{Binding SMSEnable}"
+                        MaxLength="1024" InvalidValueBehavior="AllowLeaveEditor" VerticalScrollBarVisibility="Visible" 
+                        VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True"
+                        EditValue="{Binding SMSText}"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="ارسال برای :" />
+                    <RadioButton Grid.Row="2" Margin="3" Grid.Column="1" GroupName="sms" VerticalAlignment="Center" IsEnabled="{Binding SMSEnable}" Content="همه" IsChecked="{Binding SMSSendToAll}"/>
+                    <RadioButton Grid.Row="3" Margin="3" Grid.Column="1" GroupName="sms" VerticalAlignment="Center" IsEnabled="{Binding SMSEnable}" Content="شماره" IsChecked="{Binding SMSSendToNumbers}"/>
+                    <RadioButton Grid.Row="4" Margin="3" Grid.Column="1" GroupName="sms" VerticalAlignment="Center" IsEnabled="{Binding SMSEnable}" Content="پرونده" IsChecked="{Binding SMSSendToContact}"/>
+                    <RadioButton Grid.Row="5" Margin="3" Grid.Column="1" GroupName="sms" VerticalAlignment="Center" IsEnabled="{Binding SMSEnable}" Content="دسته"  IsChecked="{Binding SMSSendToCategory}"/>
+                    <RadioButton Grid.Row="6" Margin="3" Grid.Column="1" GroupName="sms" VerticalAlignment="Center" IsEnabled="{Binding SMSEnable}" Content="پرونده مربوط به فیلد اطلاعاتی"  IsChecked="{Binding SMSSendToRelatedProfileItem}" Grid.ColumnSpan="2" />
+                    <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <CheckBox Margin="3" VerticalAlignment="Center" IsEnabled="{Binding SMSEnable}" Content="اختیاری"  IsChecked="{Binding SMSSendToAnyOne}"  />
+                        <dxe:TextEdit Margin="3" IsReadOnly="false" IsEnabled="{Binding SMSSendToAnyOne}" MaxLength="1024" EditValue="{Binding SMSNumbersAnyone}" pol_ap:ApUIElement.EnKeyboardLayout="" FlowDirection="LeftToRight" Width="300px"/>
+                    </StackPanel>
+                    
+                    <dxe:TextEdit Grid.Row="3" Margin="3" Grid.Column="2" IsReadOnly="false" IsEnabled="{Binding SMSCanEditNumbers}" MaxLength="1024" EditValue="{Binding SMSNumbers}" pol_ap:ApUIElement.EnKeyboardLayout="" FlowDirection="LeftToRight"/>
+                    <dxe:TextEdit Grid.Row="4" Margin="3" Grid.Column="2" IsReadOnly="True" EditValue="{Binding SMSContact}"/>
+                    <dxe:TextEdit Grid.Row="5" Margin="3" Grid.Column="2" IsReadOnly="True" EditValue="{Binding SMSCategory}"/>
+                    <dxe:TextEdit Grid.Row="6" Margin="3" Grid.Column="2" IsReadOnly="True" EditValue="{Binding SMSBasket}" Visibility="Collapsed"/>
+
+                    <Button Grid.Row="4" Margin="3" Grid.Column="3" Content="..." Width="23" Command="{Binding CommandSMSSelectContact}"/>
+                    <Button Grid.Row="5" Margin="3" Grid.Column="3" Content="..." Width="23" Command="{Binding CommandSMSSelectCategory}"/>
+                    <Button Grid.Row="6" Margin="3" Grid.Column="3" Content="..." Width="23" Command="{Binding CommandSMSSelectBasket}" Visibility="Collapsed"/>
+                    
+                </Grid>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="ایمیل" Height="23" VerticalAlignment="Top">
+                <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,*" pol_ap:ApGrid.ColumnDefinitions="auto,auto,*,auto,auto" >
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="فعال :" />
+                    <dxe:CheckEdit Grid.Row="0" Grid.Column="1" IsChecked="{Binding EmailEnable}" />
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Top" Text="ارسال توسط :" />
+                    <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" ItemsSource="{Binding EmailAccountList}" IsEnabled="{Binding EmailEnable}"
+                                      EditValue="{Binding EmailSelectedAccount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                      InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="false"  
+                                      ImmediatePopup="True" AllowSpinOnMouseWheel="False">
+                    </dxe:ComboBoxEdit> 
+                    
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Top" Text="انتخاب قالب :" />
+                    <dxe:ComboBoxEdit Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" ItemsSource="{Binding EmailTemplateList}" IsEnabled="{Binding EmailEnable}"
+                                      EditValue="{Binding EmailSelectedTemplate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                      InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="false"  
+                                      ImmediatePopup="True" AllowSpinOnMouseWheel="False">
+                    </dxe:ComboBoxEdit>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="ارسال برای :" />
+                    <RadioButton Grid.Row="3" Margin="3" Grid.Column="1" VerticalAlignment="Center" IsEnabled="{Binding EmailEnable}" Content="همه" IsChecked="{Binding EmailSendToAll}"/>
+                    <RadioButton Grid.Row="4" Margin="3" Grid.Column="1" VerticalAlignment="Center" IsEnabled="{Binding EmailEnable}" Content="آدرس" IsChecked="{Binding EmailSendToNumbers}"/>
+                    <RadioButton Grid.Row="5" Margin="3" Grid.Column="1" VerticalAlignment="Center" IsEnabled="{Binding EmailEnable}" Content="پرونده" IsChecked="{Binding EmailSendToContact}"/>
+                    <RadioButton Grid.Row="6" Margin="3" Grid.Column="1" VerticalAlignment="Center" IsEnabled="{Binding EmailEnable}" Content="دسته"  IsChecked="{Binding EmailSendToCategory}"/>
+                    <RadioButton Grid.Row="7" Margin="3" Grid.Column="1" VerticalAlignment="Center" IsEnabled="{Binding EmailEnable}" Content="پرونده مربوط به فیلد اطلاعاتی"  IsChecked="{Binding EmailSendToRelatedProfileItem}" Grid.ColumnSpan="2"/>
+
+                    <dxe:TextEdit Grid.Row="4" Margin="3" Grid.Column="2" IsReadOnly="false" IsEnabled="{Binding EmailCanEditNumbers}" MaxLength="1024" EditValue="{Binding EmailNumbers}" pol_ap:ApUIElement.EnKeyboardLayout="" FlowDirection="LeftToRight"/>
+                    <dxe:TextEdit Grid.Row="5" Margin="3" Grid.Column="2" IsReadOnly="True" EditValue="{Binding EmailContact}"/>
+                    <dxe:TextEdit Grid.Row="6" Margin="3" Grid.Column="2" IsReadOnly="True" EditValue="{Binding EmailCategory}"/>
+                    <dxe:TextEdit Grid.Row="7" Margin="3" Grid.Column="2" IsReadOnly="True" EditValue="{Binding EmailBasket}" Visibility="Collapsed"/>
+
+                    <Button Grid.Row="5" Margin="3" Grid.Column="3" Content="..." Width="23" Command="{Binding CommandEmailSelectContact}"/>
+                    <Button Grid.Row="6" Margin="3" Grid.Column="3" Content="..." Width="23" Command="{Binding CommandEmailSelectCategory}"/>
+                    <Button Grid.Row="7" Margin="3" Grid.Column="3" Content="..." Width="23" Command="{Binding CommandEmailSelectBasket}" Visibility="Collapsed"/>
+
+                </Grid>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+
+        <!--<TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="كشور :" />
+        <dxg:LookUpEdit Grid.Row="2" Grid.Column="1" Margin="3" HorizontalAlignment="Stretch" DisplayMember="TitleXX" 
+                              ValueMember="Oid" AutoPopulateColumns="False" IncrementalFiltering="True" ImmediatePopup="True" ItemsSource="{Binding CountryList}"
+                              SelectedItem="{Binding SelectedCountry}" PopupMinWidth="320" IsEnabled="{Binding CountryEnable}"
+                            PopupContentTemplate="{StaticResource ct}"
+                        >
+            <dxg:LookUpEdit.StyleSettings>
+                <dxg:SearchLookUpEditStyleSettings />
+            </dxg:LookUpEdit.StyleSettings>
+
+            
+        </dxg:LookUpEdit>
+
+        
+        
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="شهر :" />
+        <dxg:LookUpEdit Grid.Row="3" Grid.Column="1" Margin="3" HorizontalAlignment="Stretch" DisplayMember="TitleXX" 
+                              ValueMember="Oid" AutoPopulateColumns="False" IncrementalFiltering="True" ImmediatePopup="True"
+                              ItemsSource="{Binding CityList}" SelectedItem="{Binding SelectedCity}" PopupMinWidth="380" IsEnabled="{Binding CityEnable}">
+            <dxg:LookUpEdit.StyleSettings>
+                <dxg:SearchLookUpEditStyleSettings />
+            </dxg:LookUpEdit.StyleSettings>
+
+            <dxg:LookUpEdit.PopupContentTemplate>
+                <ControlTemplate>
+                    <dxg:GridControl Name="PART_GridControl">
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="StateTitle" Header="استان" AllowSearchPanel="False"/>
+                            <dxg:GridColumn FieldName="TitleXX" Header="عنوان"/>
+                            <dxg:GridColumn FieldName="PhoneCode" Header="كد مخابراتی"/>
+                            <dxg:GridColumn FieldName="PhoneLen" Header="ا.ش" ToolTip="اندازه شماره" Width="38" AllowSearchPanel="False"/>
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.View>
+                            <dxg:TableView AutoWidth="True" AllowGrouping="False" AllowColumnFiltering="false" AllowColumnMoving="False" AllowEditing="False"/>
+                        </dxg:GridControl.View>
+                    </dxg:GridControl>
+                </ControlTemplate>
+            </dxg:LookUpEdit.PopupContentTemplate>
+
+            <dxg:LookUpEdit.Buttons>
+                <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandManageCity}" />
+            </dxg:LookUpEdit.Buttons>
+        </dxg:LookUpEdit>
+
+        
+        
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="عنوان :" VerticalAlignment="Center" Margin="3" />
+        <dxe:ComboBoxEdit Grid.Row="4" Grid.Column="1" Margin="3" ItemsSource="{Binding PhoneTitleList}" 
+                EditValue="{Binding PhoneTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="True" AutoComplete="True" 
+                ImmediatePopup="True" MaxLength="32" AllowSpinOnMouseWheel="False">
+            <dxe:ComboBoxEdit.Buttons>
+                <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandManagePhoneTitle}"/>
+            </dxe:ComboBoxEdit.Buttons>
+        </dxe:ComboBoxEdit>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="توضیحات :" VerticalAlignment="Center" Margin="3"/>
+        <dxe:TextEdit
+                Grid.Row="5" 
+                Grid.Column="1" 
+                Margin="3" 
+                EditValue="{Binding Note,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                MaxLength="256" 
+                InvalidValueBehavior="AllowLeaveEditor" VerticalScrollBarVisibility="Visible" VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True"/>-->
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageSave16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="ثبت"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+       
+    </Grid>
+</dx:DXWindow>

@@ -1,0 +1,34 @@
+﻿<ToggleButton x:Class="POL.WPF.DXControls.POLControls.MiniToggleButtonPin"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="14" Width="14" MinWidth="14"
+              MinHeight="14"
+              MaxHeight="14" MaxWidth="14">
+    <ToggleButton.Template>
+        <ControlTemplate TargetType="{x:Type ToggleButton}">
+            <Grid Name="cn_grid">
+                <Image Name="cn_ImageNormal" Source="/POL.WPF.DXControls;component/Resources/_14_PinNormal.png" />
+                <Image Name="cn_ImagePin" Source="/POL.WPF.DXControls;component/Resources/_14_PinHooked.png"
+                       Visibility="Hidden" />
+                <Border BorderBrush="#e5c365" BorderThickness="1" Name="cn_border" Visibility="Hidden" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="cn_grid" Value="White" />
+                    <Setter Property="Visibility" TargetName="cn_border" Value="Visible" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="cn_grid" Value="#ffe8a6" />
+                    <Setter Property="Visibility" TargetName="cn_border" Value="Visible" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" TargetName="cn_ImageNormal" Value="0.2" />
+                    <Setter Property="Opacity" TargetName="cn_ImagePin" Value="0.2" />
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Visibility" TargetName="cn_ImageNormal" Value="Hidden" />
+                    <Setter Property="Visibility" TargetName="cn_ImagePin" Value="Visible" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </ToggleButton.Template>
+</ToggleButton>

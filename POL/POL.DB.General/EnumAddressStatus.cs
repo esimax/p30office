@@ -1,0 +1,3 @@
+namespace POL.DB.General
+{
+}

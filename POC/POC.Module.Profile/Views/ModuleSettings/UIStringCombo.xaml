@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="POC.Module.Profile.Views.ModuleSettings.UIStringCombo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <TextBlock Margin="3" Text="وضعیت كیبورد :"/>
+        <dxe:ComboBoxEdit Margin="3"  Name="cbeKeyboard" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+            <dxe:ComboBoxEditItem Content="پیش فرض برنامه"/>
+            <dxe:ComboBoxEditItem Content="راست به چپ"/>
+            <dxe:ComboBoxEditItem Content="چپ به راست"/>
+        </dxe:ComboBoxEdit>
+        <TextBlock Margin="3" Text="جدول :"/>
+        <dxe:ComboBoxEdit Margin="3"  Name="cbeTable" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+            <dxe:ComboBoxEdit.Buttons>
+                <dxe:ButtonInfo GlyphKind="Regular" Click="ButtonInfo_Click_1"/>
+            </dxe:ComboBoxEdit.Buttons>
+        </dxe:ComboBoxEdit>
+        <TextBlock Margin="3" Text="مقدار پیش فرض :"/>
+        <dxe:TextEdit Margin="3" Name="teDefaultValue" MaxLength="64"/>
+        <dxe:TextEdit Margin="3" Name="teDefaultValue2" MaxLength="64"/>
+        <dxe:CheckEdit Margin="3" Content="اجباری" Name="cbRequired"/>
+    </StackPanel>
+</UserControl>

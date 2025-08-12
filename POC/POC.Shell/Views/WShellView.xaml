@@ -1,0 +1,8 @@
+﻿<Window x:Class="POC.Shell.Views.WShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       >
+    <Border Grid.Column="1" BorderBrush="Gray" Background="WhiteSmoke" BorderThickness="1" CornerRadius="4,0,0,4" Width="21" Height="21" HorizontalAlignment="Right" >
+        <Image Source="/POC.Shell;component/Images/_16_P30Office.png" Width="16" Height="16" />
+    </Border>
+</Window>

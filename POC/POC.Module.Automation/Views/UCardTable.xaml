@@ -1,0 +1,224 @@
+﻿<UserControl x:Class="POC.Module.Automation.Views.UCardTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+             
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:pol_comm="clr-namespace:POL.Lib.Common;assembly=POL.Lib.Common"
+             d:DesignHeight="443" d:DesignWidth="759">
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <pol_comm:ConvCardTableUserCreated x:Key="convUserCreated"/>
+            <pol_comm:ConvCardTableStartingDate x:Key="convStartingDate"/>
+            <pol_comm:ConvCardTableEndingDate x:Key="convEndingDate"/>
+            <pol_comm:ConvCardTableResult x:Key="convResult"/>
+            
+            <DataTemplate x:Key="ctUserCreated">
+                <Ellipse Fill="{Binding DataContext.Value, Converter={StaticResource convUserCreated}, RelativeSource={RelativeSource TemplatedParent}}" Height="16" Width="16" StrokeThickness="1" Stroke="Black"/>
+            </DataTemplate>
+            
+            <DataTemplate x:Key="ctStartingDate">
+                <TextBlock
+                    Margin="3,1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    FlowDirection="LeftToRight"
+                    Text="{Binding DataContext.RowData.Row, Converter={StaticResource convStartingDate}, RelativeSource={RelativeSource TemplatedParent}}"/>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ctEndingDate">
+                <TextBlock
+                    Margin="3,1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    FlowDirection="LeftToRight"
+                    Text="{Binding DataContext.RowData.Row, Converter={StaticResource convEndingDate}, RelativeSource={RelativeSource TemplatedParent}}"/>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ctResult">
+                <TextBlock
+                    Margin="3,1"
+                    VerticalAlignment="Center"
+                    Text="{Binding DataContext.Value, Converter={StaticResource convResult}, RelativeSource={RelativeSource TemplatedParent}}"/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <dxb:BarManager>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem Content="جدید" Name="biNew" Command="{Binding CommandNew}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Add.png"/>
+            <dxb:BarButtonItem Content="ویرایش" Name="biEdit" Command="{Binding CommandEdit}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Editblue.png"/>
+            <dxb:BarButtonItem Content="حذف" Name="biDelete" Command="{Binding CommandDelete}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Delete2.png"/>
+            <dxb:BarButtonItem Content="بازخوانی" Name="biRefresh" Command="{Binding CommandRefresh}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Refresh.png"/>
+
+            <dxb:BarCheckItem Content="همه اطلاعات" Name="biShowAll" IsChecked="{Binding IsShowAll}"
+                              Command="{Binding CommandShowAll}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_CallAll.png" BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarCheckItem Content="ارسالی" Name="biShowSelf" IsChecked="{Binding IsShowSelf}"
+                              Command="{Binding CommandShowSelf}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_CallOut.png" BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarCheckItem Content="دریافتی" Name="biShowOthers" IsChecked="{Binding IsShowOthers}"
+                              Command="{Binding CommandShowOthers}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_CallIn.png" BarItemDisplayMode="ContentAndGlyph"/>
+            <dxb:BarCheckItem Content="مدیریتی" Name="biShowAdmin" IsChecked="{Binding IsShowAdmin}"
+                              Command="{Binding CommandShowAdmin}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_user.png" BarItemDisplayMode="ContentAndGlyph"/>
+
+            <dxb:BarButtonItem Content="راهنما" Name="biHelp" Command="{Binding CommandHelp}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Help.png"/>
+            <!--<dxb:BarButtonItem Content="استخراج به اكسل" Name="biExportExcel" Command="{Binding CommandExportExcel}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_ExportExcel.png"/>
+            <dxb:BarButtonItem Content="ورود از اكسل" Name="biImportExcel" Command="{Binding CommandImportExcel}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_ImportExcel.png"/>-->
+            <!--<dxb:BarButtonItem Content="برش" Name="biCut" Command="{Binding CommandCut}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Cut.png"/>
+            <dxb:BarButtonItem Content="جایگزاری" Name="biPaste" Command="{Binding CommandPaste}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Paste.png"/>
+
+            <dxb:BarButtonItem Content="محاسبه" Name="biCalculate" Command="{Binding CommandCalculate}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Calculate.png"/>
+
+            <dxb:BarButtonItem Content="ساده" Name="biViewSimple" Command="{Binding CommandViewSimple}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_MenuItem.png"/>
+            <dxb:BarButtonItem Content="كامل" Name="biViewFull" Command="{Binding CommandViewFull}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_List2.png"/>-->
+
+            <!--<dxb:BarButtonItem Content="گزارش ساز" Name="biPrint" Command="{Binding CommandPrint}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Printer.png"/>-->
+            <!--<dxb:BarButtonItem x:Name="biReport1" Command="{Binding CommandPrint1}" Content="چاپ ساده" />
+            <dxb:BarButtonItem x:Name="biReport2" Command="{Binding CommandPrintOpen}" Content="باز كردن فایل گزارش"/>
+            <dxb:BarSubItem x:Name="biReports"
+                            Content="گزارشات"
+                            CloseSubMenuOnClick="True"
+                            BarItemDisplayMode="ContentAndGlyph"
+                            LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Printer.png"
+                            >
+                <dxb:BarSubItem.ItemLinks>
+                    <dxb:BarButtonItemLink BarItemName="biReport1" />
+                    <dxb:BarButtonItemLink BarItemName="biReport2" />
+                </dxb:BarSubItem.ItemLinks>
+            </dxb:BarSubItem>-->
+
+        </dxb:BarManager.Items>
+
+        <Grid  pol_ap:ApGrid.RowDefinitions="auto,auto,*" pol_ap:ApGrid.ColumnDefinitions="*,*">
+            <dxr:RibbonControl Grid.Row="0" Grid.ColumnSpan="2" x:Name="phoneRibbon" RibbonStyle="Office2010" >
+                <dxr:RibbonDefaultPageCategory Name="rpcPhone">
+                    <dxr:RibbonPage Name="rpPhone" Caption="كارتابل" MergeOrder="4">
+                        <!--MergeOrder="5"-->
+                        <dxr:RibbonPageGroup Caption="عملكرد" >
+                            <dxb:BarButtonItemLink BarItemName="biNew" />
+                            <dxb:BarButtonItemLink BarItemName="biEdit" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biDelete" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biRefresh" />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="ابزار" >
+                            <dxb:BarCheckItemLink BarItemName="biShowAll" />
+                            <dxb:BarCheckItemLink BarItemName="biShowSelf" />
+                            <dxb:BarCheckItemLink BarItemName="biShowOthers" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarCheckItemLink BarItemName="biShowAdmin" />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="راهنما" >
+                            <dxb:BarButtonItemLink BarItemName="biHelp" />
+                        </dxr:RibbonPageGroup>
+                        <!--
+                        <dxr:RibbonPageGroup Caption="نمایش" >
+                            <dxb:BarButtonItemLink BarItemName="biViewSimple" />
+                            <dxb:BarButtonItemLink BarItemName="biViewFull" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biPrint" />
+                        </dxr:RibbonPageGroup>-->
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            <!--<StackPanel Grid.Row="1" Orientation="Horizontal">
+                <TextBlock Text="دسته :" Margin="6"/>
+
+                <dxe:ComboBoxEdit Name="cbeContactCat" Margin="3" IsTextEditable="False"  Width="300"
+                                      ApplyItemTemplateToSelectedItem="True" ItemsSource="{Binding ContactCatList}"
+                                      SelectedItem="{Binding SelectedContactCat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                      NullText="(همه دسته ها)" AllowSpinOnMouseWheel="False">
+                    <dxe:ComboBoxEdit.Buttons>
+                        <dxe:ButtonInfo GlyphKind="Refresh" ToolTip="بازخوانی مجدد" Command="{Binding CommandCategoryRefresh}"/>
+                    </dxe:ComboBoxEdit.Buttons>
+                    <dxe:ComboBoxEdit.EditNonEditableTemplate>
+                        <ControlTemplate>
+                            <TextBlock Text="{Binding EditValue}" Margin="3"/>
+                        </ControlTemplate>
+                    </dxe:ComboBoxEdit.EditNonEditableTemplate>
+                </dxe:ComboBoxEdit>
+            </StackPanel>-->
+            <dxg:GridControl Grid.Row="2" Grid.ColumnSpan="2" x:Name="gcMain" ItemsSource="{Binding CardTableList}" >
+                <dxg:GridControl.TotalSummary>
+                    <!--<dxg:GridSummaryItem DisplayFormat=" {0}" FieldName="PhoneNumber" ShowInColumn="PhoneNumber" SummaryType="Count" />
+                    <dxg:GridSummaryItem DisplayFormat=" {0}" FieldName="This" ShowInColumn="This" SummaryType="Count" />-->
+                </dxg:GridControl.TotalSummary>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="UserCreated" Header=""  Name="colUserCreated" CellTemplate="{StaticResource ctUserCreated}" Width="24" FixedWidth="True" Fixed="Left" ColumnChooserHeaderCaption="ثبت كننده" >
+                        <dxg:GridColumn.FilterEditorHeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="ثبت كننده"/>
+                            </DataTemplate>
+                        </dxg:GridColumn.FilterEditorHeaderTemplate>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Name="colTitle" Width="120" FieldName="Title" Header="عنوان" AllowGrouping="False"/>
+                    <dxg:GridColumn Name="colPriority" Width="50" FieldName="Priority" Header="اولویت" AllowGrouping="True"/>
+                    <dxg:GridColumn Name="colCreatorName" Width="120" FieldName="CreatorName" Header="ثبت كننده" AllowGrouping="True"/>
+                    <dxg:GridColumn Name="colSendTo" Width="85" FieldName="SendTo" Header="ارسال به" AllowGrouping="True"/>
+                    <dxg:GridColumn Name="colStartingDate" Width="110" FieldName="StartingDate" Header="زمان شروع" AllowGrouping="True" CellTemplate="{StaticResource ctStartingDate}" SortOrder="Descending" SortIndex="0" />
+                    <dxg:GridColumn Name="colEndingDate" Width="110" FieldName="EndingDate" Header="مهلت انجام" AllowGrouping="True" CellTemplate="{StaticResource ctEndingDate}" />
+                    <dxg:GridColumn Name="colResult" Width="85" FieldName="Result" Header="نتیجه" AllowGrouping="True" CellTemplate="{StaticResource ctResult}"/>
+                    <dxg:GridColumn Name="colResultDate" Width="85" FieldName="ResultDate" Header="تاریخ اتمام" AllowGrouping="True"/>
+
+
+                    <!--<dxg:GridColumn Name="colContactTitle" FieldName="Contact.Title" Header="عنوان" AllowGrouping="False"/>
+
+
+                    <dxg:GridColumn Name="colPhoneNumber" FieldName="PhoneNumber" Header="شماره" CellTemplate="{StaticResource LeftToRightTemplate}" />
+                    <dxg:GridColumn Name="colCodeString" FieldName="CodeString" Header="كد مخابراتی" 
+                                    ToolTip="كد مخابراتی" CellTemplate="{StaticResource LeftToRightTemplate}"
+                                    AllowGrouping="False" AllowSorting="False" AllowColumnFiltering="False"/>
+                    <dxg:GridColumn Name="colTitle" FieldName="Title" Header="عنوان شماره"/>
+                    <dxg:GridColumn Name="colNote" FieldName="Note" Header="توضیحات" />-->
+
+                    <!--<dxg:GridColumn Name="colCallOutCount" FieldName="CallOutCount" Header="ت ت ارسالی"  ToolTip="تعداد تماس ارسالی" Visible="{Binding IsViewFull}" VisibleIndex="6"/>
+                    <dxg:GridColumn Name="colCallInCount" FieldName="CallInCount" Header="ت ت دریافتی"  ToolTip="تعداد تماس دریافتی" Visible="{Binding IsViewFull}" VisibleIndex="5"/>
+                    <dxg:GridColumn Name="colCallTotalCount" FieldName="CallTotalCount" Header="ت ت  كل"  ToolTip="تعداد تماس كل" Visible="{Binding IsViewFull}" VisibleIndex="4"/>
+                    <dxg:GridColumn Name="colDurationOut" FieldName="DurationOut" Header="م م ارسالی" ToolTip="مدت مكالمه ارسالی" Visible="{Binding IsViewFull}" VisibleIndex="3"/>
+                    <dxg:GridColumn Name="colDurationIn" FieldName="DurationIn" Header="م م  دریافتی"  ToolTip="مدت مكالمه دریافتی" Visible="{Binding IsViewFull}" VisibleIndex="2"/>
+                    <dxg:GridColumn Name="colDurationTotal" FieldName="DurationTotal" Header="م م كل"  ToolTip="مدت مكالمه كل" Visible="{Binding IsViewFull}" VisibleIndex="1"/>-->
+
+                    <!--<dxg:GridColumn Name="colAll" FieldName="This" Header="" CellTemplate="{StaticResource AllTemplate}" Visible="{Binding IsViewSimple}" VisibleIndex="0"/>-->
+
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView Name="tvMain"
+                               AllowCascadeUpdate="True"
+                               AllowColumnFiltering="True"
+                               AllowEditing="False"
+                               AllowFilterEditor="True"
+                               AllowGrouping="True"
+                               AllowPerPixelScrolling="True"
+                                   
+                               BestFitMode="VisibleRows"
+                               BestFitArea="All"
+                               FocusedRow="{Binding FocusedCardTable,Mode=TwoWay}"
+                               IsColumnMenuEnabled="True"
+                               IsGroupPanelMenuEnabled="True"
+                               IsTotalSummaryMenuEnabled="False"
+                               MultiSelectMode="Row"
+                               ShowGroupPanel="True"
+                               ShowIndicator="False"
+                               ShowTotalSummary="True" 
+                               ShowSearchPanelMode="Never"
+                               AutoWidth="False"    
+                               ShowColumnHeaders="True" 
+                               >
+                        <dxg:TableView.RowCellMenuCustomizations>
+                            <dxb:BarButtonItemLink BarItemName="biRefresh" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biNew" />
+                            <dxb:BarButtonItemLink BarItemName="biEdit" />
+                            <dxb:BarButtonItemLink BarItemName="biDelete" />
+                        </dxg:TableView.RowCellMenuCustomizations>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+    </dxb:BarManager>
+</UserControl>

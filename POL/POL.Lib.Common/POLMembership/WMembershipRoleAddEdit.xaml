@@ -1,0 +1,48 @@
+﻿<dx:DXWindow x:Class="POL.Lib.Common.POLMembership.WMembershipRoleAddEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             Height="160" Width="380"
+
+             MinWidth="380"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             FocusManager.FocusedElement="{Binding ElementName=teTitle}"
+
+             Icon="{DynamicResource ApplicationIcon}"
+             WindowStartupLocation="CenterOwner"
+             ResizeMode="NoResize"
+
+             FontFamily="{DynamicResource ApplicationFontFamily}"
+             FontSize="{DynamicResource ApplicationFontSize}">
+
+    <DockPanel FlowDirection="{DynamicResource ApplicationFlowDirection}">
+        <Grid DockPanel.Dock="Bottom" Background="{DynamicResource FooterBackground}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Margin="0,12" Padding="6,3" MinWidth="80" Content="قبول" IsDefault="True"
+                        Command="{Binding cmdOK}" />
+                <Button Margin="12" Padding="6,3" MinWidth="80" Content="لغو" IsCancel="True"
+                        Command="{Binding cmdCancel}" />
+            </StackPanel>
+        </Grid>
+        <!--<Separator DockPanel.Dock="Bottom" Margin="0"/>-->
+        <Grid Margin="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="عنوان سطح دسترسی :" VerticalAlignment="Center" Margin="3" />
+            <dxe:TextEdit Name="teTitle" Grid.Row="0" Grid.Column="1" Margin="3"
+                          EditValue="{Binding SelectedRole.Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          MaxLength="32"
+                          InvalidValueBehavior="AllowLeaveEditor" />
+
+
+        </Grid>
+    </DockPanel>
+</dx:DXWindow>

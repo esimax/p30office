@@ -1,0 +1,109 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Contact.Views.WBasketOperation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Width="440"
+    Height="280" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:poc_conv="clr-namespace:POL.WPF.Controles.Conv;assembly=POL.WPF.Controles"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+    <dx:DXWindow.Resources>
+        <poc_conv:ConvShareStatusToImageSource x:Key="ShareStatusToImageSourceConverter1"/>
+    </dx:DXWindow.Resources>
+
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="سبد اول :"/>
+        <dxe:ComboBoxEdit Name="cbeBasketA" Grid.Row="0"  Grid.Column="1"  Margin="3" IsTextEditable="False"  
+                                      ApplyItemTemplateToSelectedItem="True" HorizontalAlignment="Stretch" ItemsSource="{Binding SelectionBasketList}"
+                                      SelectedItem="{Binding SelectedBasketA,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AllowSpinOnMouseWheel="False">
+            <dxe:ComboBoxEdit.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Path=ShareStatus,Converter={StaticResource ShareStatusToImageSourceConverter1}}" Width="16" Height="16" Stretch="Fill" Margin="3,0"/>
+                        <TextBlock Margin="3" Text="{Binding Title}" VerticalAlignment="Center"/>
+                        <Grid Width="32" />
+                        <TextBlock Margin="3" Text="{Binding User2.Title}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </dxe:ComboBoxEdit.ItemTemplate>
+        </dxe:ComboBoxEdit>
+
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="سبد دوم :"/>
+        <dxe:ComboBoxEdit Name="cbeBasketB" Grid.Row="1"  Grid.Column="1"  Margin="3" IsTextEditable="False" AllowSpinOnMouseWheel="False" 
+                                      ApplyItemTemplateToSelectedItem="True" HorizontalAlignment="Stretch" ItemsSource="{Binding SelectionBasketList}"
+                                      SelectedItem="{Binding SelectedBasketB,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" >
+            <dxe:ComboBoxEdit.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Path=ShareStatus,Converter={StaticResource ShareStatusToImageSourceConverter1}}" Width="16" Height="16" Stretch="Fill" Margin="3,0"/>
+                        <TextBlock Margin="3" Text="{Binding Title}" VerticalAlignment="Center"/>
+                        <Grid Width="32" />
+                        <TextBlock Margin="3" Text="{Binding User2.Title}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </dxe:ComboBoxEdit.ItemTemplate>
+        </dxe:ComboBoxEdit>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="عملیات :"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Margin="3" VerticalAlignment="Center" Text="{Binding OperationText}"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="سبد نتیجه :"/>
+        <dxe:ComboBoxEdit Name="cbeBasketC" Grid.Row="3"  Grid.Column="1"  Margin="3" IsTextEditable="False"  AllowSpinOnMouseWheel="False"
+                                      ApplyItemTemplateToSelectedItem="True" HorizontalAlignment="Stretch" ItemsSource="{Binding SelectionBasketList}"
+                                      SelectedItem="{Binding SelectedBasketC,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" >
+            <dxe:ComboBoxEdit.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Path=ShareStatus,Converter={StaticResource ShareStatusToImageSourceConverter1}}" Width="16" Height="16" Stretch="Fill" Margin="3,0"/>
+                        <TextBlock Margin="3" Text="{Binding Title}" VerticalAlignment="Center"/>
+                        <Grid Width="32" />
+                        <TextBlock Margin="3" Text="{Binding User2.Title}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </dxe:ComboBoxEdit.ItemTemplate>
+        </dxe:ComboBoxEdit>
+
+        <TextBlock Grid.Row="4" Grid.ColumnSpan="3" Margin="6" Foreground="Red" TextWrapping="Wrap" Text="توجه : محتویات قبلی سبد نتیجه حذف خواهد شد."/>
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

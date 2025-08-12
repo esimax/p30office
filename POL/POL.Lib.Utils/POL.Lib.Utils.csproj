@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{73D646DC-4C9E-4E54-8660-08581B74C693}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POL.Lib.Utils</RootNamespace>
+    <AssemblyName>POL.Lib.Utils</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4689.tmp\Debug\</IntermediateOutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4689.tmp\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'YaraOffice|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;YaraOffice</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4689.tmp\YaraOffice\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SahbaCRM|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;SahbaCRM</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4689.tmp\SahbaCRM\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'iChista|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;iChista</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4689.tmp\iChista\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ictcrm24|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;ictcrm24</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4689.tmp\ictcrm24\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'RahyarModyran|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4689.tmp\RahyarModyran\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mail, Version=3.0.13160.2108, Culture=neutral, PublicKeyToken=6dc438ab78a525b3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DevLibrary\mail\Mail.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIPoint.cs" />
+    <Compile Include="ExtendedWindowStyles.cs" />
+    <Compile Include="ExtensionEmail.cs" />
+    <Compile Include="ExtensionString.cs" />
+    <Compile Include="GetWindowLongFields.cs" />
+    <Compile Include="HelperEmail.cs" />
+    <Compile Include="HelperPrinter.cs" />
+    <Compile Include="PrayTime.cs" />
+    <Compile Include="EnumBalloonFlags.cs" />
+    <Compile Include="HelperApplicationBar.cs" />
+    <Compile Include="HelperAssembly.cs" />
+    <Compile Include="HelperAutoStart.cs" />
+    <Compile Include="HelperComputerInfo.cs" />
+    <Compile Include="HelperConvert.cs" />
+    <Compile Include="HelperGregorianCalendar.cs" />
+    <Compile Include="HelperHijriCalendar.cs" />
+    <Compile Include="HelperIcon.cs" />
+    <Compile Include="HelperImage.cs" />
+    <Compile Include="HelperLocalize.cs" />
+    <Compile Include="HelperMouseKeyboard.cs" />
+    <Compile Include="HelperPersianCalendar.cs" />
+    <Compile Include="HelperSecurity.cs" />
+    <Compile Include="HelperShell32.cs" />
+    <Compile Include="EnumIconDataMembers.cs" />
+    <Compile Include="EnumIconState.cs" />
+    <Compile Include="EnumNotifyCommand.cs" />
+    <Compile Include="EventMouseEvent.cs" />
+    <Compile Include="HelperUtils.cs" />
+    <Compile Include="NotifyIconData.cs" />
+    <Compile Include="EnumNotifyIconVersion.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HelperUser32.cs" />
+    <Compile Include="TelNet\TelNetWrapper.cs" />
+    <Compile Include="TelNet\TelNetDataAvailableEventArgs.cs" />
+    <Compile Include="TelNet\TelNetDataAvailableEventHandler.cs" />
+    <Compile Include="TelNet\TelNetDisconnectedEventHandler.cs" />
+    <Compile Include="TelNet\TelNetProtocolHandler.cs" />
+    <Compile Include="TelNet\TelNetState.cs" />
+    <Compile Include="Validation.cs" />
+    <Compile Include="WindowClass.cs" />
+    <Compile Include="WindowMessageSink.cs" />
+    <Compile Include="WindowProcedureHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\POL.Lib.Interfaces\POL.Lib.Interfaces.csproj">
+      <Project>{bbbcaf6e-dfa0-4484-9807-789f5c4990c8}</Project>
+      <Name>POL.Lib.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,107 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Calendar.Views.WAppointmentAddEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:Drawing="clr-namespace:DevExpress.Xpf.Scheduler.Drawing;assembly=DevExpress.Xpf.Scheduler.v12.2"
+    xmlns:loc="clr-namespace:POC.Module.Calendar"
+    xmlns:polwpf="clr-namespace:POL.WPF.DXControls.POLDateEdit;assembly=POL.WPF.DXControls"
+    xmlns:dxsc="clr-namespace:DevExpress.Xpf.Scheduler.UI;assembly=DevExpress.Xpf.Scheduler.v12.2"
+    Title="{Binding Title}" Height="440" Width="600"
+    
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    Icon="{DynamicResource ApplicationIcon}"
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    FlowDirection="{DynamicResource ApplicationFlowDirection}"
+    >
+
+    <dx:DXWindow.Resources>
+        <loc:TimeSpanToDateTimeConverter2 x:Key="timeSpanToDateTimeConverter"/>
+        <Drawing:InvertedBoolConverter x:Key="invertedBoolConverter"/>
+    </dx:DXWindow.Resources>
+
+    <Grid pol_ap:ApGrid.RowDefinitions="*,auto" Margin="9" >
+        <dx:DXTabControl Margin="3">
+            <dx:DXTabItem Header="مشخصات">
+                <Grid pol_ap:ApGrid.ColumnDefinitions="auto,auto,auto,*" pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,auto,*">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" Text="عنوان :" VerticalAlignment="Center"/>
+                    <dxe:TextEdit Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Margin="3" EditValue="{Binding Subject}" MaxLength="128" Name="firstFocused"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="شروع :" VerticalAlignment="Center"/>
+                    <polwpf:MyDateEdit Grid.Row="1" Grid.Column="1" Margin="3" Width="160" EditValue="{Binding StartDate}"/>
+                    <dxe:ButtonEdit Grid.Row="1" Grid.Column="2" Margin="3" Width="160"
+                        AllowDefaultButton="False" 
+                        MaskType="DateTime" DisplayFormatString="{Binding TimeEditMask}" 
+                        Mask="{Binding TimeEditMask}" 
+                        EditValue="{Binding StartTime, Converter={StaticResource timeSpanToDateTimeConverter}}"
+                        IsEnabled="{Binding ElementName=chkAllDay, Path=IsChecked,Converter={StaticResource ResourceKey=invertedBoolConverter}}"
+                        Name="timeStart">
+                        <dxe:SpinButtonInfo SpinUpCommand="{Binding SpinUpCommand, ElementName=timeStart}" 
+                                SpinDownCommand="{Binding SpinDownCommand, ElementName=timeStart}">
+                        </dxe:SpinButtonInfo>
+                    </dxe:ButtonEdit>
+                    <dxe:CheckEdit Name="chkAllDay" Grid.Row="1" Grid.Column="3" Margin="3" Content="واقعه تمام روز" IsChecked="{Binding AllDay}"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0"  Margin="3" Text="پایان :" VerticalAlignment="Center"/>
+                    <polwpf:MyDateEdit Grid.Row="2" Grid.Column="1" Margin="3" Width="160" EditValue="{Binding EndDate}"/>
+                    <dxe:ButtonEdit Grid.Row="2" Grid.Column="2"  Margin="3" AllowDefaultButton="False" 
+                        MaskType="DateTime" DisplayFormatString="{Binding TimeEditMask}" 
+                        Mask="{Binding TimeEditMask}" EditValue="{Binding EndTime, Converter={StaticResource timeSpanToDateTimeConverter}}" 
+                        IsEnabled="{Binding ElementName=chkAllDay, Path=IsChecked, Converter={StaticResource ResourceKey=invertedBoolConverter}}"
+                        Name="timeEnd">
+                        <dxe:SpinButtonInfo SpinUpCommand="{Binding SpinUpCommand, ElementName=timeEnd}" 
+                                SpinDownCommand="{Binding SpinDownCommand, ElementName=timeEnd}">
+                        </dxe:SpinButtonInfo>
+                    </dxe:ButtonEdit>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" Text="برچسب :"/>
+                    <dxsc:AppointmentLabelEdit Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" 
+                                 Storage="{Binding Storage}" EditValue="{Binding Label}" />
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" Text="نتیجه :"  VerticalAlignment="Center"/>
+                    <dxsc:AppointmentStatusEdit Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"  Margin="3" 
+                                  Storage="{Binding Storage}" EditValue="{Binding Status}" />
+
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" Text="توضیحات :" VerticalAlignment="Top" />
+                    <dxe:TextEdit Height="80" Margin="3" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" VerticalContentAlignment="Top"
+                      Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
+                      TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"
+                      EditValue="{Binding Description}" MaxLength="4000"/>
+                </Grid>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="تکرار">
+                <Grid >
+
+                </Grid>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="سطوح دسترسی">
+                <Grid >
+
+                </Grid>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

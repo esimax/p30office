@@ -1,0 +1,47 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Calendar.Views.WGotoDate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:pol_wpf="clr-namespace:POL.WPF.DXControls.POLDateEdit;assembly=POL.WPF.DXControls" 
+    Title="{Binding Title}" Height="200" Width="300"
+    
+    Icon="{DynamicResource ApplicationIcon}"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    FlowDirection="{DynamicResource ApplicationFlowDirection}"
+    >
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,*,auto" pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" >
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="تاریخ :" Margin="3" VerticalAlignment="Center"/>
+        <pol_wpf:POLDateEdit Grid.Row="0" Grid.Column="1" Margin="3" DateEditValue="{Binding SelectedDate}" Name="firstFocused" AllowEmptyDate="False"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="نحوه نمایش :" Margin="3" VerticalAlignment="Center"/>
+        <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="1" Margin="3" ItemsSource="{Binding ViewList}" 
+                          DisplayMember="Item1" ValueMember="Item2"
+                          SelectedItem="{Binding SelectedView}"
+                          IsTextEditable="false" AllowSpinOnMouseWheel="False"/>
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

@@ -1,0 +1,133 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Link.Views.WLinkAddEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Width="740"
+    Height="520" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,*,auto,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="جستجو :" />
+        <dxe:TextEdit Grid.Row="0" Grid.Column="1" Margin="3" EditValue="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                      MinWidth="200" MaxLength="32" 
+                      Name="firstFocused"  IsEnabled="{Binding CanSearch}"/>
+
+
+
+        <dxg:GridControl Grid.Row="1" Grid.Column="1" x:Name="gridContact" ItemsSource="{Binding ContactList}" Grid.ColumnSpan="2" Margin="3" IsEnabled="{Binding CanSearch}" >
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Name="colCode" Width="65" FieldName="Code" Header="كد" SortMode="Value" />
+                <dxg:GridColumn Name="colTitle" FieldName="Title" Header="عنوان" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView Name="tvContact"
+                               AllowCascadeUpdate="True"
+                               AllowColumnFiltering="False"
+                               AllowEditing="False"
+                               AllowFilterEditor="False"
+                               AllowGrouping="False"
+                               AllowPerPixelScrolling="True"
+                               BestFitMode="VisibleRows"
+                               FocusedRow="{Binding FocusedContact,Mode=TwoWay}"
+                               IsColumnMenuEnabled="False"
+                               IsGroupPanelMenuEnabled="False"
+                               IsTotalSummaryMenuEnabled="False"
+                               MultiSelectMode="Row"
+                               ShowGroupPanel="False"
+                               ShowIndicator="False"
+                               ShowTotalSummary="False"
+                               AutoWidth="True">
+                </dxg:TableView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" pol_ap:ApGrid.RowDefinitions="auto,auto" pol_ap:ApGrid.ColumnDefinitions="auto,*,*,auto,auto">
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="{Binding ContactTitle1}"/>
+            <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="1" Margin="3" MinWidth="100" ItemsSource="{Binding RelMainList}" 
+                EditValue="{Binding RelMain1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="False" AutoComplete="True" 
+                ImmediatePopup="True" MaxLength="32" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEdit.Buttons>
+                    <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandManageRelMain}"/>
+                </dxe:ComboBoxEdit.Buttons>
+            </dxe:ComboBoxEdit>
+            <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="2" Margin="3" MinWidth="100" ItemsSource="{Binding RelSubList1}" 
+                EditValue="{Binding RelSub1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="False" AutoComplete="True" 
+                ImmediatePopup="True" MaxLength="32" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEdit.Buttons>
+                    <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandManageRelSub1}"/>
+                </dxe:ComboBoxEdit.Buttons>
+            </dxe:ComboBoxEdit>
+            <TextBlock Grid.Row="0" Grid.Column="3" Margin="3" VerticalAlignment="Center" Text="{Binding ContactTitle2}"/>
+            <TextBlock Grid.Row="0" Grid.Column="4" Margin="3" VerticalAlignment="Center" Text="می باشد."/>
+
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="{Binding ContactTitle2}"/>
+            <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="100" ItemsSource="{Binding RelMainList}" 
+                EditValue="{Binding RelMain2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="False" AutoComplete="True" 
+                ImmediatePopup="True" MaxLength="32" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEdit.Buttons>
+                    <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandManageRelMain}"/>
+                </dxe:ComboBoxEdit.Buttons>
+            </dxe:ComboBoxEdit>
+            <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="2" Margin="3" MinWidth="100" ItemsSource="{Binding RelSubList2}" 
+                EditValue="{Binding RelSub2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                InvalidValueBehavior="AllowLeaveEditor" IsTextEditable="False" AutoComplete="True" 
+                ImmediatePopup="True" MaxLength="32" AllowSpinOnMouseWheel="False">
+                <dxe:ComboBoxEdit.Buttons>
+                    <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandManageRelSub2}"/>
+                </dxe:ComboBoxEdit.Buttons>
+            </dxe:ComboBoxEdit>
+            <TextBlock Grid.Row="1" Grid.Column="3" Margin="3" VerticalAlignment="Center" Text="{Binding ContactTitle1}"/>
+            <TextBlock Grid.Row="1" Grid.Column="4" Margin="3" VerticalAlignment="Center" Text="می باشد."/>
+        </Grid>
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

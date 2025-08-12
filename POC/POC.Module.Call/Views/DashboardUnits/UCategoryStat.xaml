@@ -1,0 +1,62 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+            xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+            xmlns:pol_cal="clr-namespace:POL.WPF.DXControls.POLDateEdit;assembly=POL.WPF.DXControls"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" x:Class="POC.Module.Call.Views.DashboardUnits.UCategoryStat" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+            Width="800" Height="400"
+    xmlns:pol_comm="clr-namespace:POL.Lib.Common;assembly=POL.Lib.Common"
+    >
+    <UserControl.Resources>
+        <pol_comm:ConvCallDuration x:Key="convDurationSeconds"/>
+        
+        <DataTemplate x:Key="ctDurationSeconds">
+            <TextBlock
+                    Margin="3,1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    FlowDirection="LeftToRight"
+                    Text="{Binding DataContext.Value, Converter={StaticResource convDurationSeconds}, RelativeSource={RelativeSource TemplatedParent}}"
+                    />
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    
+    
+    <dxlc:GroupBox Header="آمار تعداد تماس و مدت مكالمه">
+        <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,*" 
+			pol_ap:ApGrid.ColumnDefinitions="auto,auto,*">
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="از تاریخ :"/>
+            <pol_cal:POLDateEdit Grid.Row="0" Grid.Column="1" Margin="3" Width="110" IsReadOnly="False" x:Name="poldeStart"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="تا تاریخ :"/>
+            <pol_cal:POLDateEdit Grid.Row="1" Grid.Column="1" Margin="3" Width="110" IsReadOnly="False" x:Name="poldeEnd"/>
+
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" x:Name="bPopulate" Content="جمع آوری آطلاعات"/>
+            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" x:Name="bPrint" Content="چاپ"/>
+            
+            <dxg:GridControl Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" Margin="3" Name="TheGrid">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="Category" Header="دسته" />
+
+                    <dxg:GridColumn FieldName="CountCallIn" Header="تعداد دریافتی" />
+                    <dxg:GridColumn FieldName="CountCallOut" Header="تعداد ارسالی" />
+                    <dxg:GridColumn FieldName="CountCallAll" Header="تعداد كل" />
+
+                    <dxg:GridColumn FieldName="DurationCallIn" Header="مكالمه دریافتی" CellTemplate="{StaticResource ctDurationSeconds}"/>
+                    <dxg:GridColumn FieldName="DurationCallOut" Header="مكالمه ارسالی" CellTemplate="{StaticResource ctDurationSeconds}"/>
+                    <dxg:GridColumn FieldName="DurationCallAll" Header="كل مدت مكالمه" CellTemplate="{StaticResource ctDurationSeconds}"/>
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView ShowTotalSummary="True" AllowEditing="False"/>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+    </dxlc:GroupBox>
+</UserControl>

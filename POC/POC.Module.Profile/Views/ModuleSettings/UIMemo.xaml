@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="POC.Module.Profile.Views.ModuleSettings.UIMemo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="300">
+    <StackPanel>
+        <TextBlock Margin="3" Text="وضعیت كیبورد :"/>
+        <dxe:ComboBoxEdit Margin="3" Name="cbeKeyboard" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+            <dxe:ComboBoxEditItem Content="پیش فرض برنامه"/>
+            <dxe:ComboBoxEditItem Content="راست به چپ"/>
+            <dxe:ComboBoxEditItem Content="چپ به راست"/>
+        </dxe:ComboBoxEdit>
+        <TextBlock Margin="3" Text="حداكثر تعداد كاراكتر :"/>
+        <!--<dxe:TextEdit Margin="3" Mask="d4" MaskType="Numeric" Name="teLimit" FlowDirection="LeftToRight"/>-->
+        <dxe:SpinEdit Margin="3" Mask="d" MaskType="Numeric" Name="teLimit" FlowDirection="LeftToRight" MaxValue="10000" MinValue="0"/>
+        <TextBlock Margin="3" Text="ارتفاع كادر :"/>
+        <dxe:ComboBoxEdit Margin="3"  Name="cbeHeight" FlowDirection="LeftToRight" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+            <dxe:ComboBoxEditItem Content="50"/>
+            <dxe:ComboBoxEditItem Content="100"/>
+            <dxe:ComboBoxEditItem Content="150"/>
+            <dxe:ComboBoxEditItem Content="200"/>
+            <dxe:ComboBoxEditItem Content="250"/>
+            <dxe:ComboBoxEditItem Content="300"/>
+        </dxe:ComboBoxEdit>
+        <TextBlock Margin="3" Text="مقدار پیش فرض :"/>
+        <dxe:TextEdit Margin="3" 
+                      Name="teDefaultValue" 
+                      MaxLength="{Binding ElementName=teLimit, Path=Value}" 
+                      Height="{Binding ElementName=cbeHeight, Path=EditValue}" 
+                      VerticalContentAlignment="Top" 
+                      VerticalScrollBarVisibility="Visible"
+                      AcceptsReturn="True"
+                      AcceptsTab="False"
+                      />
+        <dxe:CheckEdit Margin="3" Content="اجباری" Name="cbRequired"/>
+    </StackPanel>
+</UserControl>

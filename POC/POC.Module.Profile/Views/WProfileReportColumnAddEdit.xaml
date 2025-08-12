@@ -1,0 +1,59 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Profile.Views.WProfileReportColumnAddEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Width="440"
+    Height="220" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="عنوان :" />
+        <dxe:TextEdit Grid.Row="1" Grid.Column="1" Margin="3" EditValue="{Binding Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="200" MaxLength="32"  />
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="فیلد :" />
+        <dxe:ButtonEdit Grid.Row="0" Grid.Column="1" Margin="3" EditValue="{Binding FieldTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="200" 
+                        IsTextEditable="False" AllowDefaultButton="False" Name="firstFocused">
+            <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding CommandSelectField}"/>
+        </dxe:ButtonEdit>
+
+
+
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

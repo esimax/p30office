@@ -1,0 +1,87 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Profile.Views.WProfileItemAddEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Width="340"
+    Height="420" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    SnapsToDevicePixels="True">
+
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="عنوان :" />
+        <dxe:TextEdit Grid.Row="0" Grid.Column="1" Margin="3" EditValue="{Binding Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="200" MaxLength="64" Name="firstFocused" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="نوع :" />
+        <dxe:ListBoxEdit Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Margin="3"  Name="lbeType"
+                         ItemsSource="{Binding ModuleTypeList}" 
+                         SelectedItem="{Binding SelectedModuleType}"
+                         IsEnabled="{Binding CanChangeType}">
+            <!--SelectedIndex="{Binding SelectedTypeIndex}"-->
+            <dxe:ListBoxEdit.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="3" Width="16" Height="16" Stretch="Fill" RenderOptions.EdgeMode="Unspecified" RenderOptions.BitmapScalingMode="NearestNeighbor" Source="{Binding ImageUriString}"/>
+                        <TextBlock Margin="3" VerticalAlignment="Center" Text="{Binding Title}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </dxe:ListBoxEdit.ItemTemplate>
+        </dxe:ListBoxEdit>
+
+        <!--<dxe:ComboBoxEdit Grid.Row="1" Grid.Column="2" Margin="3" VerticalAlignment="Center" 
+                          SelectedIndex="{Binding SelectedTypeIndex}" IsTextEditable="False" ImmediatePopup="True"
+                          IsEnabled="{Binding CanChangeType}">
+            <dxe:ComboBoxEditItem Content="جعبه انتخاب"/>
+            <dxe:ComboBoxEditItem Content="عدد"/>
+            <dxe:ComboBoxEditItem Content="كشور"/>
+            <dxe:ComboBoxEditItem Content="كشور / شهر"/>
+            <dxe:ComboBoxEditItem Content="موقعیت جغرافیایی"/>
+            <dxe:ComboBoxEditItem Content="متن"/>
+            <dxe:ComboBoxEditItem Content="متن چند خط"/>
+            <dxe:ComboBoxEditItem Content="متن تك انتخابی"/>
+            <dxe:ComboBoxEditItem Content="متن چند انتخابی"/>
+            <dxe:ComboBoxEditItem Content="رنگ"/>
+            <dxe:ComboBoxEditItem Content="فایل"/>
+            <dxe:ComboBoxEditItem Content="تصویر"/>
+            <dxe:ComboBoxEditItem Content="تاریخ"/>
+            <dxe:ComboBoxEditItem Content="ساعت"/>
+            <dxe:ComboBoxEditItem Content="تاریخ / ساعت"/>
+            <dxe:ComboBoxEditItem Content="پرونده"/>
+            <dxe:ComboBoxEditItem Content="لیست"/>
+        </dxe:ComboBoxEdit>-->
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

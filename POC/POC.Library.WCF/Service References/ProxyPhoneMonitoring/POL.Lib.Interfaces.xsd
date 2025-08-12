@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfPhoneMonitoringData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PhoneMonitoringData" nillable="true" type="tns:PhoneMonitoringData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPhoneMonitoringData" nillable="true" type="tns:ArrayOfPhoneMonitoringData" />
+  <xs:complexType name="PhoneMonitoringData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InContactTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InDuration" type="ser:duration" />
+      <xs:element minOccurs="0" name="InExt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InLastRingDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InPhoneCityCode" type="xs:int" />
+      <xs:element minOccurs="0" name="InPhoneCityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InPhoneCountryCode" type="xs:int" />
+      <xs:element minOccurs="0" name="InPhoneCountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InPhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InTalking" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OutContactTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OutDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OutDialed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OutDuration" type="ser:duration" />
+      <xs:element minOccurs="0" name="OutExt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OutPhoneCityCode" type="xs:int" />
+      <xs:element minOccurs="0" name="OutPhoneCityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OutPhoneCountryCode" type="xs:int" />
+      <xs:element minOccurs="0" name="OutPhoneCountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OutPhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OutTalking" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" type="tns:EnumCallSystemLineStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhoneMonitoringData" nillable="true" type="tns:PhoneMonitoringData" />
+  <xs:simpleType name="EnumCallSystemLineStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unkown" />
+      <xs:enumeration value="Ring" />
+      <xs:enumeration value="HookOn" />
+      <xs:enumeration value="HookOff" />
+      <xs:enumeration value="CallerID" />
+      <xs:enumeration value="Dialed" />
+      <xs:enumeration value="Trans" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumCallSystemLineStatus" nillable="true" type="tns:EnumCallSystemLineStatus" />
+</xs:schema>

@@ -1,0 +1,73 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.CountryCity.Views.WCityAddEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+     
+    Width="440"
+    Height="380" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+<dx:DXWindow.Resources>
+    <BooleanToVisibilityConverter x:Key="btv"/>
+</dx:DXWindow.Resources>
+    
+<Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="نام كشور :" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding CountryTitle}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="نام استان :" />
+        <dxe:TextEdit Grid.Row="1" Grid.Column="1" Margin="3" EditValue="{Binding StateTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="128" Name="firstFocused"/>
+    
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="نام شهر :" />
+        <dxe:TextEdit Grid.Row="2" Grid.Column="1" Margin="3" EditValue="{Binding TitleXX,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="200" MaxLength="256"  />
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="كد مخابراتی :" Visibility="{Binding AllowPhoneCode,Converter={StaticResource btv}}" />
+        <dxe:TextEdit Grid.Row="3" Grid.Column="1" Margin="3" EditValue="{Binding PhoneCode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="3" FlowDirection="LeftToRight"
+                      Visibility="{Binding AllowPhoneCode,Converter={StaticResource btv}}" pol_ap:ApUIElement.EnKeyboardLayout=""/>
+        
+        <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="اندازه شماره :" Visibility="{Binding AllowPhoneCode,Converter={StaticResource btv}}" />
+        <dxe:TextEdit Grid.Row="4" Grid.Column="1" Margin="3" EditValue="{Binding PhoneLen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="2" FlowDirection="LeftToRight"
+                      Visibility="{Binding AllowPhoneCode,Converter={StaticResource btv}}" pol_ap:ApUIElement.EnKeyboardLayout=""/>
+
+
+        
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

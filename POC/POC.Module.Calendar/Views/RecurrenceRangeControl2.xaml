@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="POC.Module.Calendar.Views.RecurrenceRangeControl2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxschdui="clr-namespace:DevExpress.Xpf.Scheduler.UI;assembly=DevExpress.Xpf.Scheduler.v13.2"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:dxsch="clr-namespace:DevExpress.Xpf.Scheduler;assembly=DevExpress.Xpf.Scheduler.v13.2"
+             xmlns:dxschdw="clr-namespace:DevExpress.Xpf.Scheduler.Drawing;assembly=DevExpress.Xpf.Scheduler.v13.2"
+             xmlns:POLDateEdit="clr-namespace:POL.WPF.DXControls.POLDateEdit;assembly=POL.WPF.DXControls"
+             Name="RecRangeUserControl"
+             
+             >
+    <!--xmlns:Drawing="clr-namespace:DevExpress.Xpf.Scheduler.Drawing;assembly=DevExpress.Xpf.Scheduler.v12.2"
+             xmlns:Scheduler="clr-namespace:DevExpress.Xpf.Scheduler;assembly=DevExpress.Xpf.Scheduler.v12.2"-->
+
+    <UserControl.Resources>
+        <dxsch:SchedulerControlStringIdConverter x:Key="SchedulerControlStringIdConverter" />
+        <dxschdw:DecimalToConverter x:Key="DecimalToConverter" />
+        <dx:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+        <dxschdw:InvertedBoolConverter x:Key="invertedBoolConverter" />
+        <Style x:Key="ListBoxEditItem" TargetType="{x:Type StackPanel}">
+            <Setter Property="Height" Value="25" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Name="MainElement" UseLayoutRounding="true">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border Background="Transparent" IsHitTestVisible="{Binding IsReadOnly , Converter={StaticResource invertedBoolConverter}}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <RadioButton Name="NoEndDateRadioButton" VerticalAlignment="Center" Checked="NoEndDateRadioButton_Checked" />
+                <RadioButton Name="OccurenceCountRadioButton" Grid.Row="1" VerticalAlignment="Center" Checked="OccurenceCountRadioButton_Checked" />
+                <RadioButton Name="EndByDateRadioButton" Grid.Row="2" VerticalAlignment="Center" Checked="EndByDateRadioButton_Checked" />
+            </Grid>
+        </Border>
+        <Grid Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="4,3,0,2" VerticalAlignment="Center" Style="{StaticResource ListBoxEditItem}">
+                <TextBlock VerticalAlignment="Center" Margin="0,0,0,0" Text="{Binding Source={StaticResource SchedulerControlStringIdConverter}, ConverterParameter=Form_NoEndDate, Converter={StaticResource SchedulerControlStringIdConverter}}" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="4,2,0,2" VerticalAlignment="Center" Style="{StaticResource ListBoxEditItem}">
+                <TextBlock VerticalAlignment="Center" Margin="0,0,0,0" Text="{Binding Source={StaticResource SchedulerControlStringIdConverter}, ConverterParameter=Form_EndAfter, Converter={StaticResource SchedulerControlStringIdConverter}}" />
+                <dxe:SpinEdit VerticalAlignment="Center" IsFloatValue="false" MinValue="1" Margin="4, 0, 4, 0" EditValue="{Binding Path=RecurrenceInfo.OccurrenceCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalToConverter}, ConverterParameter={x:Type sys:Int32}}" IsReadOnly="{Binding IsReadOnly}" GotFocus="OnOccurrenceCountSpinEditGotFocus" />
+                <TextBlock VerticalAlignment="Center" Margin="0,0,0,0" Text="{Binding Source={StaticResource SchedulerControlStringIdConverter}, ConverterParameter=Form_Occurrences, Converter={StaticResource SchedulerControlStringIdConverter}}" />
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="4,2,0,3" VerticalAlignment="Center" Style="{StaticResource ListBoxEditItem}">
+                <TextBlock VerticalAlignment="Center" Margin="0,0,0,0" Text="{Binding Source={StaticResource SchedulerControlStringIdConverter}, ConverterParameter=Form_EndBy, Converter={StaticResource SchedulerControlStringIdConverter}}" />
+                <!--<POLDateEdit:MyDateEdit VerticalAlignment="Center" Margin="4, 0, 4, 0" DateTime="{Binding Path=LocalEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" GotFocus="OnEndByDateEditGotFocus" />-->
+                <POLDateEdit:POLDateEdit VerticalAlignment="Center" Margin="4, 0, 4, 0" DateEditValue="{Binding Path=LocalEnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" GotFocus="OnEndByDateEditGotFocus" />
+                
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

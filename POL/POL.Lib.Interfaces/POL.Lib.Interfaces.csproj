@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBBCAF6E-DFA0-4484-9807-789F5C4990C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POL.Lib.Interfaces</RootNamespace>
+    <AssemblyName>POL.Lib.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'YaraOffice|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;YaraOffice</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SahbaCRM|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;SahbaCRM</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'iChista|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;iChista</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ictcrm24|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;ictcrm24</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'RahyarModyran|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v13.2">
+      <HintPath>..\..\DevLibrary\DevExpress.Data.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Core.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v13.2">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpo.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism.Desktop.Net40, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Desktop.Net40.4.1.1\lib\net40\Prism.Desktop.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.UnityExtensions.Net40, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.UnityExtensions.Net40.4.1.1\lib\net40-client\Prism.UnityExtensions.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationBarHolder.cs" />
+    <Compile Include="AutomationPopupInfo.cs" />
+    <Compile Include="AutoUpdateArgs.cs" />
+    <Compile Include="BaseTableItem.cs" />
+    <Compile Include="CacheItemProfileItem.cs" />
+    <Compile Include="CallInfo.cs" />
+    <Compile Include="CallStat.cs" />
+    <Compile Include="CallStatHolder.cs" />
+    <Compile Include="ChartDataInt64.cs" />
+    <Compile Include="ContactSelectByResult.cs" />
+    <Compile Include="DashboardUnitItem.cs" />
+    <Compile Include="DataFieldBoolSettings.cs" />
+    <Compile Include="DataFieldSettings.cs" />
+    <Compile Include="EmailInfo.cs" />
+    <Compile Include="EnumByteDataType.cs" />
+    <Compile Include="EnumCachDataType.cs" />
+    <Compile Include="EnumContactSelectType.cs" />
+    <Compile Include="EnumEmailAttType.cs" />
+    <Compile Include="EnumEmailAutoDeletePolicy.cs" />
+    <Compile Include="EnumEmailFolderType.cs" />
+    <Compile Include="EnumEmailPriority.cs" />
+    <Compile Include="EnumEmailTemplateTagType.cs" />
+    <Compile Include="EnumPhoneCompanyType.cs" />
+    <Compile Include="EnumSelectionType.cs" />
+    <Compile Include="EnumSMSDelivery.cs" />
+    <Compile Include="EnumSmsPriority.cs" />
+    <Compile Include="EnumSMSProvider.cs" />
+    <Compile Include="EnumSMSSendResult.cs" />
+    <Compile Include="EnumSMSType.cs" />
+    <Compile Include="EnumStatusEmail.cs" />
+    <Compile Include="EnumStatusSMS.cs" />
+    <Compile Include="EnumSyncTable.cs" />
+    <Compile Include="EnumSyncType.cs" />
+    <Compile Include="FastContactUnitItem.cs" />
+    <Compile Include="ICacheData.cs" />
+    <Compile Include="IDataField.cs" />
+    <Compile Include="IDataFieldItem.cs" />
+    <Compile Include="IDataFieldManager.cs" />
+    <Compile Include="InTamasAttribute.cs" />
+    <Compile Include="IO\AddressTitleIO.cs" />
+    <Compile Include="IO\PackIOProfileGroup.cs" />
+    <Compile Include="IO\PackIOProfileItem.cs" />
+    <Compile Include="IO\PackIOProfileRoot.cs" />
+    <Compile Include="IO\PackIOProfileRootArray.cs" />
+    <Compile Include="IO\PhoneTitleIO.cs" />
+    <Compile Include="IO\ProfileTableValueIO.cs" />
+    <Compile Include="IPOCDashboardUnit.cs" />
+    <Compile Include="IPOCFastContactUnit.cs" />
+    <Compile Include="IRefrashable.cs" />
+    <Compile Include="IValidateSaveFastContactModule.cs" />
+    <Compile Include="MetaDataProfileReportItem.cs" />
+    <Compile Include="MetaDataProfileReportPack.cs" />
+    <Compile Include="Model\ModelRole.cs" />
+    <Compile Include="PermissionHolder.cs" />
+    <Compile Include="PObjects\Address.cs" />
+    <Compile Include="PObjects\Category.cs" />
+    <Compile Include="PObjects\Contact.cs" />
+    <Compile Include="PObjects\Email.cs" />
+    <Compile Include="PObjects\Phone.cs" />
+    <Compile Include="PObjects\ProfileGroup.cs" />
+    <Compile Include="PObjects\ProfileItems.cs" />
+    <Compile Include="PObjects\ProfileRoot.cs" />
+    <Compile Include="POCEventItem.cs" />
+    <Compile Include="POCEventParameter.cs" />
+    <Compile Include="IO\ProfileTableNameIO.cs" />
+    <Compile Include="SMSInfo.cs" />
+    <Compile Include="SmsSettings\EnumSmsSwDeliveryDelay.cs" />
+    <Compile Include="SmsSettings\SmsCallInAnswaredHolder.cs" />
+    <Compile Include="SmsSettings\ISmsSwProvider.cs" />
+    <Compile Include="SmsSettings\EnumSmsDeviceType.cs" />
+    <Compile Include="SmsSettings\EnumSmsEncoding.cs" />
+    <Compile Include="SmsSettings\EnumSmsLongMessages.cs" />
+    <Compile Include="SmsSettings\EnumSmsStatus.cs" />
+    <Compile Include="SmsSettings\SmsCallInNotAnswaredHolder.cs" />
+    <Compile Include="SmsSettings\SmsCallInNotWorkHolder.cs" />
+    <Compile Include="SmsSettings\SmsModuleSettings.cs" />
+    <Compile Include="SmsSettings\SmsMultiModuleSettings.cs" />
+    <Compile Include="SmsSettings\SmsSwProviderHolder.cs" />
+    <Compile Include="SyncCheckResponse.cs" />
+    <Compile Include="UpdatePackage.cs" />
+    <Compile Include="VersionAttribute.cs" />
+    <Compile Include="VoiceRecordDownloadReturns.cs" />
+    <Compile Include="ContactInfo.cs" />
+    <Compile Include="EnumCallLineDisplayMode.cs" />
+    <Compile Include="EnumCallSystemLineStatus.cs" />
+    <Compile Include="DecodedPhone.cs" />
+    <Compile Include="EnumCallTeleCodeDisplayMode.cs" />
+    <Compile Include="EnumCallType.cs" />
+    <Compile Include="ClientToServerInformation.cs" />
+    <Compile Include="ConsoleItem.cs" />
+    <Compile Include="DeviceUsedEnum.cs" />
+    <Compile Include="EnumAddressStatus.cs" />
+    <Compile Include="EnumApplicationExit.cs" />
+    <Compile Include="ApplicationExitEventArg.cs" />
+    <Compile Include="EnumCalendarType.cs" />
+    <Compile Include="EnumChartAxisXType.cs" />
+    <Compile Include="EnumChartAxisYType.cs" />
+    <Compile Include="EnumChartSeparation.cs" />
+    <Compile Include="EnumDatabaseProvider.cs" />
+    <Compile Include="EnumKeyboardLayout.cs" />
+    <Compile Include="EnumMessagKind.cs" />
+    <Compile Include="EnumMonitoringStatus.cs" />
+    <Compile Include="EnumPermissionBaseType.cs" />
+    <Compile Include="EnumPhoneType.cs" />
+    <Compile Include="EnumProfileItemType.cs" />
+    <Compile Include="EnumShareStatus.cs" />
+    <Compile Include="EnumStatusDatabase.cs" />
+    <Compile Include="EnumStatusDeviceALM.cs" />
+    <Compile Include="EnumStatusDevicePana.cs" />
+    <Compile Include="EnumStatusDeviceTelsa.cs" />
+    <Compile Include="EnumStatusDeviceVirtual.cs" />
+    <Compile Include="EnumStatusGeneral.cs" />
+    <Compile Include="EnumStatusLicense.cs" />
+    <Compile Include="EnumStatusMembership.cs" />
+    <Compile Include="EnumStatusMessaging.cs" />
+    <Compile Include="EnumStatusNetwork.cs" />
+    <Compile Include="EnumStatusPhoneMonitoring.cs" />
+    <Compile Include="EnumStatusTelecommunication.cs" />
+    <Compile Include="IBaseTable.cs" />
+    <Compile Include="IConsole.cs" />
+    <Compile Include="IDatabase.cs" />
+    <Compile Include="II.cs" />
+    <Compile Include="IMainWindow.cs" />
+    <Compile Include="IMembership.cs" />
+    <Compile Include="IMessagingClient.cs" />
+    <Compile Include="IMessagingServer.cs" />
+    <Compile Include="IModuleRibbon.cs" />
+    <Compile Include="IModuleSyncronizer.cs" />
+    <Compile Include="EnumMembershipStatus.cs" />
+    <Compile Include="IMonitoring.cs" />
+    <Compile Include="IMonitoringPhoneSystem.cs" />
+    <Compile Include="INavigateBar.cs" />
+    <Compile Include="Info\InfoAll.cs" />
+    <Compile Include="Info\InfoCPU.cs" />
+    <Compile Include="Info\InfoDisk.cs" />
+    <Compile Include="Info\InfoLogicalDisk.cs" />
+    <Compile Include="Info\InfoNetwork.cs" />
+    <Compile Include="Info\InfoOS.cs" />
+    <Compile Include="Info\InfoSystem.cs" />
+    <Compile Include="IPOCContactModule.cs" />
+    <Compile Include="IPOCMainWindow.cs" />
+    <Compile Include="IPOCRootTools.cs" />
+    <Compile Include="IPOCSettings.cs" />
+    <Compile Include="IPopup.cs" />
+    <Compile Include="IPopupItem.cs" />
+    <Compile Include="IProtocolMessagingServer.cs" />
+    <Compile Include="IProtocolVoiceRecord.cs" />
+    <Compile Include="ISave.cs" />
+    <Compile Include="MapLocationItem.cs" />
+    <Compile Include="MessagingItem.cs" />
+    <Compile Include="PermissionPack.cs" />
+    <Compile Include="POCContactModuleEventArgs.cs" />
+    <Compile Include="POCContactModuleItem.cs" />
+    <Compile Include="POCCore.cs" />
+    <Compile Include="IPOSNetwork.cs" />
+    <Compile Include="IProtocolCore.cs" />
+    <Compile Include="IProtocolMembership.cs" />
+    <Compile Include="IProtocolPhoneMonitoring.cs" />
+    <Compile Include="IRequestCloseViewModel.cs" />
+    <Compile Include="IServiceMain.cs" />
+    <Compile Include="IStatistics.cs" />
+    <Compile Include="LicenceRequestData.cs" />
+    <Compile Include="MembershipStatusEventArg.cs" />
+    <Compile Include="MembershipUser.cs" />
+    <Compile Include="MonitoringEventArg.cs" />
+    <Compile Include="MonitoringItem.cs" />
+    <Compile Include="NavigateBarItem.cs" />
+    <Compile Include="PanasonicModelEnum.cs" />
+    <Compile Include="PhoneMonitoringData.cs" />
+    <Compile Include="POCRootToolItem.cs" />
+    <Compile Include="POCSettingItem.cs" />
+    <Compile Include="POSClientInformation.cs" />
+    <Compile Include="PriorityAttribute.cs" />
+    <Compile Include="IApplicationBar.cs" />
+    <Compile Include="IApplicationSettings.cs" />
+    <Compile Include="ObjectEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EnumReportCallHorizontalDataType.cs" />
+    <Compile Include="EnumReportCallVerticalDataType.cs" />
+    <Compile Include="EnumReportType.cs" />
+    <Compile Include="RequestCloseEventArgs.cs" />
+    <Compile Include="ServerToClientInformation.cs" />
+    <Compile Include="StatisticsEventArg.cs" />
+    <Compile Include="StatisticsItem.cs" />
+    <Compile Include="VoiceRecordDeleteReturns.cs" />
+    <Compile Include="VoiceRecordDownloadParameter.cs" />
+    <Compile Include="XOStat.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

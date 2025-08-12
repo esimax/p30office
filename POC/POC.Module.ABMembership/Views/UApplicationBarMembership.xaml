@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="POC.Module.ABMembership.Views.UApplicationBarMembership"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="300"
+             FlowDirection="{DynamicResource ResourceKey=ApplicationFlowDirection}"
+             FontFamily="{DynamicResource ResourceKey=ApplicationFontFamily}"
+             FontSize="{DynamicResource ApplicationFontSize}"
+            
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:pol_conv="clr-namespace:POL.WPF.Controles.Conv;assembly=POL.WPF.Controles"
+             xmlns:POLHeaderedSeparator="clr-namespace:POL.WPF.DXControls.POLHeaderedSeparator;assembly=POL.WPF.DXControls">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="convBTV"/>
+        <pol_conv:ConvStatusGeneralToBrush x:Key="convStatusToBrush"/>
+    </UserControl.Resources>
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,*">
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="6">
+            <Image Style="{DynamicResource ImageAny32}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_User.png"/>
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="عضویت" FontFamily="{DynamicResource ApplicationFontFamilyH2}" FontSize="{DynamicResource ApplicationFontSizeH2}"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" Style="{DynamicResource BlendScrollViewerStyle}">
+            <StackPanel>
+
+                <dxlc:GroupBox Margin="3" Visibility="{Binding CanLogin,Converter={StaticResource convBTV}}">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_user.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}" Text="ورود به سیستم" />
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="*,auto" HorizontalAlignment="Stretch" >
+                        <dxe:TextEdit Grid.Row="0" Grid.Column="0" Margin="3" EditValue="{Binding UserName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="32" FlowDirection="LeftToRight" NullText="كلمه ورود" pol_ap:ApUIElement.EnKeyboardLayout=""/>
+                        <Image Grid.Row="0" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="كلمه ورود را در این قسمت وارد كنید"/>
+
+                        <dxe:PasswordBoxEdit Grid.Row="1" Grid.Column="0" Margin="3" EditValue="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="32" FlowDirection="LeftToRight" NullText="رمز ورود" pol_ap:ApUIElement.EnKeyboardLayout=""/>
+                        <Image Grid.Row="1" Grid.Column="1" Style="{DynamicResource ImageHint}" ToolTip="رمز ورود را در این قسمت وارد كنید"/>
+
+                        <dxe:CheckEdit Grid.Row="2" Grid.ColumnSpan="2" Margin="3" Content="كلمه ورود را بخاطر بسپار" IsChecked="{Binding SaveUserName}"/>
+                        <dxe:CheckEdit Grid.Row="3" Grid.ColumnSpan="2" Margin="3" Content="رمز ورود را بخاطر بسپار" IsChecked="{Binding SavePassword}"/>
+                        <dxe:CheckEdit Grid.Row="4" Grid.ColumnSpan="2" Margin="3" Content="ورود اتوماتیك" IsChecked="{Binding AutoLogin}"/>
+                        <Button Grid.Row="5" Grid.ColumnSpan="2" Margin="3" Padding="3" Content="ورود" Command="{Binding CommandLogin}" IsDefault="True"/>
+                    </Grid>
+                </dxlc:GroupBox>
+
+                <dxlc:GroupBox Margin="3" Visibility="{Binding CanLogout,Converter={StaticResource convBTV}}">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_user.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}" Text="مشخصات كاربر" />
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="auto,auto,*" HorizontalAlignment="Stretch" >
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Style="{DynamicResource TextBlockNormal}" Text="نام كاربری :"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Style="{DynamicResource TextBlockNormal}" Text="{Binding UserName}"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Style="{DynamicResource TextBlockNormal}" Text="زمان ورود :"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Style="{DynamicResource TextBlockNormal}" Text="{Binding LoginDateTime}"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Style="{DynamicResource TextBlockNormal}" Text="دفعات ورود :"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Style="{DynamicResource TextBlockNormal}" Text="{Binding LoginCount}"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Style="{DynamicResource TextBlockNormal}" Text="تاریخ ثبت :"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Style="{DynamicResource TextBlockNormal}" Text="{Binding RegisteredDate}"/>
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" Style="{DynamicResource TextBlockNormal}" Text="داخلی :"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Style="{DynamicResource TextBlockNormal}" Text="{Binding InternalCodes}"/>
+
+                        <POLHeaderedSeparator:POLHeaderedSeparator Grid.Row="5" Grid.ColumnSpan="3" Header="سطوح دسترسی" Margin="0,3"/>
+                        <ItemsControl Grid.Row="6" Grid.ColumnSpan="3" Margin="3" ItemsSource="{Binding UserRoles}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="8,3,3,3" Text="•"/>
+                                        <TextBlock Margin="3" Text="{Binding }"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <POLHeaderedSeparator:POLHeaderedSeparator Grid.Row="7" Grid.ColumnSpan="3" Header="عملیات" Margin="0,3"/>
+                        <Button Grid.Row="8" Grid.ColumnSpan="3" Margin="3" Padding="3" Content="تغییر رمز" Command="{Binding CommandChangePassword}" />
+                        <!--<Button Grid.Row="8" Grid.ColumnSpan="3" Margin="3" Padding="3" Content="خروج كاربر" Command="{Binding CommandLogout}" />-->
+                    </Grid>
+                </dxlc:GroupBox>
+
+                <dxlc:GroupBox Margin="3" Visibility="{Binding IsBussy,Converter={StaticResource convBTV}}">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_user.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}" Text="در حال بررسی كاربر" />
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <Grid pol_ap:ApGrid.RowDefinitions="*" pol_ap:ApGrid.ColumnDefinitions="*" HorizontalAlignment="Stretch" >
+                        <dxe:ProgressBarEdit Margin="3" Height="21"  >
+                            <dxe:ProgressBarEdit.StyleSettings>
+                                <dxe:ProgressBarMarqueeStyleSettings/>
+                            </dxe:ProgressBarEdit.StyleSettings>
+                        </dxe:ProgressBarEdit>
+                    </Grid>
+                </dxlc:GroupBox>
+
+                <dxlc:GroupBox Margin="3">
+                    <dxlc:GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_process.png"/>
+                            <TextBlock Style="{DynamicResource TextBlockNormal}" Text="مراحل ارتباط" />
+                        </StackPanel>
+                    </dxlc:GroupBox.Header>
+                    <StackPanel>
+                        <Border BorderBrush="Gray" BorderThickness="1" Background="{Binding StatusNetwork ,Converter={StaticResource convStatusToBrush}}" ToolTip="{Binding TooltipNetwork}" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{DynamicResource ImageAny32}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_networking.png"/>
+                                <TextBlock Style="{DynamicResource TextBlockNormal}" Text="{Binding TextNetwork}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border BorderBrush="Gray" BorderThickness="1" Background="{Binding StatusSyncDateTime ,Converter={StaticResource convStatusToBrush}}" Margin="0,9,0,0"  ToolTip="{Binding TooltipSyncDateTime}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{DynamicResource ImageAny32}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Clock.png"/>
+                                <TextBlock Style="{DynamicResource TextBlockNormal}" Text="تطبیق تاریخ"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border BorderBrush="Gray" BorderThickness="1" Background="{Binding StatusServerErrors ,Converter={StaticResource convStatusToBrush}}" Margin="0,9,0,0" ToolTip="{Binding TooltipServerErrors}" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{DynamicResource ImageAny32}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_server.png"/>
+                                <TextBlock Style="{DynamicResource TextBlockNormal}" Text="سلامت سرور"/>
+                            </StackPanel>
+                        </Border>
+
+
+
+                        <Border BorderBrush="Gray" BorderThickness="1" Background="{Binding StatusVersion ,Converter={StaticResource convStatusToBrush}}" Margin="0,9,0,0" ToolTip="{Binding TooltipVersion}" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{DynamicResource ImageAny32}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_xoffice.png"/>
+                                <TextBlock Style="{DynamicResource TextBlockNormal}" Text="تطبیق نسخه"/>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderBrush="Gray" BorderThickness="1" Background="{Binding StatusDatabase ,Converter={StaticResource convStatusToBrush}}" Margin="0,9,0,0" ToolTip="{Binding TooltipDatabase}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{DynamicResource ImageAny32}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_database.png"/>
+                                <TextBlock Style="{DynamicResource TextBlockNormal}" Text="سلامت پایگاه اطلاعات"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border BorderBrush="Gray" BorderThickness="1" Background="{Binding StatusMembership ,Converter={StaticResource convStatusToBrush}}" Margin="0,9,0,0" ToolTip="{Binding TooltipMembership}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{DynamicResource ImageAny32}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_user.png"/>
+                                <TextBlock Style="{DynamicResource TextBlockNormal}" Text="تعیین هویت كاربر"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </dxlc:GroupBox>
+
+                <Button Margin="3" >راهنما</Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

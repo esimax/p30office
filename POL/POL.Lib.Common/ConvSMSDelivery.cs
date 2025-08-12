@@ -1,0 +1,4 @@
+namespace POL.Lib.Common
+{
+
+}

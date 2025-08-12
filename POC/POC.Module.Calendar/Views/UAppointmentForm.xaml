@@ -1,0 +1,221 @@
+﻿<UserControl x:Class="POC.Module.Calendar.Views.UAppointmentForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Drawing="clr-namespace:DevExpress.Xpf.Scheduler.Drawing;assembly=DevExpress.Xpf.Scheduler.v13.2"
+             xmlns:loc="clr-namespace:POC.Module.Calendar"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduler"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:polwpf="clr-namespace:POL.WPF.DXControls.POLDateEdit;assembly=POL.WPF.DXControls"
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxec="clr-namespace:DevExpress.Xpf.Editors.Controls;assembly=DevExpress.Xpf.Core.v13.2"
+             xmlns:Views="clr-namespace:POC.Module.Calendar.Views"
+             xmlns:pol_wpf="clr-namespace:POL.WPF.DXControls.POLHeaderedSeparator;assembly=POL.WPF.DXControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="600"
+             
+             Width="600" Height="480"
+             FontFamily="{DynamicResource ApplicationFontFamily}" 
+             FontSize="{DynamicResource ApplicationFontSize}"
+             FlowDirection="{DynamicResource ApplicationFlowDirection}"
+             >
+
+    <UserControl.Resources>
+        <loc:TimeSpanToDateTimeConverter2 x:Key="timeSpanToDateTimeConverter" />
+        <Drawing:InvertedBoolConverter x:Key="invertedBoolConverter" />
+
+        <dxsch:SchedulerStringIdConverter x:Key="SchedulerStringIdConverter" />
+        <dxsch:SchedulerControlStringIdConverter x:Key="SchedulerControlStringIdConverter" />
+        <dx:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+        <Drawing:BoolToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        <dx:BoolToVisibilityInverseConverter x:Key="invertedBooleanToVisibilityConverter" />
+
+    </UserControl.Resources>
+
+    <Grid pol_ap:ApGrid.RowDefinitions="*,auto" Margin="9">
+        <dx:DXTabControl Margin="3">
+            <dx:DXTabItem Header="مشخصات">
+                <Grid pol_ap:ApGrid.ColumnDefinitions="auto,auto,auto,*" pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,*">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" Text="عنوان :" VerticalAlignment="Center" />
+                    <dxe:TextEdit Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Margin="3" EditValue="{Binding Controller.Subject}" 
+                                  MaxLength="128" Name="firstFocused"
+                                  IsReadOnly="{Binding Controller.IsReadOnly}" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="شروع :" VerticalAlignment="Center" />
+                    <polwpf:MyDateEdit Grid.Row="1" Grid.Column="1" Margin="3" Width="160" EditValue="{Binding Controller.StartDate}" 
+                                       IsReadOnly="{Binding Controller.IsReadOnly}" />
+                    <dxe:ButtonEdit Grid.Row="1" Grid.Column="2" Margin="3" 
+                                    Width="160"
+                        AllowDefaultButton="False" 
+                        MaskType="DateTime" DisplayFormatString="{Binding TimeEditMask}" 
+                        Mask="{Binding TimeEditMask}" 
+                        EditValue="{Binding Controller.StartTime, Converter={StaticResource timeSpanToDateTimeConverter}}"
+                        IsEnabled="{Binding ElementName=chkAllDay, Path=IsChecked,Converter={StaticResource ResourceKey=invertedBoolConverter}}"
+                        Name="timeStart"
+                        IsReadOnly="{Binding Controller.IsReadOnly}">
+                        <dxe:SpinButtonInfo SpinUpCommand="{Binding SpinUpCommand, ElementName=timeStart}" 
+                                SpinDownCommand="{Binding SpinDownCommand, ElementName=timeStart}">
+                        </dxe:SpinButtonInfo>
+                    </dxe:ButtonEdit>
+                    <dxe:CheckEdit Name="chkAllDay" Grid.Row="1" Grid.Column="3" Margin="3" Content="واقعه تمام روز" 
+                                   IsChecked="{Binding Controller.AllDay}"
+                                   IsEnabled="{Binding Controller.CanEdit}" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="3" Text="پایان :" VerticalAlignment="Center" />
+                    <polwpf:MyDateEdit Grid.Row="2" Grid.Column="1" Margin="3" Width="160" EditValue="{Binding Controller.EndDate}" 
+                                       IsReadOnly="{Binding Controller.IsReadOnly}" />
+                    <dxe:ButtonEdit Grid.Row="2" Grid.Column="2" Margin="3" 
+                                    AllowDefaultButton="False" 
+                        MaskType="DateTime" DisplayFormatString="{Binding TimeEditMask}" 
+                        Mask="{Binding TimeEditMask}" 
+                        EditValue="{Binding Controller.EndTime, Converter={StaticResource timeSpanToDateTimeConverter}}" 
+                        IsEnabled="{Binding ElementName=chkAllDay, Path=IsChecked, Converter={StaticResource ResourceKey=invertedBoolConverter}}"
+                        Name="timeEnd"
+                        IsReadOnly="{Binding Controller.IsReadOnly}">
+                        <dxe:SpinButtonInfo SpinUpCommand="{Binding SpinUpCommand, ElementName=timeEnd}" 
+                                SpinDownCommand="{Binding SpinDownCommand, ElementName=timeEnd}">
+                        </dxe:SpinButtonInfo>
+                    </dxe:ButtonEdit>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="3" Text="برچسب :" />
+                    <dxsch:AppointmentLabelEdit Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" 
+                                 Storage="{Binding Controller.Storage}" EditValue="{Binding Controller.Label}" IsReadOnly="{Binding Controller.IsReadOnly}" />
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="3" Text="نتیجه :" VerticalAlignment="Center" />
+                    <dxsch:AppointmentStatusEdit Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" 
+                                  Storage="{Binding Controller.Storage}" EditValue="{Binding Controller.Status}" IsReadOnly="{Binding Controller.IsReadOnly}" />
+
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Margin="3" Text="توضیحات :" VerticalAlignment="Top" />
+                    <dxe:TextEdit Height="120" Margin="3" VerticalAlignment="Stretch" VerticalContentAlignment="Top"
+                      Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
+                      TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"
+                      EditValue="{Binding Controller.Description}" MaxLength="4000"
+                                  IsReadOnly="{Binding Controller.IsReadOnly}" AcceptsReturn="True" HorizontalScrollBarVisibility="Visible"
+                                  MaxWidth="330" />
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Margin="3" Text="دسته مربوطه :" VerticalAlignment="Center" />
+                    <dxe:ButtonEdit Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" 
+                                    EditValue="{Binding Controller.RelatedCategory}" 
+                                    AllowDefaultButton="False" 
+                        IsTextEditable="False"
+                                    IsReadOnly="{Binding Controller.IsReadOnly}">
+                        <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding Controller.CommandSelectCategory}" />
+                        <dxe:ButtonInfo GlyphKind="Cancel" Command="{Binding Controller.CommandClearCategory}" />
+                    </dxe:ButtonEdit>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Margin="3" Text="پرونده مربوطه :" VerticalAlignment="Center" />
+                    <dxe:ButtonEdit Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="3" 
+                                    EditValue="{Binding Controller.RelatedContact}" 
+                                    AllowDefaultButton="False" 
+                        IsTextEditable="False"
+                                    IsReadOnly="{Binding Controller.IsReadOnly}">
+                        <dxe:ButtonInfo GlyphKind="Regular" Command="{Binding Controller.CommandSelectContact}" />
+                        <dxe:ButtonInfo GlyphKind="Cancel" Command="{Binding Controller.CommandClearContact}" />
+                    </dxe:ButtonEdit>
+                </Grid>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="تكرار" Name="tabReccurence">
+                <Grid Margin="12" IsEnabled="{Binding CanEditRecurrence}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <dx:GroupFrame Margin="0,12,0,0" Header="{Binding Source={StaticResource SchedulerControlStringIdConverter}, ConverterParameter=Form_RecurrencePattern, Converter={StaticResource SchedulerControlStringIdConverter}}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <dxsch:RecurrenceTypeControl Controller="{Binding RecurrenceVisualController}" IsReadOnly="{Binding ReadOnly}" />
+                            <dxec:DXSeparator Grid.Column="1" Orientation="Vertical" Margin="10,0,14,0" UseLayoutRounding="true" />
+                            <StackPanel Grid.Column="2">
+                                <dxsch:DailyRecurrenceControl Visibility="{Binding RecurrenceVisualController.IsDailyRecurrence , Converter={Drawing:BoolToVisibilityConverter}}" RecurrenceInfo="{Binding RecurrenceVisualController.RecurrenceInfo}" IsReadOnly="{Binding ReadOnly}" />
+                                <dxsch:WeeklyRecurrenceControl Visibility="{Binding RecurrenceVisualController.IsWeeklyRecurrence , Converter={Drawing:BoolToVisibilityConverter}}" RecurrenceInfo="{Binding RecurrenceVisualController.RecurrenceInfo}" IsReadOnly="{Binding ReadOnly}" FirstDayOfWeek="{Binding FirstDayOfWeek}" />
+                                <dxsch:MonthlyRecurrenceControl Visibility="{Binding RecurrenceVisualController.IsMonthlyRecurrence , Converter={Drawing:BoolToVisibilityConverter}}" RecurrenceInfo="{Binding RecurrenceVisualController.RecurrenceInfo}" IsReadOnly="{Binding ReadOnly}" />
+                                <dxsch:YearlyRecurrenceControl Visibility="{Binding RecurrenceVisualController.IsYearlyRecurrence , Converter={Drawing:BoolToVisibilityConverter}}" RecurrenceInfo="{Binding RecurrenceVisualController.RecurrenceInfo}" IsReadOnly="{Binding ReadOnly}" />
+                            </StackPanel>
+                        </Grid>
+                    </dx:GroupFrame>
+                    <dx:GroupFrame Grid.Row="1" Margin="0,12,0,0" Header="{Binding Source={StaticResource SchedulerControlStringIdConverter}, ConverterParameter=Form_RangeOfRecurrence, Converter={StaticResource SchedulerControlStringIdConverter}}">
+                        <!--<dxsch:RecurrenceRangeControl-->
+                        <Views:RecurrenceRangeControl2 RecurrenceInfo="{Binding RecurrenceVisualController.RecurrenceInfo}" 
+                            TimeZoneHelper="{Binding TimeZoneHelper , Mode=OneTime}" 
+                            Pattern="{Binding RecurrenceVisualController.Controller.PatternCopy}" 
+                            IsReadOnly="{Binding ReadOnly}" />
+                    </dx:GroupFrame>
+                    <!--<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+                        <Button Name="OkButton" MinWidth="75" Margin="6,0,0,0" 
+                                Content="{Binding Source={StaticResource SchedulerControlStringIdConverter}, ConverterParameter=ButtonCaption_OK, Converter={StaticResource SchedulerControlStringIdConverter}}" 
+                                IsEnabled="{Binding ReadOnly , Converter={Drawing:InvertedBoolConverter}}" />
+                        <Button MinWidth="75" Margin="6,0,0,0" 
+                                Content="{Binding Source={StaticResource SchedulerControlStringIdConverter}, ConverterParameter=ButtonCaption_Cancel, Converter={StaticResource SchedulerControlStringIdConverter}}" />
+                        <Button MinWidth="75" Margin="6,0,0,0" 
+                                Content="{Binding Source={StaticResource SchedulerControlStringIdConverter}, ConverterParameter=ButtonCaption_Delete, Converter={StaticResource SchedulerControlStringIdConverter}}" 
+                                IsEnabled="{Binding ReadOnly , Converter={Drawing:InvertedBoolConverter}}" />
+                    </StackPanel>-->
+                </Grid>
+
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="سطوح دسترسی" Name="tabSecurity">
+                <Grid pol_ap:ApGrid.ColumnDefinitions="auto,*" IsEnabled="{Binding CanEditPermissions}">
+                    <Grid pol_ap:ApGrid.ColumnDefinitions="auto,auto" pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,*">
+                        <pol_wpf:POLHeaderedSeparator Grid.Row="0" Grid.ColumnSpan="2" Header="سطوح دسترسی نمایش" Margin="0,3" />
+                        <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="0" ItemsSource="{Binding PermissionTypeList}" SelectedIndex="{Binding Controller.ViewPermissionType}" Width="140" IsTextEditable="False" Margin="3" 
+                                          AllowSpinOnMouseWheel="False"/>
+                        <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Controller.ViewList}" SelectedItem="{Binding Controller.SelectedView}" Width="160" IsTextEditable="False" Margin="3" DisplayMember="Title" ValueMember="Oid" IsEnabled="{Binding Controller.CanSelectView}" 
+                                          AllowSpinOnMouseWheel="False"/>
+
+                        <pol_wpf:POLHeaderedSeparator Grid.Row="2" Grid.ColumnSpan="2" Header="سطوح دسترسی ویرایش" Margin="0,3" />
+                        <dxe:ComboBoxEdit Grid.Row="3" Grid.Column="0" ItemsSource="{Binding PermissionTypeList}" SelectedIndex="{Binding Controller.EditPermissionType}" Width="140" IsTextEditable="False" Margin="3" 
+                                          AllowSpinOnMouseWheel="False"/>
+                        <dxe:ComboBoxEdit Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Controller.EditList}" SelectedItem="{Binding Controller.SelectedEdit}" Width="160" IsTextEditable="False" Margin="3" DisplayMember="Title" ValueMember="Oid" IsEnabled="{Binding Controller.CanSelectEdit}" 
+                                          AllowSpinOnMouseWheel="False"/>
+
+                        <pol_wpf:POLHeaderedSeparator Grid.Row="4" Grid.ColumnSpan="2" Header="سطوح دسترسی حذف" Margin="0,3" />
+                        <dxe:ComboBoxEdit Grid.Row="5" Grid.Column="0" ItemsSource="{Binding PermissionTypeList}" SelectedIndex="{Binding Controller.DeletePermissionType}" Width="140" IsTextEditable="False" Margin="3" 
+                                          AllowSpinOnMouseWheel="False"/>
+                        <dxe:ComboBoxEdit Grid.Row="5" Grid.Column="1" ItemsSource="{Binding Controller.DeleteList}" SelectedItem="{Binding Controller.SelectedDelete}" Width="160" IsTextEditable="False" Margin="3" DisplayMember="Title" ValueMember="Oid" IsEnabled="{Binding Controller.CanSelectDelete}" 
+                                          AllowSpinOnMouseWheel="False"/>
+                    </Grid>
+                    <GroupBox Grid.Row="0" Grid.Column="1" Margin="3" Header="مشخصات">
+                        <StackPanel>
+                            <TextBlock Margin="3" Text="{Binding Controller.CreatorUserString}" />
+                            <Grid pol_ap:ApGrid.ColumnDefinitions="auto,*">
+                                <Image Grid.Column="0" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_warning.png" VerticalAlignment="Top" Margin="3" />
+                                <TextBlock Grid.Column="1" Margin="3" Text="امكان تغییر سطوح دسترسی برای رویدادهای تكراری پس از ثبت رویداد وجود ندارد" TextWrapping="Wrap" TextAlignment="Justify" />
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید" />
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو" />
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

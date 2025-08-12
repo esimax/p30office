@@ -1,0 +1,3 @@
+namespace POL.Lib.XOffice
+{
+}

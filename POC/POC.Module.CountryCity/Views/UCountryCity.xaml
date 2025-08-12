@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="POC.Module.CountryCity.Views.UCountryCity"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700">
+    <dxb:BarManager>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem Content="ویرایش" Name="biCountryEdit" Command="{Binding CommandCountryEdit}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_EarthEdit.png"/>
+            <dxb:BarButtonItem Content="حذف" Name="biCountryDelete" Command="{Binding CommandCountryDelete}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/standard/32/_32_delete2.png"/>
+            
+            <dxb:BarButtonItem Content="مدیریت شهرها" Name="biCountryCity" Command="{Binding CommandCountryCity}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_City.png"/>
+            <dxb:BarButtonItem Content="مدیریت كد مخابراتی" Name="biCountryTele" Command="{Binding CommandCountryTele}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_Telecom.png"/>
+            <dxb:BarButtonItem Content="مدیریت كد مازاد" Name="biExtraCode" Command="{Binding CommandExtraCode}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_Telecom.png"/>
+            
+            <dxb:BarButtonItem Content="بازخوانی اطلاعات" Name="biCountryRefresh" Command="{Binding CommandCountryRefresh}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Refresh.png"/>
+            <dxb:BarButtonItem Content="تنظیم ستون" Name="biBestColumn" Command="{Binding CommandBestColumn}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_TableSelectColumn.png"/>
+            <dxb:BarButtonItem Content="استخراج به XML" Name="biExportXML" Command="{Binding CommandExportXML}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_XML.png"/>
+
+            <dxb:BarButtonItem Content="راهنما" Name="biHelp" Command="{Binding CommandHelp}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Help.png"/>
+        </dxb:BarManager.Items>
+
+        <Grid  pol_ap:ApGrid.RowDefinitions="auto,auto,*" pol_ap:ApGrid.ColumnDefinitions="*,auto">
+            <dxr:RibbonControl x:Name="phoneRibbon" Grid.Row="0" Grid.ColumnSpan="2" RibbonStyle="Office2010">
+                <dxr:RibbonDefaultPageCategory>
+                    <dxr:RibbonPage Caption="كشورها" MergeOrder="0">
+                        <dxr:RibbonPageGroup Caption="مدیریت" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biCountryEdit" />
+                            <dxb:BarButtonItemLink BarItemName="biCountryDelete" />
+                            <dxb:BarButtonItemLink BarItemName="biCountryRefresh" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biCountryCity" />
+                            <dxb:BarButtonItemLink BarItemName="biCountryTele" />
+                            <dxb:BarButtonItemLink BarItemName="biExtraCode" />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="تنظیمات" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biBestColumn"/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="ابزار" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biExportXML"/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="راهنما" >
+                            <dxb:BarButtonItemLink BarItemName="biHelp" />
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            
+            
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Margin="3" VerticalAlignment="Center" Text="جستجو : " />
+                <dxe:ButtonEdit MinWidth="200" EditValue="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}" Margin="3" AllowDefaultButton="False" >
+                    <dxe:ButtonInfo GlyphKind="Cancel" Command="{Binding CommandClearSearchText}"/>
+                </dxe:ButtonEdit>
+            </StackPanel>
+            
+            
+            <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="1"  Orientation="Vertical">
+                <dxe:ImageEdit Margin="3" Width="250" Height="250"
+                     EditValue="{Binding MapImage,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Stretch="None" ShowMenu="False" />
+                <dxe:ImageEdit EditValue="{Binding FlagImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Height="250" Margin="3" Width="250" Stretch="None" ShowMenu="False" />
+            </StackPanel>
+            
+            
+        <dxg:GridControl Grid.Row="2" Grid.Column="0" x:Name="gcMain" ItemsSource="{Binding CountryList}" Margin="3">
+                <dxg:GridControl.Resources>
+                    <DataTemplate x:Key="colLeftToRight">
+                        <TextBlock Text="{Binding Value}" FlowDirection="LeftToRight" VerticalAlignment="Center"
+                     Margin="3,0" />
+                    </DataTemplate>
+                </dxg:GridControl.Resources>
+                <dxg:GridControl.TotalSummary>
+                    <dxg:GridSummaryItem FieldName="TitleXX" ShowInColumn="TitleXX" SummaryType="Count"
+                             DisplayFormat="تعداد: {0}" />
+                </dxg:GridControl.TotalSummary>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="TitleEn" Header="عنوان لاتین" AllowEditing="True" Fixed="Right"
+                        CellTemplate="{StaticResource colLeftToRight}" HorizontalHeaderContentAlignment="Center" HeaderToolTip="عنوان لاتین" />
+                    <dxg:GridColumn FieldName="TitleXX" Header="عنوان اصلی" Fixed="Left"
+                        HorizontalHeaderContentAlignment="Center" HeaderToolTip="عنوان قابل مشاهده در برنامه" />
+
+
+                    <dxg:GridColumn Name="colISO2" FieldName="ISO2" Header="ISO2" HorizontalHeaderContentAlignment="Center"
+                        CellTemplate="{StaticResource colLeftToRight}" HeaderToolTip="كد ایزوی دو رقمی" />
+                    <dxg:GridColumn Name="colISO3" FieldName="ISO3" Header="ISO3" HorizontalHeaderContentAlignment="Center"
+                        CellTemplate="{StaticResource colLeftToRight}" HeaderToolTip="كد ایزوی سه رقمی" />
+
+                    <dxg:GridColumn Name="colCurrencyName" FieldName="CurrencyName" Header="CN"
+                        HorizontalHeaderContentAlignment="Center" CellTemplate="{StaticResource colLeftToRight}"
+                        HeaderToolTip="عنوان واحد پولی" />
+                    <dxg:GridColumn Name="colCurrencyCode" FieldName="CurrencyCode" Header="CC"
+                        HorizontalHeaderContentAlignment="Center" CellTemplate="{StaticResource colLeftToRight}"
+                        HeaderToolTip="كد استاندارد واحد پولی" />
+                    <dxg:GridColumn Name="colCurrencySymbol" FieldName="CurrencySymbol" Header="CS"
+                        HorizontalHeaderContentAlignment="Center" CellTemplate="{StaticResource colLeftToRight}"
+                        HeaderToolTip="علامت واحد پولی" />
+                    <dxg:GridColumn Name="colTeleCode1" FieldName="TeleCode1" Header="IPC1"
+                        HorizontalHeaderContentAlignment="Center" CellTemplate="{StaticResource colLeftToRight}"
+                        HeaderToolTip="كد مخابراتی بین المللی اول" />
+                    <dxg:GridColumn Name="colTeleCode2" FieldName="TeleCode2" Header="IPC2"
+                        HorizontalHeaderContentAlignment="Center" CellTemplate="{StaticResource colLeftToRight}"
+                        HeaderToolTip="كد مخابراتی بین المللی دوم" />
+
+                    <dxg:GridColumn Name="colTimeZone" FieldName="TimeZoneString" Header="UTC"
+                        HorizontalHeaderContentAlignment="Center" CellTemplate="{StaticResource colLeftToRight}"
+                        HeaderToolTip="اختلاف زمان با گرینویچ" />
+
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView Name="tvMain" 
+                                   AllowGrouping="True" 
+                                   AllowColumnFiltering="True" 
+                                   AllowFilterEditor="False"
+                                   AllowEditing="False" 
+                                   
+                                   IsGroupPanelMenuEnabled="True"
+                                   IsColumnMenuEnabled="True" 
+                                   IsTotalSummaryMenuEnabled="False"
+                                   
+                                   ShowGroupPanel="False" 
+                                   ShowIndicator="False" 
+                                   ShowTotalSummary="True"
+                                   ShowSearchPanelMode="Never"
+                                   
+                                   FocusedRow="{Binding SelectedCountry,Mode=TwoWay}" 
+                                   BestFitArea="All" 
+                                   BestFitMode="VisibleRows">
+                        <dxg:TableView.RowCellMenuCustomizations>
+                            <dxb:BarButtonItemLink BarItemName="biCountryRefresh" />
+                            <dxb:BarButtonItemLink BarItemName="biBestColumn"/>
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biCountryEdit" />
+                            <dxb:BarButtonItemLink BarItemName="biCountryDelete" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biCountryCity" />
+                            <dxb:BarButtonItemLink BarItemName="biCountryTele" />
+                        </dxg:TableView.RowCellMenuCustomizations>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+    </dxb:BarManager>
+</UserControl>

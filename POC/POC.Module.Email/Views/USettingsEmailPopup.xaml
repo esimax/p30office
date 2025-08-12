@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="POC.Module.Email.Views.USettingsEmailPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:pol_hs="clr-namespace:POL.WPF.DXControls.POLHeaderedSeparator;assembly=POL.WPF.DXControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    
+    <dxlc:GroupBox Margin="3">
+        <dxlc:GroupBox.Header>
+            <StackPanel Orientation="Horizontal">
+                <Image Style="{DynamicResource ImageAny16}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_email.png"/>
+                <TextBlock Style="{DynamicResource TextBlockNormal}" Text="پاپ آپ ایمیل " />
+            </StackPanel>
+        </dxlc:GroupBox.Header>
+        <StackPanel>
+            <Grid Visibility="{Binding IsNotAuthorizedVis}">
+                <TextBlock Text="جهت تنظیم وارد شوید" Margin="12" HorizontalAlignment="Center"/>
+            </Grid>
+            <StackPanel Visibility="{Binding IsAuthorizedVis}">
+                <TextBlock Margin="3" Text="مدت نمایش پاپ ارسال ایمیل :" />
+                <dxe:ComboBoxEdit Margin="3" SelectedIndex="{Binding SelectedSendDurationIndex}" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+                    <dxe:ComboBoxEditItem Content="نمایش داده نشود"/>
+                    <dxe:ComboBoxEditItem Content="10 ثانیه"/>
+                    <dxe:ComboBoxEditItem Content="20 ثانیه"/>
+                    <dxe:ComboBoxEditItem Content="30 ثانیه"/>
+                    <dxe:ComboBoxEditItem Content="1 دقیقه"/>
+                    <dxe:ComboBoxEditItem Content="5 دقیقه"/>
+                    <dxe:ComboBoxEditItem Content="نامحدود"/>
+                </dxe:ComboBoxEdit>
+                <TextBlock Margin="3" Text="مدت نمایش پاپ دریافت ایمیل :" />
+                <dxe:ComboBoxEdit Margin="3" SelectedIndex="{Binding SelectedReceiveDurationIndex}" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+                    <dxe:ComboBoxEditItem Content="نمایش داده نشود"/>
+                    <dxe:ComboBoxEditItem Content="10 ثانیه"/>
+                    <dxe:ComboBoxEditItem Content="20 ثانیه"/>
+                    <dxe:ComboBoxEditItem Content="30 ثانیه"/>
+                    <dxe:ComboBoxEditItem Content="1 دقیقه"/>
+                    <dxe:ComboBoxEditItem Content="5 دقیقه"/>
+                    <dxe:ComboBoxEditItem Content="نامحدود"/>
+                </dxe:ComboBoxEdit>
+                <dxe:CheckEdit Margin="3" Content="امكان ثبت كارتابل" IsChecked="{Binding AllowCardTable}"/>
+            </StackPanel>
+        </StackPanel>
+        
+    </dxlc:GroupBox>
+</UserControl>

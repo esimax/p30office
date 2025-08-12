@@ -1,0 +1,46 @@
+﻿<UserControl xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  x:Class="POC.Module.ABPhoneMonitoring.Views.UApplicationBarPhoneMonitoring"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             
+             FlowDirection="{DynamicResource ResourceKey=ApplicationFlowDirection}"
+             FontFamily="{DynamicResource ResourceKey=ApplicationFontFamily}"
+             FontSize="{DynamicResource ApplicationFontSize}"
+             
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             mc:Ignorable="d" 
+             d:DesignHeight="1600" d:DesignWidth="300">
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,*">
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="6">
+            <Image Style="{DynamicResource ImageAny32}" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_monitor.png"/>
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="مانیتورینگ" FontFamily="{DynamicResource ApplicationFontFamilyH2}" FontSize="{DynamicResource ApplicationFontSizeH2}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <!--<dxe:CheckEdit Margin="3" Content="نمایش خطوط نامشخص" IsChecked="{Binding ShowAll}"/>-->
+            <dxe:CheckEdit Margin="3" Content="نمایش اطلاعات ارسالی" IsChecked="{Binding ShowCallOut}" IsEnabled="{Binding AllowMonitoring}"/>
+            <dxe:CheckEdit Margin="3" Content="نمایش اطلاعات دریافتی" IsChecked="{Binding ShowCallIn}" IsEnabled="{Binding AllowMonitoring}"/>
+            <dxe:CheckEdit Margin="3" Content="نمایش اطلاعات مازاد" IsChecked="{Binding ShowExtra}" IsEnabled="{Binding AllowMonitoring}"/>
+
+            <Button Margin="3" Command="{Binding CommandHelp}">راهنما</Button>
+        </StackPanel>
+        <ScrollViewer Grid.Row="2" Style="{DynamicResource BlendScrollViewerStyle}">
+            <dxlc:FlowLayoutControl 
+                                Name="flcMain"
+                                AllowItemMoving="True" 
+                                AllowAddFlowBreaksDuringItemMoving="False" 
+                                AllowLayerSizing="False" 
+                                AnimateItemMoving="True"
+                                Orientation="Vertical" 
+                                BreakFlowToFit="False" 
+                                StretchContent="True" 
+                                AllowMaximizedElementMoving="True" MaximizedElementPosition="Right"
+                                ScrollBars="None"
+                                Padding="0"
+                                >
+            </dxlc:FlowLayoutControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

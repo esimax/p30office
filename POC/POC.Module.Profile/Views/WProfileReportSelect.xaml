@@ -1,0 +1,108 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Profile.Views.WProfileReportSelect"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Width="640"
+    Height="420" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="2*,3*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+            <Button Padding="3" Margin="3" Command="{Binding CommandReportNew}" HorizontalContentAlignment="Center" ToolTip="ایجاد گزارش جدید">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_add.png" />
+                </StackPanel>
+            </Button>
+            <Button Padding="3" Margin="3" Command="{Binding CommandReportEdit}" HorizontalContentAlignment="Center" ToolTip="ویرایش گزارش">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_editblue.png" />
+                </StackPanel>
+            </Button>
+            <Button Padding="3" Margin="3" Command="{Binding CommandReportDelete}" HorizontalContentAlignment="Center" ToolTip="حذف گزارش">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_delete2.png" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+            <Button Padding="3" Margin="3" Command="{Binding CommandColumnNew}" HorizontalContentAlignment="Center" ToolTip="افزودن ستون اطلاعات">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_add.png" />
+                </StackPanel>
+            </Button>
+            <Button Padding="3" Margin="3" Command="{Binding CommandColumnEdit}" HorizontalContentAlignment="Center" ToolTip="ویرایش ستون">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_editblue.png" />
+                </StackPanel>
+            </Button>
+            <Button Padding="3" Margin="3" Command="{Binding CommandColumnDelete}" HorizontalContentAlignment="Center" ToolTip="حذف ستون">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_delete2.png" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" Text="فهرست گزارشات"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Margin="3" Text="فهرست ستون ها"/>
+        
+        <ListBox Grid.Row="2" Grid.Column="0"  Margin="3" ItemsSource="{Binding ReportList}" SelectedItem="{Binding SelectedReport}">
+        </ListBox>
+        <ListBox Grid.Row="2" Grid.Column="1"  Margin="3" ItemsSource="{Binding ColumnList}" SelectedItem="{Binding SelectedColumn}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="16" Height="16" Stretch="Fill" SnapsToDevicePixels="True" VerticalAlignment="Center" Source="{Binding Image}" Margin="3"/>
+                        <TextBlock Margin="3" VerticalAlignment="Center" Text="{Binding Title}"/>
+                        <TextBlock Margin="3" VerticalAlignment="Center" Text="-"/>
+                        <TextBlock Margin="3" VerticalAlignment="Center" Text="{Binding Description}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="انتخاب"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

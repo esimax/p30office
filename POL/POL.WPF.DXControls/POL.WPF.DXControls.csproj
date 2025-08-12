@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D63F740B-BC0D-4E56-88C0-29B9C6224FF6}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POL.WPF.DXControls</RootNamespace>
+    <AssemblyName>POL.WPF.DXControls</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A79.tmp\Debug\</IntermediateOutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A79.tmp\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'YaraOffice|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;YaraOffice</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A79.tmp\YaraOffice\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SahbaCRM|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;SahbaCRM</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A79.tmp\SahbaCRM\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'iChista|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;iChista</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A79.tmp\iChista\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ictcrm24|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;ictcrm24</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A79.tmp\ictcrm24\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'RahyarModyran|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A79.tmp\RahyarModyran\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Data.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Printing.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Mvvm.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Mvvm.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Core.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Grid.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Grid.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Printing.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.Xpf.Printing.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="logicnp.folderview.wpf, Version=13.0.0.0, Culture=neutral, PublicKeyToken=ff6f27194af4af75, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\logicnp.folderview.wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="logicnp.shcombobox.wpf, Version=13.0.0.0, Culture=neutral, PublicKeyToken=ff6f27194af4af75, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\logicnp.shcombobox.wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2012.1.512.40, Culture=neutral, PublicKeyToken=d3625f8bf04286d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DevLibrary\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2012.1.513.40, Culture=neutral, PublicKeyToken=d3625f8bf04286d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DevLibrary\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2012.1.512.40, Culture=neutral, PublicKeyToken=d3625f8bf04286d7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DevLibrary\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MVVM\NotifyObjectBase.cs" />
+    <Compile Include="MVVM\ViewCommandsBase.cs" />
+    <Compile Include="MVVM\ViewModelBase.cs" />
+    <Compile Include="POLControls\FolderDialogEx.xaml.cs">
+      <DependentUpon>FolderDialogEx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLControls\Licensor\Hook.cs" />
+    <Compile Include="POLControls\Licensor\LogicNPLicensor.cs" />
+    <Compile Include="POLControls\MiniButtonClose.xaml.cs">
+      <DependentUpon>MiniButtonClose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLControls\MiniToggleButtonPin.xaml.cs">
+      <DependentUpon>MiniToggleButtonPin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLDateEdit\MyDateEdit.cs" />
+    <Compile Include="POLDateEdit\MyDateEditCalendar.cs" />
+    <Compile Include="POLDateEdit\MyDateEditCalendarContent.cs" />
+    <Compile Include="POLDateEdit\MyDateEditMaskManager.cs" />
+    <Compile Include="POLDateEdit\MyDateEditStrategy.cs" />
+    <Compile Include="POLDateEdit\MyDateTimeMaskFormatElement_d.cs" />
+    <Compile Include="POLDateEdit\MyDateTimeMaskFormatElement_Month.cs" />
+    <Compile Include="POLDateEdit\MyDateTimeMaskFormatInfo.cs" />
+    <Compile Include="POLDateEdit\MyDateTimeNumericRangeFormatElementEditable.cs" />
+    <Compile Include="POLDateEdit\MyDateTimeYearElementEditor.cs" />
+    <Compile Include="POLDateEdit\PersianCulture.cs" />
+    <Compile Include="POLGoogleMap\GoogleMapProvider.cs" />
+    <Compile Include="POLGoogleMap\GoogleTileMapSource.cs" />
+    <Compile Include="POLGoogleMap\IMapPoint.cs" />
+    <Compile Include="POLGoogleMap\MapPointEventArgs.cs" />
+    <Compile Include="POLCalendarGadget\POLCalendarGadget.xaml.cs">
+      <DependentUpon>POLCalendarGadget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLClock\POLClockAnalog.xaml.cs">
+      <DependentUpon>POLClockAnalog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLDateEdit\POLDateEdit.cs" />
+    <Compile Include="POLGoogleMap\SelectPoint.xaml.cs">
+      <DependentUpon>SelectPoint.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POLHeaderedSeparator\POLHeaderedSeparator.cs" />
+    <Compile Include="POLMessageBox\POLMessageBoxStringId.cs" />
+    <Compile Include="POLMessageBox\POLMessageBox.xaml.cs">
+      <DependentUpon>POLMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLMessageBox\POLMessageBoxLocalizer.cs" />
+    <Compile Include="POLMessageBox\POLMessageBoxResXLocalizer.cs" />
+    <Compile Include="POLMessageBox\POLMessageBoxStringIdExtension.cs" />
+    <Compile Include="POLPhoneItem\POLPhoneItem.xaml.cs">
+      <DependentUpon>POLPhoneItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLProgressBoxRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POLProgressBoxRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="POLProgressBox\POLProgressBox.xaml.cs">
+      <DependentUpon>POLProgressBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="POLProgressBox\POLProgressBoxLocalizer.cs" />
+    <Compile Include="POLProgressBox\POLProgressBoxResXLocalizer.cs" />
+    <Compile Include="POLProgressBox\POLProgressBoxStringId.cs" />
+    <Compile Include="POLProgressBox\POLProgressBoxStringIdExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="POLMessageBoxRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>POLMessageBoxRes.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="POLProgressBoxRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>POLProgressBoxRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POLMessageBoxRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>POLMessageBoxRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="POLCalendarGadget\POLCalendarGadget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POLClock\POLClockAnalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POLControls\FolderDialogEx.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POLControls\MiniButtonClose.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="POLControls\MiniToggleButtonPin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="POLGoogleMap\SelectPoint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POLMessageBox\POLMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POLPhoneItem\POLPhoneItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="POLProgressBox\POLProgressBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\RTLGridPrintingTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\_14_CloseNormal.png" />
+    <Resource Include="Resources\_14_PinHooked.png" />
+    <Resource Include="Resources\_14_PinNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\POL.Lib.Interfaces\POL.Lib.Interfaces.csproj">
+      <Project>{bbbcaf6e-dfa0-4484-9807-789f5c4990c8}</Project>
+      <Name>POL.Lib.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.Lib.Resources\POL.Lib.Resources.csproj">
+      <Project>{7a1ce952-eb1c-483c-97ec-3ec2ceba1582}</Project>
+      <Name>POL.Lib.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.Lib.Utils\POL.Lib.Utils.csproj">
+      <Project>{73d646dc-4c9e-4e54-8660-08581b74c693}</Project>
+      <Name>POL.Lib.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.WPF.Controles\POL.WPF.Controles.csproj">
+      <Project>{78776bcc-caaf-4140-8375-0c3ad8cb060f}</Project>
+      <Name>POL.WPF.Controles</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,160 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+                    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v13.2"
+                    xmlns:dxgp="clr-namespace:DevExpress.Xpf.Printing;assembly=DevExpress.Xpf.Printing.v13.2"
+                    xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing"
+                    xmlns:dxgcore="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+                    xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys">
+    <!--PROCESS SETTERS WITH BINDING-->
+    <dx:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <dx:BoolToObjectConverter x:Key="PrintBorderConverter" FalseValue="0,0,1,1" TrueValue="1,0,1,1" />
+
+
+    <SolidColorBrush x:Key="PrintHeaderBackColor" Color="#FFB828" />
+
+
+    <Style x:Key="{dxgt:TableViewThemeKey ResourceKey=DefaultPrintStyleBase}" TargetType="dxe:BaseEdit">
+        <!--ONLY SL
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="Padding" Value="2,1,2,1"/>
+		ONLY SL-->
+        <!--BEGIN WPF-->
+        <Setter Property="Padding" Value="2" />
+        <!--END WPF-->
+        <Setter Property="IsPrintingMode" Value="True" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="RTLPrintColumnHeaderStyle"
+           BasedOn="{StaticResource {dxgt:TableViewThemeKey ResourceKey=DefaultPrintStyleBase}}"
+           TargetType="dxe:BaseEdit">
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(dxg:GridPrintingHelper.PrintCellInfo).IsLast, Converter={StaticResource PrintBorderConverter}}" />
+        <Setter Property="Background" Value="{StaticResource PrintHeaderBackColor}" />
+    </Style>
+    <Style x:Key="RTLPrintGroupRowStyle"
+           BasedOn="{StaticResource {dxgt:TableViewThemeKey ResourceKey=DefaultPrintStyleBase}}"
+           TargetType="dxe:BaseEdit">
+        <Style.Setters>
+            <Setter Property="BorderThickness" Value="1,0,1,1" />
+            <Setter Property="Background" Value="#FFDCDCDC" />
+        </Style.Setters>
+    </Style>
+    <Style x:Key="RTLPrintCellStyle"
+           BasedOn="{StaticResource {dxgt:TableViewThemeKey ResourceKey=DefaultPrintStyleBase}}"
+           TargetType="dxe:BaseEdit">
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(dxg:GridPrintingHelper.PrintCellInfo).IsLast, Converter={StaticResource PrintBorderConverter}}" />
+        <!--<Setter Property="FlowDirection" Value="LeftToRight"/>-->
+    </Style>
+    <Style x:Key="RTLPrintTotalSummaryStyle" BasedOn="{StaticResource RTLPrintColumnHeaderStyle}"
+           TargetType="dxe:BaseEdit" />
+
+
+    <ControlTemplate x:Key="rowMarginTemplate">
+        <dxe:TextEdit Name="PART_Edit"
+                      Style="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).PrintGroupRowStyle}"
+                      BorderThickness="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).PrintDataIndentBorderThickness}"
+                      Margin="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).PrintDataIndentMargin}"
+                      Width="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).PrintDataIndent}">
+            <!--FlowDirection="LeftToRight"-->
+            <!--Style="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).PrintGroupRowStyle}"-->
+            <dxp:ExportSettings.OnPageUpdater>
+                <dxg:LastOnPageUpdater />
+            </dxp:ExportSettings.OnPageUpdater>
+        </dxe:TextEdit>
+    </ControlTemplate>
+
+
+    <DataTemplate x:Key="RTLPrintGroupRowTemplate">
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <dxg:CellFillControl Template="{StaticResource rowMarginTemplate}" />
+            <dxg:GroupRowContentControl>
+                <dxg:GroupRowContentControl.Template>
+                    <ControlTemplate>
+                        <dxe:TextEdit Name="PART_Edit"
+                                      Style="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).PrintGroupRowStyle}"
+                                      EditValue="{Binding Path=Content.(dxg:GridPrintingHelper.PrintGroupText), Mode=OneWay}"
+                                      Width="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).TotalHeaderWidth}" />
+                    </ControlTemplate>
+                </dxg:GroupRowContentControl.Template>
+            </dxg:GroupRowContentControl>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="RTLPrintRowTemplate">
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <dxg:CellFillControl Template="{StaticResource rowMarginTemplate}" />
+            <dxg:PrintingCellItemsControl ItemsSource="{Binding Path=Content.CellData}">
+                <dxg:PrintingCellItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <dxg:GridCellContentPresenter
+                            Width="{Binding Path=(dxg:GridPrintingHelper.PrintCellInfo).PrintColumnWidth}"
+                            Column="{Binding Column}"
+                            RowData="{Binding RowData}">
+                            <dxg:GridCellContentPresenter.Template>
+                                <ControlTemplate>
+                                    <dxg:PrintCellEditor x:Name="PART_CellEditor" />
+                                </ControlTemplate>
+                            </dxg:GridCellContentPresenter.Template>
+                        </dxg:GridCellContentPresenter>
+                    </DataTemplate>
+                </dxg:PrintingCellItemsControl.ItemTemplate>
+                <dxg:PrintingCellItemsControl.ItemsPanel>
+                    <ControlTemplate>
+                        <dx:StackVisibleIndexPanel ArrangeAccordingToVisibleIndex="True" Orientation="Horizontal" />
+                    </ControlTemplate>
+                </dxg:PrintingCellItemsControl.ItemsPanel>
+            </dxg:PrintingCellItemsControl>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="RTLPrintHeaderTemplate">
+        <StackPanel Orientation="Vertical" FlowDirection="RightToLeft">
+            <dxg:HeaderFillControl
+                Width="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).TotalHeaderWidth}">
+                <dxg:HeaderFillControl.Template>
+                    <ControlTemplate>
+                        <dxe:TextEdit Name="PART_Edit" Padding="0" dxp:ExportSettings.TargetType="Panel"
+                                      dxp:TextExportSettings.NoTextExport="true"
+                                      dxp:ExportSettings.BorderThickness="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).PrintDataIndentBorderThickness}"
+                                      Height="2"
+                                      Style="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).PrintColumnHeaderStyle}"
+                                      Background="Transparent" />
+                    </ControlTemplate>
+                </dxg:HeaderFillControl.Template>
+            </dxg:HeaderFillControl>
+            <dxg:PrintingHeaderItemsControl ItemsSource="{Binding Path=Content.CellData}"
+                                            Visibility="{Binding Path=Content.(dxg:GridPrintingHelper.PrintRowInfo).IsPrintColumnHeadersVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <dxg:PrintingCellItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <dxe:TextEdit Width="{Binding Path=(dxg:GridPrintingHelper.PrintCellInfo).PrintColumnWidth}"
+                                      EditValue="{Binding Path=(dxg:GridPrintingHelper.PrintCellInfo).HeaderCaption, Mode=OneWay}"
+                                      Style="{Binding Path=(dxg:GridPrintingHelper.PrintCellInfo).PrintColumnHeaderStyle}" />
+                    </DataTemplate>
+                </dxg:PrintingCellItemsControl.ItemTemplate>
+                <dxg:PrintingHeaderItemsControl.ItemsPanel>
+                    <ControlTemplate>
+                        <dx:StackVisibleIndexPanel ArrangeAccordingToVisibleIndex="True" Orientation="Horizontal" />
+                    </ControlTemplate>
+                </dxg:PrintingHeaderItemsControl.ItemsPanel>
+            </dxg:PrintingHeaderItemsControl>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="RTLPrintFooterTemplate">
+        <dxg:PrintingFooterItemsControl FlowDirection="RightToLeft" ItemsSource="{Binding Path=Content.CellData}">
+            <dxg:PrintingFooterItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <dxe:TextEdit Width="{Binding Path=(dxg:GridPrintingHelper.PrintCellInfo).PrintColumnWidth}"
+                                  EditValue="{Binding Path=(dxg:GridPrintingHelper.PrintCellInfo).TotalSummaryText, Mode=OneWay}"
+                                  Style="{Binding Path=(dxg:GridPrintingHelper.PrintCellInfo).PrintTotalSummaryStyle}" />
+                </DataTemplate>
+            </dxg:PrintingFooterItemsControl.ItemTemplate>
+            <dxg:PrintingFooterItemsControl.ItemsPanel>
+                <ControlTemplate>
+                    <dx:StackVisibleIndexPanel ArrangeAccordingToVisibleIndex="True" Orientation="Horizontal" />
+                </ControlTemplate>
+            </dxg:PrintingFooterItemsControl.ItemsPanel>
+        </dxg:PrintingFooterItemsControl>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="76ae72f7-2bb7-434d-b053-7f688a2fb357" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:19001/PhoneMonitoring/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="125d5460-257b-40af-a91d-c5f4875c0504" SourceId="1" SourceUrl="net.tcp://localhost:19001/PhoneMonitoring/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="34c18665-5214-4389-9a73-7572d0584d74" SourceId="1" SourceUrl="net.tcp://localhost:19001/PhoneMonitoring/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="9116b76a-db5f-43ba-9891-eedd07f8751c" SourceId="1" SourceUrl="net.tcp://localhost:19001/PhoneMonitoring/mex" />
+    <MetadataFile FileName="POL.Lib.Interfaces.xsd" MetadataType="Schema" ID="c0e810fe-124e-4b5c-af97-40ff213cf160" SourceId="1" SourceUrl="net.tcp://localhost:19001/PhoneMonitoring/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

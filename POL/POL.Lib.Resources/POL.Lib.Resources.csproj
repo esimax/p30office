@@ -1,0 +1,897 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7A1CE952-EB1C-483C-97EC-3EC2CEBA1582}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POL.Lib.Resources</RootNamespace>
+    <AssemblyName>POL.Lib.Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A1A.tmp\Debug\</IntermediateOutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A1A.tmp\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'YaraOffice|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;YaraOffice</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A1A.tmp\YaraOffice\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SahbaCRM|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;SahbaCRM</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A1A.tmp\SahbaCRM\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'iChista|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;iChista</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A1A.tmp\iChista\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ictcrm24|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;ictcrm24</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A1A.tmp\ictcrm24\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'RahyarModyran|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs4A1A.tmp\RahyarModyran\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Add.png" />
+    <Resource Include="Standard\16\_16_ArrowBottom.png" />
+    <Resource Include="Standard\16\_16_ArrowDown.png" />
+    <Resource Include="Standard\16\_16_ArrowLeft.png" />
+    <Resource Include="Standard\16\_16_ArrowLeftMost.png" />
+    <Resource Include="Standard\16\_16_ArrowRight.png" />
+    <Resource Include="Standard\16\_16_ArrowRightMost.png" />
+    <Resource Include="Standard\16\_16_ArrowTop.png" />
+    <Resource Include="Standard\16\_16_ArrowUp.png" />
+    <Resource Include="Standard\16\_16_Basket.png" />
+    <Resource Include="Standard\16\_16_Building.png" />
+    <Resource Include="Standard\16\_16_Calculate.png" />
+    <Resource Include="Standard\16\_16_CalculateGreen.png" />
+    <Resource Include="Standard\16\_16_CalculateRed.png" />
+    <Resource Include="Standard\16\_16_Cart.png" />
+    <Resource Include="Standard\16\_16_CartAdd.png" />
+    <Resource Include="Standard\16\_16_CartDelete.png" />
+    <Resource Include="Standard\16\_16_CartEdit.png" />
+    <Resource Include="Standard\16\_16_CartError.png" />
+    <Resource Include="Standard\16\_16_CartGo.png" />
+    <Resource Include="Standard\16\_16_CartPut.png" />
+    <Resource Include="Standard\16\_16_CartRemove.png" />
+    <Resource Include="Standard\16\_16_ChartPie.png" />
+    <Resource Include="Standard\16\_16_Client.png" />
+    <Resource Include="Standard\16\_16_ClockHistory.png" />
+    <Resource Include="Standard\16\_16_Close.png" />
+    <Resource Include="Standard\16\_16_ColumnCustomize.png" />
+    <Resource Include="Standard\16\_16_ColumnHide.png" />
+    <Resource Include="Standard\16\_16_Contact.png" />
+    <Resource Include="Standard\16\_16_Contact2.png" />
+    <Resource Include="Standard\16\_16_ContactDelete.png" />
+    <Resource Include="Standard\16\_16_ContactEdit.png" />
+    <Resource Include="Standard\16\_16_Copy.png" />
+    <Resource Include="Standard\16\_16_Cut.png" />
+    <Resource Include="Standard\16\_16_Database.png" />
+    <Resource Include="Standard\16\_16_Delete.png" />
+    <Resource Include="Standard\16\_16_DVD.png" />
+    <Resource Include="Standard\16\_16_EditBlue.png" />
+    <Resource Include="Standard\16\_16_EditGreen.png" />
+    <Resource Include="Standard\16\_16_Error.png" />
+    <Resource Include="Standard\16\_16_Export.png" />
+    <Resource Include="Standard\16\_16_FileAdd.png" />
+    <Resource Include="Standard\16\_16_FileDelete.png" />
+    <Resource Include="Standard\16\_16_FileDownload.png" />
+    <Resource Include="Standard\16\_16_FileEdit.png" />
+    <Resource Include="Standard\16\_16_FilterAdd.png" />
+    <Resource Include="Standard\16\_16_FilterDelete.png" />
+    <Resource Include="Standard\16\_16_Folder.png" />
+    <Resource Include="Standard\16\_16_FolderAdd.png" />
+    <Resource Include="Standard\16\_16_FolderDelete.png" />
+    <Resource Include="Standard\16\_16_folderEdit.png" />
+    <Resource Include="Standard\16\_16_FolderVertical.png" />
+    <Resource Include="Standard\16\_16_Help.png" />
+    <Resource Include="Standard\16\_16_Home.png" />
+    <Resource Include="Standard\16\_16_Import.png" />
+    <Resource Include="Standard\16\_16_Information.png" />
+    <Resource Include="Standard\16\_16_Key.png" />
+    <Resource Include="Standard\16\_16_KeyAdd.png" />
+    <Resource Include="Standard\16\_16_KeyDelete.png" />
+    <Resource Include="Standard\16\_16_Licence.png" />
+    <Resource Include="Standard\16\_16_Link.png" />
+    <Resource Include="Standard\16\_16_List.png" />
+    <Resource Include="Standard\16\_16_Lock.png" />
+    <Resource Include="Standard\16\_16_LockAdd.png" />
+    <Resource Include="Standard\16\_16_LockDelete.png" />
+    <Resource Include="Standard\16\_16_LockEdit.png" />
+    <Resource Include="Standard\16\_16_Merge.png" />
+    <Resource Include="Standard\16\_16_Monitor.png" />
+    <Resource Include="Standard\16\_16_Monitor2.png" />
+    <Resource Include="Standard\16\_16_Network.png" />
+    <Resource Include="Standard\16\_16_OK.png" />
+    <Resource Include="Standard\16\_16_Paste.png" />
+    <Resource Include="Standard\16\_16_Phone.png" />
+    <Resource Include="Standard\16\_16_Phone2.png" />
+    <Resource Include="Standard\16\_16_Printer.png" />
+    <Resource Include="Standard\16\_16_Properties.png" />
+    <Resource Include="Standard\16\_16_Question.png" />
+    <Resource Include="Standard\16\_16_RecycleBinEmpty.png" />
+    <Resource Include="Standard\16\_16_RecycleBinEmpty2.png" />
+    <Resource Include="Standard\16\_16_RecycleBinFull2.png" />
+    <Resource Include="Standard\16\_16_Refresh.png" />
+    <Resource Include="Standard\16\_16_Save.png" />
+    <Resource Include="Standard\16\_16_Search.png" />
+    <Resource Include="Standard\16\_16_SelectAll.png" />
+    <Resource Include="Standard\16\_16_SelectInvert.png" />
+    <Resource Include="Standard\16\_16_SelectNone.png" />
+    <Resource Include="Standard\16\_16_Settings.png" />
+    <Resource Include="Standard\16\_16_Share.png" />
+    <Resource Include="Standard\16\_16_SortAscending.png" />
+    <Resource Include="Standard\16\_16_SortDescending.png" />
+    <Resource Include="Standard\16\_16_Space.png" />
+    <Resource Include="Standard\16\_16_Sync.png" />
+    <Resource Include="Standard\16\_16_TreeView.png" />
+    <Resource Include="Standard\16\_16_UICalendar.png" />
+    <Resource Include="Standard\16\_16_UICheckBox.png" />
+    <Resource Include="Standard\16\_16_UIComboBox.png" />
+    <Resource Include="Standard\16\_16_UIGroupBox.png" />
+    <Resource Include="Standard\16\_16_UIGroupBoxAdd.png" />
+    <Resource Include="Standard\16\_16_UIImageEdit.png" />
+    <Resource Include="Standard\16\_16_UIListBox.png" />
+    <Resource Include="Standard\16\_16_UIProfile.png" />
+    <Resource Include="Standard\16\_16_UIProfileAdd.png" />
+    <Resource Include="Standard\16\_16_UITextEdit.png" />
+    <Resource Include="Standard\16\_16_UndoRed.png" />
+    <Resource Include="Standard\16\_16_User.png" />
+    <Resource Include="Standard\16\_16_UserAdd.png" />
+    <Resource Include="Standard\16\_16_UserDelete.png" />
+    <Resource Include="Standard\16\_16_UserEdit.png" />
+    <Resource Include="Standard\16\_16_Warning.png" />
+    <Resource Include="Standard\32\_32_Add.png" />
+    <Resource Include="Standard\32\_32_ArrowBottom.png" />
+    <Resource Include="Standard\32\_32_ArrowDown.png" />
+    <Resource Include="Standard\32\_32_ArrowLeft.png" />
+    <Resource Include="Standard\32\_32_ArrowLeftMost.png" />
+    <Resource Include="Standard\32\_32_ArrowRight.png" />
+    <Resource Include="Standard\32\_32_ArrowRightMost.png" />
+    <Resource Include="Standard\32\_32_ArrowTop.png" />
+    <Resource Include="Standard\32\_32_ArrowUp.png" />
+    <Resource Include="Standard\32\_32_Basket.png" />
+    <Resource Include="Standard\32\_32_Building.png" />
+    <Resource Include="Standard\32\_32_Calculate.png" />
+    <Resource Include="Standard\32\_32_Cart.png" />
+    <Resource Include="Standard\32\_32_CartAdd.png" />
+    <Resource Include="Standard\32\_32_CartDelete.png" />
+    <Resource Include="Standard\32\_32_CartEdit.png" />
+    <Resource Include="Standard\32\_32_CartError.png" />
+    <Resource Include="Standard\32\_32_CartGo.png" />
+    <Resource Include="Standard\32\_32_CartPut.png" />
+    <Resource Include="Standard\32\_32_CartRemove.png" />
+    <Resource Include="Standard\32\_32_ChartPie.png" />
+    <Resource Include="Standard\32\_32_Client.png" />
+    <Resource Include="Standard\32\_32_ClockHistory.png" />
+    <Resource Include="Standard\32\_32_Close.png" />
+    <Resource Include="Standard\32\_32_Contact.png" />
+    <Resource Include="Standard\32\_32_Contact2.png" />
+    <Resource Include="Standard\32\_32_ContactDelete.png" />
+    <Resource Include="Standard\32\_32_ContactEdit.png" />
+    <Resource Include="Standard\32\_32_Copy.png" />
+    <Resource Include="Standard\32\_32_Cut.png" />
+    <Resource Include="Standard\32\_32_Database.png" />
+    <Resource Include="Standard\32\_32_Delete.png" />
+    <Resource Include="Standard\32\_32_DVD.png" />
+    <Resource Include="Standard\32\_32_EditBlue.png" />
+    <Resource Include="Standard\32\_32_EditGreen.png" />
+    <Resource Include="Standard\32\_32_Error.png" />
+    <Resource Include="Standard\32\_32_Export.png" />
+    <Resource Include="Standard\32\_32_FileAdd.png" />
+    <Resource Include="Standard\32\_32_FileDelete.png" />
+    <Resource Include="Standard\32\_32_FileDownload.png" />
+    <Resource Include="Standard\32\_32_FileEdit.png" />
+    <Resource Include="Standard\32\_32_FilterAdd.png" />
+    <Resource Include="Standard\32\_32_FilterDelete.png" />
+    <Resource Include="Standard\32\_32_Folder.png" />
+    <Resource Include="Standard\32\_32_FolderAdd.png" />
+    <Resource Include="Standard\32\_32_FolderDelete.png" />
+    <Resource Include="Standard\32\_32_FolderEdit.png" />
+    <Resource Include="Standard\32\_32_FolderVertical.png" />
+    <Resource Include="Standard\32\_32_Help.png" />
+    <Resource Include="Standard\32\_32_Home.png" />
+    <Resource Include="Standard\32\_32_Import.png" />
+    <Resource Include="Standard\32\_32_Information.png" />
+    <Resource Include="Standard\32\_32_key.png" />
+    <Resource Include="Standard\32\_32_keyAdd.png" />
+    <Resource Include="Standard\32\_32_keyDelete.png" />
+    <Resource Include="Standard\32\_32_Licence.png" />
+    <Resource Include="Standard\32\_32_Link.png" />
+    <Resource Include="Standard\32\_32_List.png" />
+    <Resource Include="Standard\32\_32_Lock.png" />
+    <Resource Include="Standard\32\_32_LockAdd.png" />
+    <Resource Include="Standard\32\_32_LockDelete.png" />
+    <Resource Include="Standard\32\_32_LockEdit.png" />
+    <Resource Include="Standard\32\_32_Merge.png" />
+    <Resource Include="Standard\32\_32_Monitor.png" />
+    <Resource Include="Standard\32\_32_Monitor2.png" />
+    <Resource Include="Standard\32\_32_Network.png" />
+    <Resource Include="Standard\32\_32_OK.png" />
+    <Resource Include="Standard\32\_32_Paste.png" />
+    <Resource Include="Standard\32\_32_Phone.png" />
+    <Resource Include="Standard\32\_32_Phone2.png" />
+    <Resource Include="Standard\32\_32_Printer.png" />
+    <Resource Include="Standard\32\_32_Properties.png" />
+    <Resource Include="Standard\32\_32_Question.png" />
+    <Resource Include="Standard\32\_32_RecycleBinEmpty.png" />
+    <Resource Include="Standard\32\_32_RecycleBinEmpty2.png" />
+    <Resource Include="Standard\32\_32_RecycleBinFull2.png" />
+    <Resource Include="Standard\32\_32_Refresh.png" />
+    <Resource Include="Standard\32\_32_Save.png" />
+    <Resource Include="Standard\32\_32_Search.png" />
+    <Resource Include="Standard\32\_32_SelectAll.png" />
+    <Resource Include="Standard\32\_32_SelectInvert.png" />
+    <Resource Include="Standard\32\_32_SelectNone.png" />
+    <Resource Include="Standard\32\_32_Settings.png" />
+    <Resource Include="Standard\32\_32_Share.png" />
+    <Resource Include="Standard\32\_32_SortAscending.png" />
+    <Resource Include="Standard\32\_32_SortDescending.png" />
+    <Resource Include="Standard\32\_32_Space.png" />
+    <Resource Include="Standard\32\_32_Sync.png" />
+    <Resource Include="Standard\32\_32_TreeView.png" />
+    <Resource Include="Standard\32\_32_UndoRed.png" />
+    <Resource Include="Standard\32\_32_User.png" />
+    <Resource Include="Standard\32\_32_UserAdd.png" />
+    <Resource Include="Standard\32\_32_UserDelete.png" />
+    <Resource Include="Standard\32\_32_UserEdit.png" />
+    <Resource Include="Standard\32\_32_Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Keyboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_InformationBalloon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Keyboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_PlayBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_PlayBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_XOffice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_XOffice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_DockRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_Quit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_KeyBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_KeyBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Process.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Process.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Networking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Networking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_FullTime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_FullTime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_Dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Gear.png" />
+    <Resource Include="Standard\16\_16_ToDoCheckedAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_ChartBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_ChartBar.png" />
+    <Resource Include="Standard\32\_32_Gear.png" />
+    <Resource Include="Standard\32\_32_ToDoCheckedAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_BulletWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_BulletWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_License.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\48\_48_Error.png" />
+    <Resource Include="Special\48\_48_Information.png" />
+    <Resource Include="Special\48\_48_Question.png" />
+    <Resource Include="Special\48\_48_Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_Network.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Console.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Console.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_Console.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_Database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_PhoneSound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_PhoneSound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_CellPhone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_DeviceALM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_DevicePana.png" />
+    <Resource Include="Special\64\_64_DeviceVirtual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\19\_19_LaIlahaIlalah.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\XX\Clock4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Address.png" />
+    <Resource Include="Standard\16\_16_Attachment.png" />
+    <Resource Include="Standard\16\_16_Call.png" />
+    <Resource Include="Standard\16\_16_EMail.png" />
+    <Resource Include="Standard\16\_16_fax.png" />
+    <Resource Include="Standard\16\_16_Mobile.png" />
+    <Resource Include="Standard\16\_16_Profile.png" />
+    <Resource Include="Standard\16\_16_SMS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Hierarchy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Address.png" />
+    <Resource Include="Standard\32\_32_Attachment.png" />
+    <Resource Include="Standard\32\_32_Call.png" />
+    <Resource Include="Standard\32\_32_EMail.png" />
+    <Resource Include="Standard\32\_32_Fax.png" />
+    <Resource Include="Standard\32\_32_Hierarchy.png" />
+    <Resource Include="Standard\32\_32_Mobile.png" />
+    <Resource Include="Standard\32\_32_Profile.png" />
+    <Resource Include="Standard\32\_32_SMS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Close2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Close2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_About.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\XX\XOfficeIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_ContactEdit.png" />
+    <Resource Include="Special\32\_32_ContactNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Delete2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Delete2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_BasketAdd.png" />
+    <Resource Include="Standard\16\_16_BasketClear.png" />
+    <Resource Include="Standard\16\_16_BasketMove.png" />
+    <Resource Include="Standard\16\_16_BasketRemove.png" />
+    <Resource Include="Standard\16\_16_BoolAnd.png" />
+    <Resource Include="Standard\16\_16_BoolMinus.png" />
+    <Resource Include="Standard\16\_16_BoolOr.png" />
+    <Resource Include="Standard\16\_16_CartNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_BasketAdd.png" />
+    <Resource Include="Standard\32\_32_BasketClear.png" />
+    <Resource Include="Standard\32\_32_BasketMove.png" />
+    <Resource Include="Standard\32\_32_BasketRemove.png" />
+    <Resource Include="Standard\32\_32_BoolAnd.png" />
+    <Resource Include="Standard\32\_32_BoolMinus.png" />
+    <Resource Include="Standard\32\_32_BoolOr.png" />
+    <Resource Include="Standard\32\_32_CartNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_ExportExcel.png" />
+    <Resource Include="Standard\32\_32_ImportExcel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_ExportExcel.png" />
+    <Resource Include="Standard\16\_16_ImportExcel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Earth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Earth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_City.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_City.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_Telecom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_EarthEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_TableSelectColumn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_TableSelectColumn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Xml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Xml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_Transfer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_MenuItem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_List2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_List2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_GotoFirst.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_GotoFirst.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_GoBottom.png" />
+    <Resource Include="Standard\16\_16_GoDown.png" />
+    <Resource Include="Standard\16\_16_GoTop.png" />
+    <Resource Include="Standard\16\_16_GoUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_GoBottom.png" />
+    <Resource Include="Standard\32\_32_GoDown.png" />
+    <Resource Include="Standard\32\_32_GoTop.png" />
+    <Resource Include="Standard\32\_32_GoUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_GroupBox.png" />
+    <Resource Include="Special\16\_16_TabPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\24\_24_GroupBox.png" />
+    <Resource Include="Special\24\_24_TabPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_TabPage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_LinkAdd.png" />
+    <Resource Include="Special\32\_32_LinkDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_SortAsc.png" />
+    <Resource Include="Standard\16\_16_SortDesc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_SortAsc.png" />
+    <Resource Include="Standard\32\_32_SortDesc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_UIDigit.png" />
+    <Resource Include="Special\16\_16_UIString.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_UICheckList.png" />
+    <Resource Include="Special\16\_16_UICity.png" />
+    <Resource Include="Special\16\_16_UIColor.png" />
+    <Resource Include="Special\16\_16_UICombo.png" />
+    <Resource Include="Special\16\_16_UIContact.png" />
+    <Resource Include="Special\16\_16_UICountry.png" />
+    <Resource Include="Special\16\_16_UIDateTime.png" />
+    <Resource Include="Special\16\_16_UIFile.png" />
+    <Resource Include="Special\16\_16_UILocation.png" />
+    <Resource Include="Special\16\_16_UITime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_UIList.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_CallAll.png" />
+    <Resource Include="Special\16\_16_CallIn.png" />
+    <Resource Include="Special\16\_16_CallOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_Profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_Flag_Blue.png" />
+    <Resource Include="Special\16\_16_Flag_Gray.png" />
+    <Resource Include="Special\16\_16_Flag_Green.png" />
+    <Resource Include="Special\16\_16_Flag_Red.png" />
+    <Resource Include="Special\16\_16_Flag_Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_FlagGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_FlagGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_DeviceTelsa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_Speaker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_B1_Blue.png" />
+    <Resource Include="Special\16\_16_B2_Blue.png" />
+    <Resource Include="Special\16\_16_B3_Blue.png" />
+    <Resource Include="Special\16\_16_B4_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_B1_Green.png" />
+    <Resource Include="Special\16\_16_B2_Green.png" />
+    <Resource Include="Special\16\_16_B3_Green.png" />
+    <Resource Include="Special\16\_16_B4_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_BlueCircle.png" />
+    <Resource Include="Standard\16\_16_GreenCircle.png" />
+    <Resource Include="Standard\16\_16_RedCircle.png" />
+    <Resource Include="Standard\16\_16_WhiteCircle.png" />
+    <Resource Include="Standard\16\_16_YellowCircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_BlueCircle.png" />
+    <Resource Include="Standard\32\_32_GreenCircle.png" />
+    <Resource Include="Standard\32\_32_RedCircle.png" />
+    <Resource Include="Standard\32\_32_WhiteCircle.png" />
+    <Resource Include="Standard\32\_32_YellowCircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_Export.png" />
+    <Resource Include="Special\16\_16_Import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Category1.png" />
+    <Resource Include="Standard\16\_16_Category2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Category1.png" />
+    <Resource Include="Standard\32\_32_Category2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_Email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_EmailDraft.png" />
+    <Resource Include="Standard\16\_16_EmailFolder.png" />
+    <Resource Include="Standard\16\_16_EmailInbox.png" />
+    <Resource Include="Standard\16\_16_EmailOpen.png" />
+    <Resource Include="Standard\16\_16_EmailSent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_EmailDraft.png" />
+    <Resource Include="Standard\32\_32_EmailFolder.png" />
+    <Resource Include="Standard\32\_32_EmailInbox.png" />
+    <Resource Include="Standard\32\_32_EmailSent.png" />
+    <Resource Include="Standard\32\_32_EmailTrash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_EmailTrash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_EmailForward.png" />
+    <Resource Include="Standard\16\_16_EmailNew.png" />
+    <Resource Include="Standard\16\_16_EmailReply.png" />
+    <Resource Include="Standard\16\_16_EmailReplyAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_EmailForward.png" />
+    <Resource Include="Standard\32\_32_EmailNew.png" />
+    <Resource Include="Standard\32\_32_EmailReply.png" />
+    <Resource Include="Standard\32\_32_EmailReplyAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\XX\_13_Attachment.png" />
+    <Resource Include="Special\XX\_13_AttachmentLight.png" />
+    <Resource Include="Special\XX\_13_EmailHigh.png" />
+    <Resource Include="Special\XX\_13_EmailLow.png" />
+    <Resource Include="Special\XX\_13_EmailRead.png" />
+    <Resource Include="Special\XX\_13_EmailUnread.png" />
+    <Resource Include="Special\XX\_13_IsUnreadHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Collapse.png" />
+    <Resource Include="Standard\16\_16_Collapse2.png" />
+    <Resource Include="Standard\16\_16_Expand.png" />
+    <Resource Include="Standard\16\_16_Expand2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Collapse.png" />
+    <Resource Include="Standard\32\_32_Collapse2.png" />
+    <Resource Include="Standard\32\_32_Expand.png" />
+    <Resource Include="Standard\32\_32_Expand2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_Dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_Console.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_Lisence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_Network.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_Database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_Telecommunication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_Device_ALM.png" />
+    <Resource Include="Special\32\_32_POX_Device_Pana.png" />
+    <Resource Include="Special\32\_32_POX_Device_Telsa.png" />
+    <Resource Include="Special\32\_32_POX_Email.png" />
+    <Resource Include="Special\32\_32_POX_Web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_CustomColumns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_Web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\XX\_12_Clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_AutoUpdate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_AutoUpdate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_NavigateViewBackward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_NavigateViewForward.png" />
+    <Resource Include="Standard\32\_32_GotoToday.png" />
+    <Resource Include="Standard\32\_32_ZoomIn.png" />
+    <Resource Include="Standard\32\_32_ZoomOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_DayView.png" />
+    <Resource Include="Standard\32\_32_MonthView.png" />
+    <Resource Include="Standard\32\_32_TimelineView.png" />
+    <Resource Include="Standard\32\_32_WeekView.png" />
+    <Resource Include="Standard\32\_32_WorkWeekView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_POX_SMS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\XX\_14_HamrahAval.png" />
+    <Resource Include="Special\XX\_14_Irancell.png" />
+    <Resource Include="Special\XX\_14_RighTel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_Karsun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_sms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_Automation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Automation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\16\_16_cardtable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_cardtable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Invoice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_EventUnit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Standard\32\_32_Chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_Chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\32\_32_MissCall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\16\_16_cloud.png" />
+    <Resource Include="Special\16\_16_serial_port.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Special\64\_64_hdd.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

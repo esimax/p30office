@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ClientToServerInformation">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="CPUInformation" nillable="true" type="q1:InfoCPU" />
+      <xs:element minOccurs="0" name="ClientDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ClientVersion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="ser:guid" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="LogicalDiskInformations" nillable="true" type="q2:ArrayOfInfoLogicalDisk" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="NetworkInformations" nillable="true" type="q3:ArrayOfInfoNetwork" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="OSInformation" nillable="true" type="q4:InfoOS" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="SystemInformation" nillable="true" type="q5:InfoSystem" />
+      <xs:element minOccurs="0" name="TotalRam" type="xs:unsignedLong" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientToServerInformation" nillable="true" type="tns:ClientToServerInformation" />
+  <xs:complexType name="ServerToClientInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="CPUInformation" nillable="true" type="q6:InfoCPU" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColEnable0" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColEnable1" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColEnable2" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColEnable3" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColEnable4" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColEnable5" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColEnable6" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColEnable7" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColEnable8" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColEnable9" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContactCustColOid0" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColOid1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColOid2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColOid3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColOid4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColOid5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColOid6" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColOid7" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColOid8" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColOid9" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle0" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle6" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle7" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle8" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactCustColTitle9" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentCityGuid" type="ser:guid" />
+      <xs:element minOccurs="0" name="DatabaseProvider" type="tns:EnumDatabaseProvider" />
+      <xs:element minOccurs="0" name="Device" type="tns:EnumDeviceUsed" />
+      <xs:element minOccurs="0" name="DeviceExtraInformation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeviceHasRecord" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DeviceHasVoiceMessage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DeviceRecordPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EcoCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExtNames" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IntCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsTamas" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LineNames" nillable="true" type="xs:string" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="LogicalDiskInformations" nillable="true" type="q7:ArrayOfInfoLogicalDisk" />
+      <xs:element minOccurs="0" name="MSSQLCEFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MSSQLDatabase" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MSSQLPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MSSQLServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MSSQLUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MSSQLWindowsAuthorization" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MobileDefaultTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileLength" type="xs:int" />
+      <xs:element minOccurs="0" name="MobileStartingCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="NetworkInformations" nillable="true" type="q8:ArrayOfInfoNetwork" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="OSInformation" nillable="true" type="q9:InfoOS" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumberDefaultTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SarbargPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ServerDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ServerVersion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SmsMultiSettingsJsonString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusDeviceALM" type="tns:EnumStatusDeviceALM" />
+      <xs:element minOccurs="0" name="StatusDevicePana" type="tns:EnumStatusDevicePana" />
+      <xs:element minOccurs="0" name="StatusDeviceTelsa" type="tns:EnumStatusDeviceTelsa" />
+      <xs:element minOccurs="0" name="StatusDeviceVirtual" type="tns:EnumStatusDeviceVirtual" />
+      <xs:element minOccurs="0" name="StatusMembership" type="tns:EnumStatusMembership" />
+      <xs:element minOccurs="0" name="StatusPhoneMonitoring" type="tns:EnumStatusPhoneMonitoring" />
+      <xs:element minOccurs="0" name="StatusTelecommunication" type="tns:EnumStatusTelecommunication" />
+      <xs:element minOccurs="0" name="SyncCode" type="xs:int" />
+      <xs:element minOccurs="0" name="SyncEnable" type="xs:boolean" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/POL.Lib.Interfaces.Info" minOccurs="0" name="SystemInformation" nillable="true" type="q10:InfoSystem" />
+      <xs:element minOccurs="0" name="TotalRam" type="xs:unsignedLong" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerToClientInformation" nillable="true" type="tns:ServerToClientInformation" />
+  <xs:simpleType name="EnumDatabaseProvider">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="MSSQL" />
+      <xs:enumeration value="Access" />
+      <xs:enumeration value="MSSQLCE" />
+      <xs:enumeration value="XML" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumDatabaseProvider" nillable="true" type="tns:EnumDatabaseProvider" />
+  <xs:simpleType name="EnumDeviceUsed">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="ALM" />
+      <xs:enumeration value="Panasonic" />
+      <xs:enumeration value="Virtual" />
+      <xs:enumeration value="Telsa" />
+      <xs:enumeration value="Collision" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumDeviceUsed" nillable="true" type="tns:EnumDeviceUsed" />
+  <xs:simpleType name="EnumStatusDeviceALM">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="Checking" />
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="Disabled" />
+      <xs:enumeration value="Confilict" />
+      <xs:enumeration value="InvalidCurrentCity" />
+      <xs:enumeration value="InvalidCurrentCityNotFound" />
+      <xs:enumeration value="InvalidDevic1" />
+      <xs:enumeration value="InvalidDevic2" />
+      <xs:enumeration value="InvalidDevic3" />
+      <xs:enumeration value="InvalidDevic4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumStatusDeviceALM" nillable="true" type="tns:EnumStatusDeviceALM" />
+  <xs:simpleType name="EnumStatusDevicePana">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="Checking" />
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="Disabled" />
+      <xs:enumeration value="Confilict" />
+      <xs:enumeration value="InvalidPort" />
+      <xs:enumeration value="InvalidSettings" />
+      <xs:enumeration value="InvalidDevic" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumStatusDevicePana" nillable="true" type="tns:EnumStatusDevicePana" />
+  <xs:simpleType name="EnumStatusDeviceTelsa">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="Checking" />
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="Disabled" />
+      <xs:enumeration value="Confilict" />
+      <xs:enumeration value="InvalidCurrentCity" />
+      <xs:enumeration value="InvalidCurrentCityNotFound" />
+      <xs:enumeration value="InvalidDevic" />
+      <xs:enumeration value="InvalidHostAddress" />
+      <xs:enumeration value="InvalidHostPort" />
+      <xs:enumeration value="InvalidHost" />
+      <xs:enumeration value="InvalidHostUnexpected" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumStatusDeviceTelsa" nillable="true" type="tns:EnumStatusDeviceTelsa" />
+  <xs:simpleType name="EnumStatusDeviceVirtual">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="Checking" />
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="Disabled" />
+      <xs:enumeration value="Confilict" />
+      <xs:enumeration value="InvalidCurrentCity" />
+      <xs:enumeration value="InvalidCurrentCityNotFound" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumStatusDeviceVirtual" nillable="true" type="tns:EnumStatusDeviceVirtual" />
+  <xs:simpleType name="EnumStatusMembership">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="Checking" />
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="InvalidAdminCreation" />
+      <xs:enumeration value="InvalidHostAddress" />
+      <xs:enumeration value="InvalidHostPort" />
+      <xs:enumeration value="InvalidHost" />
+      <xs:enumeration value="InvalidHostUnexpected" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumStatusMembership" nillable="true" type="tns:EnumStatusMembership" />
+  <xs:simpleType name="EnumStatusPhoneMonitoring">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="Checking" />
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="InvalidHostAddress" />
+      <xs:enumeration value="InvalidHostPort" />
+      <xs:enumeration value="InvalidHost" />
+      <xs:enumeration value="InvalidHostUnexpected" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumStatusPhoneMonitoring" nillable="true" type="tns:EnumStatusPhoneMonitoring" />
+  <xs:simpleType name="EnumStatusTelecommunication">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="Checking" />
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="Invalid" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumStatusTelecommunication" nillable="true" type="tns:EnumStatusTelecommunication" />
+</xs:schema>

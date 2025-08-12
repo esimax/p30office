@@ -1,0 +1,109 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Contact.Views.WContactSelect"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    
+    Width="500"
+    Height="400"
+    >
+
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+            <dxe:ButtonEdit Margin="3" NullText="جستجو ..."
+                                    AllowDefaultButton="False" EditValue="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
+                                    Width="200">
+                <dxe:ButtonInfo ButtonKind="Simple"
+                            GlyphKind="Cancel"
+                            ToolTip="پاكسازی جستجو" 
+                            Command="{Binding CommandClearSearchText}" />
+            </dxe:ButtonEdit>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" >
+            <dxe:ComboBoxEdit Name="cbeContactCat" Grid.Row="0"   Margin="3" IsTextEditable="False"  AllowSpinOnMouseWheel="False"
+                                      ApplyItemTemplateToSelectedItem="True" HorizontalAlignment="Stretch" ItemsSource="{Binding ContactCatList}"
+                                      SelectedItem="{Binding SelectedContactCat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                      NullText="(همه دسته ها)" Width="200">
+                <dxe:ComboBoxEdit.EditNonEditableTemplate>
+                    <ControlTemplate>
+                        <TextBlock Text="{Binding EditValue}" Margin="3"/>
+                    </ControlTemplate>
+                </dxe:ComboBoxEdit.EditNonEditableTemplate>
+            </dxe:ComboBoxEdit>
+        </StackPanel>
+
+        <dxg:GridControl Grid.Row="2" Grid.Column="0" x:Name="gridContact" ItemsSource="{Binding ContactList}" Margin="3" >
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem DisplayFormat=" {0}" FieldName="Code" ShowInColumn="Code" SummaryType="Count" />
+            </dxg:GridControl.TotalSummary>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Name="colCode" Width="65" FieldName="Code" Header="كد" SortMode="Value" />
+                <dxg:GridColumn Name="colTitle" FieldName="Title" Header="عنوان" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView Name="tvContact"
+                               AllowCascadeUpdate="True"
+                               AllowColumnFiltering="False"
+                               AllowEditing="False"
+                               AllowFilterEditor="False"
+                               AllowGrouping="False"
+                               AllowPerPixelScrolling="True"
+                               BestFitMode="VisibleRows"
+                               FocusedRow="{Binding FocusedContact,Mode=TwoWay}"
+                               IsColumnMenuEnabled="False"
+                               IsGroupPanelMenuEnabled="False"
+                               IsTotalSummaryMenuEnabled="False"
+                               MultiSelectMode="Row"
+                               ShowGroupPanel="False"
+                               ShowIndicator="False"
+                               ShowTotalSummary="True"
+                               AutoWidth="True">
+                </dxg:TableView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" 
+                    Command="{Binding CommandHelp}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageHelp16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="راهنما"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

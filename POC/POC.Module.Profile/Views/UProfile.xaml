@@ -1,0 +1,245 @@
+﻿<UserControl x:Class="POC.Module.Profile.Views.UProfile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600"
+             
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:poc_conv="clr-namespace:POL.WPF.Controles.Conv;assembly=POL.WPF.Controles"
+             xmlns:pol_comm="clr-namespace:POL.Lib.Common;assembly=POL.Lib.Common"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:model="clr-namespace:POC.Module.Profile.Models"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+
+    <UserControl.Resources>
+        <!--<poc_conv:ConvDummy x:Key="dummy"/>-->
+    </UserControl.Resources>
+    <dxb:BarManager>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem Content="فرم جدید" Name="biNewProfileRoot" Command="{Binding CommandProfileRootNew}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_TabPage.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_TabPage.png"/>
+            <dxb:BarButtonItem Content="گروه جدید" Name="biNewProfileGroup" Command="{Binding CommandProfileGroupNew}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Group.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Group.png"/>
+            <dxb:BarButtonItem Content="فیلد جدید" Name="biNewProfileItem" Command="{Binding CommandProfileItemNew}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_MenuItem.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_MenuItem.png"/>
+
+            <dxb:BarButtonItem Content="ویرایش" Name="biEdit" Command="{Binding CommandEdit}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_EditBlue.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EditBlue.png"/>
+            <dxb:BarButtonItem Content="حذف" Name="biDelete" Command="{Binding CommandDelete}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Delete2.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Delete2.png"/>
+            <dxb:BarButtonItem Content="باز خوانی" Name="biRefresh" Command="{Binding CommandRefresh}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Refresh.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Refresh.png"/>
+
+            <!--<dxb:BarButtonItem Content="بالا ترین" Name="biTop" Command="{Binding CommandTop}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_GoTop.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_GoTop.png"/>
+            <dxb:BarButtonItem Content="بالا" Name="biUp" Command="{Binding CommandUp}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_GoUp.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_GoUp.png"/>
+            <dxb:BarButtonItem Content="پایین" Name="biDown" Command="{Binding CommandDown}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_GoDown.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_GoDown.png"/>
+            <dxb:BarButtonItem Content="پایین ترین" Name="biBottom" Command="{Binding CommandBottom}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_GoBottom.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_GoBottom.png"/>
+            <dxb:BarButtonItem Content="ذخیره تغییرات جابجایی" Name="biSaveOrder" Command="{Binding CommandSaveOrder}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Save.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Save.png"/>-->
+
+            <dxb:BarButtonItem Content="كپی" Name="biCopy" Command="{Binding CommandCopy}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Copy.png"/>
+            <dxb:BarButtonItem Content="برش" Name="biCut" Command="{Binding CommandCut}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Cut.png"/>
+            <dxb:BarButtonItem Content="جایگزاری" Name="biPaste" Command="{Binding CommandPaste}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Paste.png"/>
+
+            <dxb:BarButtonItem Content="الحاق به پرونده" Name="biContactLink" Command="{Binding CommandContactLink}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_LinkAdd.png"/>
+            <dxb:BarButtonItem Content="تفكیك از پرونده" Name="biContactUnLink" Command="{Binding CommandContactUnLink}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_LinkDelete.png"/>
+            <dxb:BarButtonItem Content="مرتب سازی پرونده" Name="biContactReorder" Command="{Binding CommandContactReorder}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_SortAsc.png"/>
+
+            <dxb:BarButtonItem Content="استخراج همه به XML" Name="biExportXML" Command="{Binding CommandExportXML}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_XML.png"/>
+            <dxb:BarButtonItem Content="استخراج انتخاب شده به XML" Name="biExportXMLSelected" Command="{Binding CommandExportXMLSelected}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_XML.png"/>
+            <dxb:BarButtonItem Content="ورود از XML" Name="biImportXML" Command="{Binding CommandImportXML}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_XML.png"/>
+
+            <dxb:BarButtonItem Content="انبساط" Name="biExpandAll" Command="{Binding CommandExpandAll}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Expand2.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Expand2.png"/>
+            <dxb:BarButtonItem Content="انقباظ" Name="biCollapseAll" Command="{Binding CommandCollapseAll}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Collapse2.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Collapse2.png"/>
+            <dxb:BarButtonItem Content="راهنما" Name="biHelp" Command="{Binding CommandHelp}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Help.png"/>
+        </dxb:BarManager.Items>
+
+        <Grid pol_ap:ApGrid.RowDefinitions="auto,*">
+            <dxr:RibbonControl x:Name="contactRibbon" Grid.Row="0" RibbonStyle="Office2010">
+                <dxr:RibbonDefaultPageCategory>
+                    <dxr:RibbonPage Caption="فرم" MergeOrder="0">
+                        <dxr:RibbonPageGroup Caption="مدیریت" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biNewProfileRoot" />
+                            <dxb:BarButtonItemLink BarItemName="biNewProfileGroup" />
+                            <dxb:BarButtonItemLink BarItemName="biNewProfileItem" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biEdit" />
+                            <dxb:BarButtonItemLink BarItemName="biDelete" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biRefresh" RibbonStyle="SmallWithoutText"  />
+                            <dxb:BarButtonItemLink BarItemName="biExpandAll" RibbonStyle="SmallWithoutText"/>
+                            <dxb:BarButtonItemLink BarItemName="biCollapseAll" RibbonStyle="SmallWithoutText"/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="ابزار" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biContactLink" />
+                            <dxb:BarButtonItemLink BarItemName="biContactUnLink" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biContactReorder" />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="ابزار" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biExportXML"/>
+                            <dxb:BarButtonItemLink BarItemName="biExportXMLSelected"/>
+                            <dxb:BarButtonItemLink BarItemName="biImportXML"/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="راهنما" >
+                            <dxb:BarButtonItemLink BarItemName="biHelp" />
+                        </dxr:RibbonPageGroup>
+                        <!--<dxr:RibbonPageGroup Caption="انتقال" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biTop" />
+                            <dxb:BarButtonItemLink BarItemName="biUp" />
+                            <dxb:BarButtonItemLink BarItemName="biDown" />
+                            <dxb:BarButtonItemLink BarItemName="biBottom" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biSaveOrder" />
+                        </dxr:RibbonPageGroup>-->
+                    </dxr:RibbonPage>
+                    <!--
+                    <dxr:RibbonPage Caption="ابزار فرم" MergeOrder="1">
+                        <dxr:RibbonPageGroup Caption="نگاشت" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biCopy" />
+                            <dxb:BarButtonItemLink BarItemName="biCut" />
+                            <dxb:BarButtonItemLink BarItemName="biPaste" />
+                        </dxr:RibbonPageGroup>
+                        
+                    </dxr:RibbonPage>
+                    -->
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+
+            <Grid Grid.Row="1" pol_ap:ApGrid.RowDefinitions="auto,*" pol_ap:ApGrid.ColumnDefinitions="auto,*,auto" >
+                <dxe:ButtonEdit Margin="12" Grid.Row="0" Grid.Column="0" NullText="جستجو ..."
+                                    AllowDefaultButton="False" EditValue="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
+                                    IsTextEditable="True" ShowText="True" Width="200">
+                    <dxe:ButtonInfo ButtonKind="Simple"
+                            GlyphKind="Cancel"
+                            ToolTip="پاكسازی جستجو" 
+                            Command="{Binding CommandClearSearchText}" />
+                </dxe:ButtonEdit>
+
+                <!--<ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" ItemsSource="{Binding DataList}" Name="lbeMain" SelectedItem="{Binding SelectedTreeItem}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="16" Height="16" Stretch="None" SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor" VerticalAlignment="Center" Source="{Binding Image}" Margin="{Binding ImageMargin}"/>
+                                <TextBlock Margin="3" VerticalAlignment="Center" Text="{Binding Title}" FontWeight="{Binding TextWeight}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <dxb:BarManager.DXContextMenu>
+                        <dxb:PopupMenuInfo>
+                            <dxb:PopupMenuInfo.ItemLinks>
+                                <dxb:BarButtonItemLink BarItemName="biNewProfileRoot" />
+                                <dxb:BarButtonItemLink BarItemName="biNewProfileGroup" />
+                                <dxb:BarButtonItemLink BarItemName="biNewProfileItem" />
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarButtonItemLink BarItemName="biEdit" />
+                                <dxb:BarButtonItemLink BarItemName="biDelete" />
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarButtonItemLink BarItemName="biTop" />
+                                <dxb:BarButtonItemLink BarItemName="biUp" />
+                                <dxb:BarButtonItemLink BarItemName="biDown" />
+                                <dxb:BarButtonItemLink BarItemName="biBottom" />
+                            </dxb:PopupMenuInfo.ItemLinks>
+                        </dxb:PopupMenuInfo>
+                    </dxb:BarManager.DXContextMenu>
+                </ListBox>-->
+
+                <dxg:TreeListControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" ShowBorder="true" 
+                                     ItemsSource="{Binding ProfileItemList}" SnapsToDevicePixels="True" Name="tlcMain">
+                    <dxg:TreeListControl.Resources>
+                        <model:ProfileItemSelector x:Key="ProfileItemSelector"/>
+                        <model:ConvDraggingRowToTypeName x:Key="convDraggingRowToTypeName"/>
+                        <BooleanToVisibilityConverter x:Key="convBool2Visibility"/>
+                    </dxg:TreeListControl.Resources>
+                    <dxg:TreeListControl.Columns>
+                        <dxg:TreeListColumn FieldName="Name" Header="عنوان">
+                            <dxg:TreeListColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="16" Height="16" Stretch="Fill" RenderOptions.BitmapScalingMode="NearestNeighbor" RenderOptions.EdgeMode="Unspecified" SnapsToDevicePixels="True" Source="{Binding RowData.Row.ImageUriString}" Margin="4,0,6,0"/>
+                                        <TextBlock Text="{Binding RowData.Row.Title}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </dxg:TreeListColumn.CellTemplate>
+                        </dxg:TreeListColumn>
+                        <dxg:TreeListColumn FieldName="CategoriesString" Header="دسته ها" />
+                        
+                        <dxg:TreeListColumn FieldName="InSearch" Width="21" Header="•" Fixed="Right" FixedWidth="True">
+                            <dxg:TreeListColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="•" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding RowData.Row.InSearch,Converter={StaticResource convBool2Visibility}}"/>
+                                </DataTemplate>
+                            </dxg:TreeListColumn.CellTemplate>
+                        </dxg:TreeListColumn>
+                        <dxg:TreeListColumn FieldName="RoleViewer" Header="سطوح نمایش" />
+                        <dxg:TreeListColumn FieldName="RoleEditor" Header="سطوح ویرایش" />
+                            
+                    </dxg:TreeListControl.Columns>
+                    <dxg:TreeListControl.View>
+                        <dxg:TreeListView ShowColumnHeaders="True" NavigationStyle="Row" AllowEditing="False" ShowHorizontalLines="False"
+                                          AllowFilterEditor="False" AllowColumnFiltering="False" AutoWidth="True"
+                                          ShowVerticalLines="False" ShowIndicator="False"
+                              TreeDerivationMode="ChildNodesSelector" ChildNodesSelector="{StaticResource ProfileItemSelector}"
+                              TreeLineStyle="None" AutoExpandAllNodes="False" FocusedRow="{Binding SelectedProfileItem, Mode=TwoWay}" MultiSelectMode="Row"/>
+                    </dxg:TreeListControl.View>
+                    <dxb:BarManager.DXContextMenu>
+                        <dxb:PopupMenuInfo>
+                            <dxb:PopupMenuInfo.ItemLinks>
+                                <dxb:BarButtonItemLink BarItemName="biNewProfileRoot" />
+                                <dxb:BarButtonItemLink BarItemName="biNewProfileGroup" />
+                                <dxb:BarButtonItemLink BarItemName="biNewProfileItem" />
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarButtonItemLink BarItemName="biEdit" />
+                                <dxb:BarButtonItemLink BarItemName="biDelete" />
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarButtonItemLink BarItemName="biContactLink" />
+                                <dxb:BarButtonItemLink BarItemName="biContactUnLink" />
+                                <dxb:BarButtonItemLink BarItemName="biContactReorder" />
+
+                                <!--
+                                <dxb:BarButtonItemLink BarItemName="biTop" />
+                                <dxb:BarButtonItemLink BarItemName="biUp" />
+                                <dxb:BarButtonItemLink BarItemName="biDown" />
+                                <dxb:BarButtonItemLink BarItemName="biBottom" />-->
+                            </dxb:PopupMenuInfo.ItemLinks>
+                        </dxb:PopupMenuInfo>
+                    </dxb:BarManager.DXContextMenu>
+                    <i:Interaction.Behaviors>
+                        <dxg:TreeListDragDropManager x:Name="dragDropManager" AllowDrag="True" AllowDrop="True" Drop="dragDropManager_Drop" DragOver="dragDropManager_DragOver" >
+                            <dxg:TreeListDragDropManager.DragElementTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="LightGray" BorderThickness="1" Background="WhiteSmoke" CornerRadius="5" FlowDirection="RightToLeft">
+                                        <StackPanel Margin="3">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Margin="3" 
+                                                           FontFamily="{DynamicResource ApplicationFontFamily}" 
+                                                           FontSize="{DynamicResource ApplicationFontSize}"
+                                                           Text="{Binding Path=DraggingRows.Count, StringFormat='انتقال {0}'}" />
+                                                <TextBlock Margin="3" 
+                                                           FontFamily="{DynamicResource ApplicationFontFamily}" 
+                                                           FontSize="{DynamicResource ApplicationFontSize}"
+                                                           Text="{Binding Path=DraggingRows, Converter={StaticResource convDraggingRowToTypeName}}" />
+
+                                                <TextBlock Margin="3" 
+                                                           FontFamily="{DynamicResource ApplicationFontFamily}" 
+                                                           FontSize="{DynamicResource ApplicationFontSize}"
+                                                           Text="{Binding  Converter={StaticResource convDraggingRowToTypeName}}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </dxg:TreeListDragDropManager.DragElementTemplate>
+                        </dxg:TreeListDragDropManager>
+                    </i:Interaction.Behaviors>
+                </dxg:TreeListControl>
+
+
+                <dxlc:GroupBox Grid.Row="1" Grid.Column="2" Width="240" Margin="3" Header="مشخصات">
+                    <StackPanel>
+                        <TextBlock Margin="3" Text="{Binding ModuleTypeTitle}" HorizontalAlignment="Center" FontFamily="{DynamicResource ApplicationFontFamilyH2}" FontSize="{DynamicResource ApplicationFontSizeH2}"/>
+                        <ContentControl Content="{Binding ModulePropertyContent}"/>
+                    </StackPanel>
+                </dxlc:GroupBox>
+            </Grid>
+        </Grid>
+    </dxb:BarManager>
+</UserControl>

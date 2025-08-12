@@ -1,0 +1,43 @@
+﻿<dx:DXWindow x:Class="POL.Lib.Common.POLMembership.WMembershipSelectUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="380" Width="407"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+
+             Icon="{DynamicResource ApplicationIcon}"
+             WindowStartupLocation="CenterOwner"
+             ResizeMode="NoResize"
+
+             FontFamily="{DynamicResource ApplicationFontFamily}"
+             FontSize="{DynamicResource ApplicationFontSize}">
+
+    <DockPanel FlowDirection="{DynamicResource ApplicationFlowDirection}">
+        <Grid DockPanel.Dock="Bottom" Background="{DynamicResource FooterBackground}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Margin="0,12" Padding="6,3" MinWidth="80" Content="قبول" IsDefault="True"
+                        Command="{Binding cmdOK}" />
+                <Button Margin="12" Padding="6,3" MinWidth="80" Content="لغو" IsCancel="True"
+                        Command="{Binding cmdCancel}" />
+            </StackPanel>
+        </Grid>
+        <!--<Separator DockPanel.Dock="Bottom" Margin="0"/>-->
+        <Grid Margin="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Button Margin="3" Command="{Binding cmdSelectAll}" ToolTip="انتخاب همه" Content="انتخاب همه"
+                        Padding="3" />
+                <Button Margin="3" Command="{Binding cmdSelectNone}" ToolTip="انتخاب هیچكدام" Content="انتخاب هیچكدام"
+                        Padding="3" />
+                <Button Margin="3" Command="{Binding cmdSelectInvert}" ToolTip="انتخاب معكوس" Content="انتخاب معكوس"
+                        Padding="3" />
+            </StackPanel>
+            <dxe:ListBoxEdit Grid.Row="1" Name="lbeUsers" Margin="3" />
+        </Grid>
+    </DockPanel>
+</dx:DXWindow>

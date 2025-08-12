@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<License>
+  <Id>06278e20-c8a3-427b-ad15-d822782d681e</Id>
+  <ProductName>Mail.dll</ProductName>
+  <SubscriptionUntil>2014-06-17</SubscriptionUntil>
+  <RegisteredTo>EHSAN ERSHADI</RegisteredTo>
+  <LicenseType>single developer</LicenseType>
+  <BuyerName>EHSAN ERSHADI</BuyerName>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>pYY0+KgdVi7vlp3joEkGGldhnqM=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>YImy7JAWsHEzdU5DlIPoLEYyVzS/PuoAQEr+jpsrLV0DBLpT7F618kpajXLB4/cQ1pKZAiJCClUsicUNVZEFjTLkk0Gb+osFqF0nf04m+4fOvkItFvtHlnjqSzWBWWHFuIu41T+jeq3QDe3BzWFtQ42ol5mM1vjySY4qebDD2NU=</SignatureValue>
+  </Signature>
+</License>

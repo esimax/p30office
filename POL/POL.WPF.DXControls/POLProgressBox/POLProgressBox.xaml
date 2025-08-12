@@ -1,0 +1,41 @@
+﻿<dx:DXWindow
+    x:Class="POL.WPF.DXControls.POLProgressBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+
+    xmlns:local="clr-namespace:POL.WPF.DXControls"
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    Title="{local:POLProgressBoxStringIdExtension StringId=ProgressTitle}"
+
+    Height="300" Width="380"
+
+
+    FontFamily="{DynamicResource ApplicationFontFamily}"
+    FontSize="{DynamicResource ApplicationFontSize}"
+    Icon="{DynamicResource ApplicationIcon}"
+
+    ResizeMode="NoResize"
+    SizeToContent="Height"
+    WindowStartupLocation="CenterOwner">
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto"
+          pol_ap:ApGrid.ColumnDefinitions="*"
+          Margin="9"
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+        <TextBlock Grid.Row="0" Margin="3" x:Name="Text1" />
+        <TextBlock Grid.Row="1" Margin="3" x:Name="Text2" />
+        <TextBlock Grid.Row="2" Margin="3" x:Name="Text3" />
+        <TextBlock Grid.Row="3" Margin="3" x:Name="Text4" />
+        <TextBlock Grid.Row="4" Margin="3" x:Name="Text5" />
+        <TextBlock Grid.Row="5" Margin="3" x:Name="Text6" />
+
+        <dxe:ProgressBarEdit Name="pbeMain" Grid.Row="6" Margin="12,3" Height="23" />
+
+        <Button Grid.Row="7" Margin="0,9,0,0" MinWidth="60" Padding="3" HorizontalAlignment="Center"
+                Content="{local:POLProgressBoxStringIdExtension StringId=Cancel}" x:Name="bCancel"
+                Click="bCancel_Click" />
+    </Grid>
+</dx:DXWindow>

@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D506300-9618-4255-9F35-A2571F80CE26}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POC.Module.Profile</RootNamespace>
+    <AssemblyName>POC.Module.Profile</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\Original\ModulePOC\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\Original\ModulePOC\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'YaraOffice|AnyCPU'">
+    <OutputPath>bin\YaraOffice\</OutputPath>
+    <DefineConstants>TRACE;YaraOffice</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SahbaCRM|AnyCPU'">
+    <OutputPath>bin\SahbaCRM\</OutputPath>
+    <DefineConstants>TRACE;SahbaCRM</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'iChista|AnyCPU'">
+    <OutputPath>bin\iChista\</OutputPath>
+    <DefineConstants>TRACE;iChista</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'rahyarModyran|AnyCPU'">
+    <OutputPath>bin\rahyarModyran\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ictcrm24|AnyCPU'">
+    <OutputPath>..\..\Build\Original\ModulePOC\</OutputPath>
+    <DefineConstants>TRACE;ictcrm24</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Charts.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.2">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Data.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Office.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.PivotGrid.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Printing.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.RichEdit.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Mvvm.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpf.Mvvm.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpf.Core.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="devexpress.xpf.grid.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpf.Grid.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpf.Grid.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v13.2.Extensions, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpf.Grid.v13.2.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Layout.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpf.Layout.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.LayoutControl.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpf.LayoutControl.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Printing.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpf.Printing.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="devexpress.xpf.ribbon.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpf.Ribbon.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v13.2">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpo.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.XtraCharts.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Sparkline.v13.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.XtraReports.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v13.2.Extensions, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\..\DevLibrary\DevExpress.XtraReports.v13.2.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.DB.General">
+      <HintPath>..\..\Build\Original\POL.DB.General.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.DB.Membership">
+      <HintPath>..\..\Build\Original\POL.DB.Membership.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.DB.P30Office">
+      <HintPath>..\..\Build\Original\POL.DB.P30Office.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.DB.Root">
+      <HintPath>..\..\Build\Original\POL.DB.Root.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.Lib.Common">
+      <HintPath>..\..\Build\Original\POL.Lib.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.Lib.Interfaces">
+      <HintPath>..\..\Build\Original\POL.Lib.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.Lib.Prism">
+      <HintPath>..\..\Build\Original\POL.Lib.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.Lib.Resources">
+      <HintPath>..\..\Build\Original\POL.Lib.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.Lib.Utils">
+      <HintPath>..\..\Build\Original\POL.Lib.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.Lib.XOffice">
+      <HintPath>..\..\Build\Original\POL.Lib.XOffice.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.WPF.Controles">
+      <HintPath>..\..\Build\Original\POL.WPF.Controles.dll</HintPath>
+    </Reference>
+    <Reference Include="POL.WPF.DXControls">
+      <HintPath>..\..\Build\Original\POL.WPF.DXControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Desktop.Net40, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Desktop.Net40.4.1.1\lib\net40\Prism.Desktop.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Interactivity.Net40, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Interactivity.Net40.4.1.1\lib\net40\Prism.Interactivity.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.UnityExtensions.Net40, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.UnityExtensions.Net40.4.1.1\lib\net40-client\Prism.UnityExtensions.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DevLibrary\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataField\BoolDataField.cs" />
+    <Compile Include="DataField\CityDataField.cs" />
+    <Compile Include="DataField\ColorDataField.cs" />
+    <Compile Include="DataField\ContactDataField.cs" />
+    <Compile Include="DataField\CountryDataField.cs" />
+    <Compile Include="DataField\DateDataField.cs" />
+    <Compile Include="DataField\DateTimeDataField.cs" />
+    <Compile Include="DataField\DoubleDataField.cs" />
+    <Compile Include="DataField\FileDataField.cs" />
+    <Compile Include="DataField\ImageDataField.cs" />
+    <Compile Include="DataField\ListDataField.cs" />
+    <Compile Include="DataField\LocationDataField.cs" />
+    <Compile Include="DataField\MemoDataField.cs" />
+    <Compile Include="DataField\StringCheckListDataField.cs" />
+    <Compile Include="DataField\StringComboDataField.cs" />
+    <Compile Include="DataField\StringDataField.cs" />
+    <Compile Include="DataField\TimeDataField.cs" />
+    <Compile Include="Models\ConvDraggingRowToTypeName.cs" />
+    <Compile Include="Models\ConvTemplateBool.cs" />
+    <Compile Include="Models\ConvTemplateCheckList.cs" />
+    <Compile Include="Models\ConvTemplateColor.cs" />
+    <Compile Include="Models\ConvTemplateDate.cs" />
+    <Compile Include="Models\ConvTemplateDateTime.cs" />
+    <Compile Include="Models\ConvTemplateTime.cs" />
+    <Compile Include="Models\MProfileList.cs" />
+    <Compile Include="Models\MProfileReportColumnAddEdit.cs" />
+    <Compile Include="Models\MProfileReportAddEdit.cs" />
+    <Compile Include="Models\MProfileReportSelect.cs" />
+    <Compile Include="Models\MProfileReport.cs" />
+    <Compile Include="Models\PackIOProfileRoot.cs" />
+    <Compile Include="Models\ProfileItemSelector.cs" />
+    <Compile Include="Models\ProfileTableNameIO.cs" />
+    <Compile Include="Models\ProfileTableValueIO.cs" />
+    <Compile Include="Models\MListViewer.cs" />
+    <Compile Include="Models\MListEditor.cs" />
+    <Compile Include="Models\MListAddEdit.cs" />
+    <Compile Include="Models\MListManage.cs" />
+    <Compile Include="Models\MProfileContactModule.cs" />
+    <Compile Include="Models\MProfileSelect.cs" />
+    <Compile Include="Models\MProfileItemAddEdit.cs" />
+    <Compile Include="Models\MProfileGroupAddEdit.cs" />
+    <Compile Include="Models\MProfileRootAddEdit.cs" />
+    <Compile Include="Models\MProfile.cs" />
+    <Compile Include="Models\MProfileTableAddEdit.cs" />
+    <Compile Include="Models\MProfileTableManage.cs" />
+    <Compile Include="Models\MProfileTValueAddEdit.cs" />
+    <Compile Include="Models\MProfileTValueManage.cs" />
+    <Compile Include="Models\ProfileGroupIO.cs" />
+    <Compile Include="Models\ProfileItemIO.cs" />
+    <Compile Include="Models\PackIOProfileRootArray.cs" />
+    <Compile Include="Models\ProfileTreeItem.cs" />
+    <Compile Include="Models\ProfileTValueChildSelector.cs" />
+    <Compile Include="ModuleProfile.cs" />
+    <Compile Include="Reports\XRMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XRMain.Designer.cs">
+      <DependentUpon>XRMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FastContactUnit\UProfile.xaml.cs">
+      <DependentUpon>UProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIProfileGroup.xaml.cs">
+      <DependentUpon>UIProfileGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UProfileList.xaml.cs">
+      <DependentUpon>UProfileList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileReportColumnAddEdit.xaml.cs">
+      <DependentUpon>WProfileReportColumnAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileReportAddEdit.xaml.cs">
+      <DependentUpon>WProfileReportAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileReportSelect.xaml.cs">
+      <DependentUpon>WProfileReportSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UProfileReport.xaml.cs">
+      <DependentUpon>UProfileReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIDateTime.xaml.cs">
+      <DependentUpon>UIDateTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UITime.xaml.cs">
+      <DependentUpon>UITime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIColor.xaml.cs">
+      <DependentUpon>UIColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UICountry.xaml.cs">
+      <DependentUpon>UICountry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIProfileRoot.xaml.cs">
+      <DependentUpon>UIProfileRoot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIStringCheckList.xaml.cs">
+      <DependentUpon>UIStringCheckList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WListAddEdit.xaml.cs">
+      <DependentUpon>WListAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WListEditor.xaml.cs">
+      <DependentUpon>WListEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WListManager.xaml.cs">
+      <DependentUpon>WListManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIList.xaml.cs">
+      <DependentUpon>UIList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIBool.xaml.cs">
+      <DependentUpon>UIBool.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UICity.xaml.cs">
+      <DependentUpon>UICity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIContact.xaml.cs">
+      <DependentUpon>UIContact.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIDate.xaml.cs">
+      <DependentUpon>UIDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIDouble.xaml.cs">
+      <DependentUpon>UIDouble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIFile.xaml.cs">
+      <DependentUpon>UIFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIImage.xaml.cs">
+      <DependentUpon>UIImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UILocation.xaml.cs">
+      <DependentUpon>UILocation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIMemo.xaml.cs">
+      <DependentUpon>UIMemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIString.xaml.cs">
+      <DependentUpon>UIString.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleSettings\UIStringCombo.xaml.cs">
+      <DependentUpon>UIStringCombo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UProfileContactModule.xaml.cs">
+      <DependentUpon>UProfileContactModule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WListViewer.xaml.cs">
+      <DependentUpon>WListViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileItemAddEdit.xaml.cs">
+      <DependentUpon>WProfileItemAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UProfile.xaml.cs">
+      <DependentUpon>UProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileGroupAddEdit.xaml.cs">
+      <DependentUpon>WProfileGroupAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileRootAddEdit.xaml.cs">
+      <DependentUpon>WProfileRootAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileSelect.xaml.cs">
+      <DependentUpon>WProfileSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileTableAddEdit.xaml.cs">
+      <DependentUpon>WProfileTableAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileTableManager.xaml.cs">
+      <DependentUpon>WProfileTableManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileTValueAddEdit.xaml.cs">
+      <DependentUpon>WProfileTValueAddEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WProfileTValueManager.xaml.cs">
+      <DependentUpon>WProfileTValueManager.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\FastContactUnit\UProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIProfileGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UProfileList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WProfileReportColumnAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WProfileReportAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WProfileReportSelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UProfileReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIDateTime.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModuleSettings\UITime.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModuleSettings\UICountry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIProfileRoot.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIStringCheckList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WListAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WListEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WListManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIBool.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UICity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIContact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIDouble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UILocation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIMemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIString.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ModuleSettings\UIStringCombo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UProfileContactModule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WListViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WProfileItemAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WProfileGroupAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WProfileRootAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WProfileSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WProfileTableAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WProfileTableManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WProfileTValueAddEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WProfileTValueManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

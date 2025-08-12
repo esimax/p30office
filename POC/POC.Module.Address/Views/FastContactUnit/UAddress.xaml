@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="POC.Module.Address.Views.FastContactUnit.UAddress"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             
+             FontFamily="{DynamicResource ApplicationFontFamily}" 
+             FontSize="{DynamicResource ApplicationFontSize}"
+             
+             d:DesignHeight="300" d:DesignWidth="600">
+    <GroupBox Margin="3" Padding="3" Header="آدرس پستی">
+        <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="auto,2*,auto,*">
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="آدرس اول :"/>
+            <dxe:TextEdit Grid.Row="0" Grid.Column="1" MaxLength="1024" Margin="3" Name="teAddress1"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" Margin="3" VerticalAlignment="Center" Text="عنوان :"/>
+            <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="3" MaxLength="20" Margin="3" AutoComplete="True" Name="cbeAddresstitle1" AllowSpinOnMouseWheel="False"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="آدرس دوم :"/>
+            <dxe:TextEdit Grid.Row="1" Grid.Column="1" MaxLength="1024" Margin="3" Name="teAddress2"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Margin="3" VerticalAlignment="Center" Text="عنوان :"/>
+            <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="3" MaxLength="20" Margin="3" AutoComplete="True" Name="cbeAddresstitle2" AllowSpinOnMouseWheel="False"/>
+
+        </Grid>
+    </GroupBox>
+</UserControl>

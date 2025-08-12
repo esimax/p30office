@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD5E7EF1-9BEB-4B22-90BA-662D813337DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POL.DB.P30Office</RootNamespace>
+    <AssemblyName>POL.DB.P30Office</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs491D.tmp\Debug\</IntermediateOutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs491D.tmp\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'YaraOffice|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;YaraOffice</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs491D.tmp\YaraOffice\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SahbaCRM|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;SahbaCRM</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs491D.tmp\SahbaCRM\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'iChista|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;iChista</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs491D.tmp\iChista\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ictcrm24|AnyCPU'">
+    <OutputPath>..\..\Build\Original\</OutputPath>
+    <DefineConstants>TRACE;ictcrm24</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs491D.tmp\ictcrm24\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'RahyarModyran|AnyCPU'">
+    <OutputPath>..\..\..\[OutPuts]\XOffice\POL\Build\</OutputPath>
+    <DefineConstants>TRACE;P30Office</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <IntermediateOutputPath>C:\Users\ersha\AppData\Local\Temp\vs491D.tmp\RahyarModyran\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v13.2">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Data.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v13.2">
+      <HintPath>..\..\Resources\Devexpress\DevExpress.Xpo.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Prism.Desktop.Net40, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Desktop.Net40.4.1.1\lib\net40\Prism.Desktop.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.UnityExtensions.Net40, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.UnityExtensions.Net40.4.1.1\lib\net40-client\Prism.UnityExtensions.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AC\DBACFactor.cs" />
+    <Compile Include="AC\DBACFactorItem.cs" />
+    <Compile Include="AC\DBACFactorReportTemplate.cs" />
+    <Compile Include="AC\DBACProduct.cs" />
+    <Compile Include="AC\DBACFactorTemplate.cs" />
+    <Compile Include="BT\DBBTCallNoteTitle.cs" />
+    <Compile Include="BT\DBBTAddressTitle.cs" />
+    <Compile Include="BT\DBBTEmailTitle.cs" />
+    <Compile Include="BT\DBBTFactorTitle2.cs" />
+    <Compile Include="BT\DBBTPhoneTitle.cs" />
+    <Compile Include="BT\DBBTUnit.cs" />
+    <Compile Include="BT\SyncDBBTAddressTitle2.cs" />
+    <Compile Include="BT\SyncDBBTCallNoteTitle2.cs" />
+    <Compile Include="BT\SyncDBBTEmailTitle2.cs" />
+    <Compile Include="BT\SyncDBBTPhoneTitle2.cs" />
+    <Compile Include="DBCASchedule.cs" />
+    <Compile Include="DBCLCallFilter.cs" />
+    <Compile Include="DBCLCallReport.cs" />
+    <Compile Include="DBCLStatPhone.cs" />
+    <Compile Include="DBCTEmail.cs" />
+    <Compile Include="DBCTEvent.cs" />
+    <Compile Include="DBCTList.cs" />
+    <Compile Include="DBCTBytes.cs" />
+    <Compile Include="DBCTProfileReport.cs" />
+    <Compile Include="DBCTProfileValue.cs" />
+    <Compile Include="DBCTProfileGroup.cs" />
+    <Compile Include="DBCTContactCat.cs" />
+    <Compile Include="DBCLCall.cs" />
+    <Compile Include="DBCLInternal.cs" />
+    <Compile Include="DBCLPacketBad.cs" />
+    <Compile Include="DBCTContact.cs" />
+    <Compile Include="DBCTContactRelation.cs" />
+    <Compile Include="DBCTContactRelMain.cs" />
+    <Compile Include="DBCTContactRelSub.cs" />
+    <Compile Include="DBCTContactSelection.cs" />
+    <Compile Include="DBCTGUIDHolder.cs" />
+    <Compile Include="DBCTPhoneBook.cs" />
+    <Compile Include="DBCTProfileItem.cs" />
+    <Compile Include="DBCTProfileRoot.cs" />
+    <Compile Include="DBCTProfileTable.cs" />
+    <Compile Include="DBCTProfileTValue.cs" />
+    <Compile Include="DBEMEmailApp.cs" />
+    <Compile Include="DBEMEmailAttachment.cs" />
+    <Compile Include="DBEMEmailFolder.cs" />
+    <Compile Include="DBEMEmailInbox.cs" />
+    <Compile Include="DBEMTemplate.cs" />
+    <Compile Include="DBEMTempParams.cs" />
+    <Compile Include="DBEMTempParamsValue.cs" />
+    <Compile Include="DBSMLog.cs" />
+    <Compile Include="DBSMLog2.cs" />
+    <Compile Include="DBSMTextStatic.cs" />
+    <Compile Include="DBTMAutomation.cs" />
+    <Compile Include="DBTMCardTable.cs" />
+    <Compile Include="DBTMProfileItem.cs" />
+    <Compile Include="DBUpdatePatch.cs" />
+    <Compile Include="GL\DBGLExtraCodes.cs" />
+    <Compile Include="GL\DBGLLicenseInfo.cs" />
+    <Compile Include="GL\DBGLUpdateStorage.cs" />
+    <Compile Include="GL\DBGLCity.cs" />
+    <Compile Include="GL\DBGLCountry.cs" />
+    <Compile Include="DBCTAddress.cs" />
+    <Compile Include="GL\SyncDBGLCity.cs" />
+    <Compile Include="GL\SyncDBGLCountry.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WF\DBWFStage.cs" />
+    <Compile Include="WF\DBWFStageArrow.cs" />
+    <Compile Include="WF\DBWFStageCondition.cs" />
+    <Compile Include="WF\DBWFStageLog.cs" />
+    <Compile Include="[Structs]\CityStruct.cs" />
+    <Compile Include="[Structs]\ContactStruct.cs" />
+    <Compile Include="[Structs]\CountryStruct.cs" />
+    <Compile Include="[Structs]\FileStruct.cs" />
+    <Compile Include="[Structs]\ImageStruct.cs" />
+    <Compile Include="[Structs]\ListStruct.cs" />
+    <Compile Include="[Structs]\LocationStruct.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\POL.DB.General\POL.DB.General.csproj">
+      <Project>{cc6c9747-809d-4650-8041-cf430ef5196a}</Project>
+      <Name>POL.DB.General</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.DB.Membership\POL.DB.Membership.csproj">
+      <Project>{0eea7939-a2c6-4c21-aa80-c434e9b16595}</Project>
+      <Name>POL.DB.Membership</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.DB.Root\POL.DB.Root.csproj">
+      <Project>{d58f23a7-a7e5-482b-ab63-8a0ad4db48d1}</Project>
+      <Name>POL.DB.Root</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.Lib.Interfaces\POL.Lib.Interfaces.csproj">
+      <Project>{bbbcaf6e-dfa0-4484-9807-789f5c4990c8}</Project>
+      <Name>POL.Lib.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POL.Lib.Utils\POL.Lib.Utils.csproj">
+      <Project>{73d646dc-4c9e-4e54-8660-08581b74c693}</Project>
+      <Name>POL.Lib.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

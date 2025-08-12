@@ -1,0 +1,40 @@
+﻿<UserControl xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  x:Class="POC.Module.Profile.Views.ModuleSettings.UIProfileRoot"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <TextBlock Margin="3" Text="سطح دسترسی جهت نمایش :"/>
+        <dxe:ComboBoxEdit Margin="3" Name="cbRoleView" SelectedIndex="0" IsTextEditable="False" ApplyItemTemplateToSelectedItem="True" AllowSpinOnMouseWheel="False">
+            <dxe:ComboBoxEdit.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding Title}"/>
+                </DataTemplate>
+            </dxe:ComboBoxEdit.ItemTemplate>
+        </dxe:ComboBoxEdit>
+
+        <TextBlock Margin="3" Text="سطح دسترسی جهت ویرایش :"/>
+        <dxe:ComboBoxEdit Margin="3" Name="cbRoleEdit" SelectedIndex="0" IsTextEditable="False" ApplyItemTemplateToSelectedItem="True" AllowSpinOnMouseWheel="False">
+            <dxe:ComboBoxEdit.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding Title}" Margin="3"/>
+                </DataTemplate>
+            </dxe:ComboBoxEdit.ItemTemplate>
+        </dxe:ComboBoxEdit>
+
+        <TextBlock Margin="3" Text="دسته های پیش فرض :"/>
+        <dxe:ListBoxEdit Name="lbeCat" Margin="3" ShowCustomItems="False" Height="200">
+            <dxe:ListBoxEdit.StyleSettings>
+                <dxe:CheckedListBoxEditStyleSettings/>
+            </dxe:ListBoxEdit.StyleSettings>
+            <dxe:ListBoxEdit.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Margin="3,2" VerticalAlignment="Center" Text="{Binding Title}"/>
+                </DataTemplate>
+            </dxe:ListBoxEdit.ItemTemplate>
+        </dxe:ListBoxEdit>
+        <Button Margin="3" Content="ذخیره" Padding="3" Name="bSave" />
+    </StackPanel>
+</UserControl>

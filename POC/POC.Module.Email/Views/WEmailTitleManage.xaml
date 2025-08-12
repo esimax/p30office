@@ -1,0 +1,118 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Email.Views.WEmailTitleManage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    
+    Width="440"
+    Height="380" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+            <Button Padding="3" Margin="3" Command="{Binding CommandNew}" HorizontalContentAlignment="Left" MinWidth="75">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_add.png" />
+                    <TextBlock Margin="6,3" Text="جدید" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Padding="3" Margin="3" Command="{Binding CommandEdit}" HorizontalContentAlignment="Left" MinWidth="75">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_editblue.png" />
+                    <TextBlock Margin="6,3" Text="ویرایش" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Padding="3" Margin="3" Command="{Binding CommandDelete}" HorizontalContentAlignment="Left" MinWidth="75">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_delete2.png" />
+                    <TextBlock Margin="6,3" Text="حذف" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+            <Button Padding="3" Margin="3" Command="{Binding CommandRefresh}" HorizontalContentAlignment="Left" ToolTip="بازخوانی اطلاعات">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_refresh.png" />
+                    <!--<TextBlock Margin="6,3" Text="حذف" VerticalAlignment="Center" />-->
+                </StackPanel>
+            </Button>
+            <Button Padding="3" Margin="3" Command="{Binding CommandExport}" HorizontalContentAlignment="Left" ToolTip="استخراج">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_export.png" />
+                </StackPanel>
+            </Button>
+            <Button Padding="3" Margin="3" Command="{Binding CommandImport}" HorizontalContentAlignment="Left" ToolTip="واردات">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_import.png" />
+                </StackPanel>
+            </Button>
+            <Button Padding="3" Margin="3" Command="{Binding CommandHelp}" HorizontalContentAlignment="Left" ToolTip="راهنما">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_help.png" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="جستجو : " />
+            <dxe:TextEdit MinWidth="120" EditValue="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}" Margin="3" />
+        </StackPanel>
+
+        <dxg:GridControl Grid.Row="2"  Margin="3" ItemsSource="{Binding DataList}" Name="gcMain" AutoExpandAllGroups="True" >
+            <dxg:GridControl.Resources>
+                <DataTemplate x:Key="colLeftToRight">
+                    <TextBlock Margin="3,0" FlowDirection="LeftToRight" Text="{Binding Value}"
+                     VerticalAlignment="Center" />
+                </DataTemplate>
+            </dxg:GridControl.Resources>
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem DisplayFormat="تعداد: {0}" FieldName="Title" ShowInColumn="Title" SummaryType="Count" />
+            </dxg:GridControl.TotalSummary>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Name="colTitle" FieldName="Title"  Header="عنوان" HorizontalHeaderContentAlignment="Center" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView AllowColumnFiltering="False" AllowEditing="False" AllowFilterEditor="False" AutoWidth="True"
+                       AllowGrouping="False" FocusedRow="{Binding SelectedData,Mode=TwoWay}" IsColumnMenuEnabled="False"
+                       IsGroupPanelMenuEnabled="False" IsTotalSummaryMenuEnabled="False" Name="tvMain" ShowGroupPanel="False"
+                       ShowIndicator="False" ShowTotalSummary="True" MultiSelectMode="Row" BestFitMode="VisibleRows" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

@@ -1,0 +1,181 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.CountryCity.Views.WManageExtraCode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Width="540"
+    Height="680" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing" WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+    <dx:DXWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/POL.WPF.DXControls;component/Resources/RTLGridPrintingTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="toolbarCustomization">
+                <dxb:BarManagerActionContainer>
+                    <dxb:RemoveBarItemAndLinkAction ItemName="exportToWindow" />
+                    <dxb:RemoveBarItemAndLinkAction ItemName="open" />
+                    <dxb:RemoveBarItemAndLinkAction ItemName="save" />
+                    <dxb:RemoveBarItemAndLinkAction ItemName="email" />
+                </dxb:BarManagerActionContainer>
+            </DataTemplate>
+            <dxp:DocumentPreview x:Key="documentPreview" dxp:BarManagerCustomization.Template="{StaticResource toolbarCustomization}" />
+
+            <DataTemplate x:Key="reportHeaderTemplate">
+                <dxe:TextEdit IsPrintingMode="True" 
+                                  Background="#FF6D8C59" 
+                                  HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Stretch" 
+                                  Padding="12" 
+                                  Margin="0,0,0,8" 
+                                  Width="{Binding UsablePageWidth}"
+                                  Foreground="#FFFFFFFF" 
+                                  FontWeight="Bold" 
+                                  FontSize="20" 
+                                  HorizontalContentAlignment="Center" 
+                                  FontFamily="B Titr"
+                                  EditValue="{Binding Content.WindowTitle, Mode=OneWay}" 
+                                  FlowDirection="RightToLeft"/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </dx:DXWindow.Resources>
+
+
+    <dxb:BarManager>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem Name="bbiRefresh" Content="بازخوانی" Command="{Binding CommandRefresh}"/>
+            <dxb:BarButtonItem Name="bbiBestFitColumn" Content="تنظیم ستون" Command="{Binding CommandBestFitColumn}"/>
+            <dxb:BarButtonItem Name="bbiNew" Content="جدید" Command="{Binding CommandNew}"/>
+            <dxb:BarButtonItem Name="bbiEdit" Content="ویرایش" Command="{Binding CommandEdit}"/>
+            <dxb:BarButtonItem Name="bbiDelete" Content="حذف" Command="{Binding CommandDelete}"/>
+        </dxb:BarManager.Items>
+
+        <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                <Button Padding="3" Margin="3" Command="{Binding CommandNew}" HorizontalContentAlignment="Left" MinWidth="75">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_add.png" />
+                        <TextBlock Margin="6,3" Text="جدید" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                <Button Padding="3" Margin="3" Command="{Binding CommandEdit}" HorizontalContentAlignment="Left" MinWidth="75">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_editblue.png" />
+                        <TextBlock Margin="6,3" Text="ویرایش" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                <Button Padding="3" Margin="3" Command="{Binding CommandDelete}" HorizontalContentAlignment="Left" MinWidth="75">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_delete2.png" />
+                        <TextBlock Margin="6,3" Text="حذف" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="3" Margin="3" Command="{Binding CommandRefresh}" HorizontalContentAlignment="Left" ToolTip="بازخوانی اطلاعات">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_refresh.png" />
+                        <!--<TextBlock Margin="6,3" Text="حذف" VerticalAlignment="Center" />-->
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="3" Margin="3" Command="{Binding CommandPrint}" HorizontalContentAlignment="Left" ToolTip="چاپ">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_printer.png" />
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="3" Margin="3" Command="{Binding CommandBestFitColumn}" HorizontalContentAlignment="Left" ToolTip="تنظیم اتوماتیك ستونها">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_ColumnHide.png" />
+                        <!--<TextBlock Margin="6,3" Text="حذف" VerticalAlignment="Center" />-->
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="3" Margin="3" Command="{Binding CommandHelp}" HorizontalContentAlignment="Left" ToolTip="راهنما">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_help.png" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Margin="3" VerticalAlignment="Center" Text="جستجو : " />
+                <dxe:ButtonEdit MinWidth="200" EditValue="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}" Margin="3" AllowDefaultButton="False"  >
+                    <dxe:ButtonInfo GlyphKind="Cancel" Command="{Binding CommandClearSearchText}"/>
+                </dxe:ButtonEdit>
+            </StackPanel>
+
+            <dxg:GridControl Grid.Row="2"  Margin="3" ItemsSource="{Binding ExtraCodeList}" Name="gcMain" AutoExpandAllGroups="True" >
+                <dxg:GridControl.Resources>
+                    <DataTemplate x:Key="colLeftToRight">
+                        <TextBlock Margin="3,0" FlowDirection="LeftToRight" Text="{Binding Value}" VerticalAlignment="Center" />
+                    </DataTemplate>
+                </dxg:GridControl.Resources>
+                <dxg:GridControl.TotalSummary>
+                    <dxg:GridSummaryItem DisplayFormat="تعداد: {0}" FieldName="Title" ShowInColumn="Title" SummaryType="Count" />
+                </dxg:GridControl.TotalSummary>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn Name="colTitle" FieldName="Title" Header="عنوان" HorizontalHeaderContentAlignment="Center" />
+                    <dxg:GridColumn Name="colCountryCode" FieldName="CountryCode" Header="كد كشور"   CellTemplate="{StaticResource colLeftToRight}" HorizontalHeaderContentAlignment="Center" />
+                    <dxg:GridColumn Name="colExtraCode"   FieldName="AreaCode"    Header="كد منطقه" CellTemplate="{StaticResource colLeftToRight}" HorizontalHeaderContentAlignment="Center" />
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowColumnFiltering="True"  AllowEditing="False" AllowFilterEditor="False" AutoWidth="True"
+                       AllowGrouping="True" FocusedRow="{Binding SelectedExtraCode,Mode=TwoWay}" IsColumnMenuEnabled="True"
+                       IsGroupPanelMenuEnabled="True" 
+                               IsTotalSummaryMenuEnabled="False" Name="tvMain" ShowGroupPanel="True"
+                       ShowIndicator="False" ShowTotalSummary="True" MultiSelectMode="Row" BestFitMode="VisibleRows" >
+                        <dxg:TableView.RowCellMenuCustomizations>
+                            <dxb:BarButtonItem BarItemName="bbiRefresh"/>
+                            <dxb:BarButtonItem BarItemName="bbiBestFitColumn"/>
+                            <!--<dxb:BarItemLinkSeparator  />-->
+                            <dxb:BarButtonItem BarItemName="bbiNew"/>
+                            <dxb:BarButtonItem BarItemName="bbiEdit"/>
+                            <dxb:BarButtonItem BarItemName="bbiDelete"/>
+                        </dxg:TableView.RowCellMenuCustomizations>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+
+
+
+
+
+
+            <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+                <!--<Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>-->
+                <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Style="{DynamicResource ImageCancel16}" />
+                        <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </dxb:BarManager>
+</dx:DXWindow>

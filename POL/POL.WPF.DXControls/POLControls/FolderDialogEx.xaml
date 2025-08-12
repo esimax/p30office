@@ -1,0 +1,26 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:logicNP="clr-namespace:LogicNP.ShComboBoxControl;assembly=LogicNP.ShComboBox.WPF"
+    xmlns:FolderViewControl="clr-namespace:LogicNP.FolderViewControl;assembly=LogicNP.FolderView.WPF"
+    x:Class="POL.WPF.DXControls.POLControls.FolderDialogEx"
+    Title="FolderDialogEx" Height="400" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <logicNP:ShComboBoxWPF Name="comboBox" Grid.Row="0" Grid.ColumnSpan="2" Height="23" Margin="3" />
+        <FolderViewControl:FolderViewWPF Name="folderView" Grid.Row="1" Grid.ColumnSpan="2" Margin="3" />
+        <Button Name="btNewFolder" Grid.Row="2" Margin="3" Grid.ColumnSpan="2" Content="پوشه جدید" />
+        <Button Name="btSelect" Grid.Row="3" Grid.Column="0" Margin="3" Content="انتخاب" IsDefault="True" />
+        <Button Name="btCancel" Grid.Row="4" Grid.Column="1" Margin="3" Content="لغو" IsCancel="True" />
+    </Grid>
+</Window>

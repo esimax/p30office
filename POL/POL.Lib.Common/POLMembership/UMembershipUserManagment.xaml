@@ -1,0 +1,164 @@
+﻿<UserControl x:Class="POL.Lib.Common.POLMembership.UMembershipUserManagment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="370" d:DesignWidth="661" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             FontFamily="Tahoma"
+             FlowDirection="RightToLeft"
+
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors">
+    <dx:DXTabControl>
+        <dx:DXTabItem Header="كاربران">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                    <Button Margin="3" Command="{Binding cmdUserAdd}" ToolTip="ایجاد كاربر جدید" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Add.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdUserEdit}" ToolTip="ویرایش اطلاعات كاربر" Padding="0">
+                        <Image
+                            Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EditGreen.png"
+                            Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdUserDelete}" ToolTip="حذف كاربر" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Delete.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdUserResetPassword}" ToolTip="ایجاد رمز جدید" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Lock.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdUserReload}" ToolTip="بازخوانی اطلاعات" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Refresh.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdCalcPermissions}" ToolTip="جمع بندی مجوزها" Padding="0">
+                        <Image
+                            Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Calculate.png"
+                            Width="16" Margin="3" />
+                    </Button>
+                </StackPanel>
+
+                <dxg:GridControl Grid.Row="1" Grid.Column="0" Name="gcUser" Margin="3" ItemsSource="{Binding DSUser}">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="IsApproved" Header="" Width="24" AllowResizing="False" />
+                        <dxg:GridColumn FieldName="Username" Header="نام كاربری" />
+                        <dxg:GridColumn FieldName="Title" Header="عنوان كاربر" />
+                        <dxg:GridColumn FieldName="Email" Header="ایمیل" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView Name="tvUser" AllowGrouping="False" IsGroupPanelMenuEnabled="False"
+                                       ShowGroupPanel="False" ShowIndicator="False" AllowColumnFiltering="False"
+                                       AllowFilterEditor="False"
+                                       MultiSelectMode="None" AllowEditing="False" BestFitMode="VisibleRows"
+                                       ShowTotalSummary="True"
+                                       IsColumnMenuEnabled="False" IsTotalSummaryMenuEnabled="False"
+                                       FocusedRow="{Binding FocusedUser,Mode=TwoWay}" />
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Text="فهرست سطوح دسترسی" />
+                <ScrollViewer Grid.Row="1" Grid.Column="1">
+                    <Grid MinWidth="200" Name="gUserRoles">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+        </dx:DXTabItem>
+        <dx:DXTabItem Header="سطوح دسترسی" IsVisibleChanged="DXTabItem_IsVisibleChanged">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="240" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Text="فهرست سطوح دسترسی" Margin="3" />
+                <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Text="فهرست مجوزها" Margin="3" />
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                    <Button Margin="3" Command="{Binding cmdRoleAdd}" ToolTip="ایجاد سطح دسترسی جدید" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Add.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdRoleEdit}" ToolTip="ویرایش سطح دسترسی" Padding="0">
+                        <Image
+                            Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EditGreen.png"
+                            Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdRoleDelete}" ToolTip="حذف سطح دسترسی" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Delete.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdRoleClone}" ToolTip="تكثیر" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Copy.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdRoleReload}" ToolTip="بازخوانی اطلاعات" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Refresh.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdRoleExport}" ToolTip="استخراج به xml" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_export.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                    <Button Margin="3" Command="{Binding cmdRoleImport}" ToolTip="ورود از xml" Padding="0">
+                        <Image Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_import.png"
+                               Width="16" Margin="3" />
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="جستجو:" />
+                    <dxe:TextEdit Margin="3" VerticalAlignment="Center" Width="120"
+                                  EditValue="{Binding PermissionSearchText, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="{Binding SearchResultCount}" />
+                    <!--<Button Margin="3" VerticalAlignment="Center" Content="نمایش" Width="75" Command="{Binding cmdSearhPermission}"/>-->
+                </StackPanel>
+                <dxg:GridControl Grid.Row="2" Grid.Column="0" Name="gcRole" Margin="3" ItemsSource="{Binding DSRoles}">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Title" Header="عنوان" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView Name="tvRole" AllowGrouping="False" IsGroupPanelMenuEnabled="False"
+                                       ShowGroupPanel="False" ShowIndicator="False" AllowColumnFiltering="False"
+                                       AllowFilterEditor="False"
+                                       MultiSelectMode="None" AllowEditing="False" BestFitMode="VisibleRows"
+                                       ShowTotalSummary="True"
+                                       IsColumnMenuEnabled="False" IsTotalSummaryMenuEnabled="False"
+                                       FocusedRow="{Binding FocusedRole,Mode=TwoWay}" AutoWidth="True" />
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+
+                <Border BorderThickness="1" Margin="2" BorderBrush="Gray" Grid.Row="2" Grid.Column="1">
+                    <ScrollViewer>
+                        <StackPanel Name="spPermissions" IsEnabled="{Binding CanSetPermissions}" />
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </dx:DXTabItem>
+    </dx:DXTabControl>
+</UserControl>

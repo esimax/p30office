@@ -1,0 +1,71 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Call.Views.WCallNoteAddEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Width="540"
+    Height="180" 
+    
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    >
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="auto,*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="نكته :"/>
+        <dxe:ComboBoxEdit Grid.Row="0" Grid.Column="1" Margin="3" Name="firstFocused" AllowSpinOnMouseWheel="False"
+                EditValue="{Binding Title,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                MaxLength="128" 
+                ItemsSource="{Binding TitleList}"
+                />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="3" VerticalAlignment="Center" Text="علامت :"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <RadioButton Margin="6 3" GroupName="g1" IsChecked="{Binding IsNone}">
+                <Image Width="16" Height="16" />
+            </RadioButton>
+            <RadioButton Margin="6 3" GroupName="g1" IsChecked="{Binding IsGray}">
+                <Image Width="16" Height="16" Source="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_Flag_Gray.png"/>
+            </RadioButton>
+            <RadioButton Margin="6 3" GroupName="g1" IsChecked="{Binding IsYellow}">
+                <Image Width="16" Height="16" Source="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_Flag_Yellow.png"/>
+            </RadioButton>
+            <RadioButton Margin="6 3" GroupName="g1" IsChecked="{Binding IsRed}">
+                <Image Width="16" Height="16" Source="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_Flag_Red.png"/>
+            </RadioButton>
+            <RadioButton Margin="6 3" GroupName="g1" IsChecked="{Binding IsGreen}">
+                <Image Width="16" Height="16" Source="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_Flag_Green.png"/>
+            </RadioButton>
+            <RadioButton Margin="6 3" GroupName="g1" IsChecked="{Binding IsBlue}">
+                <Image Width="16" Height="16" Source="pack://application:,,,/POL.Lib.Resources;component/Special/16/_16_Flag_Blue.png"/>
+            </RadioButton>
+        </StackPanel>  
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="POC.Module.Profile.Views.ModuleSettings.UIFile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <TextBlock Margin="3" Text="واحد :"/>
+        <dxe:ComboBoxEdit Margin="3" Name="cbeUnit" SelectedIndex="0" IsTextEditable="False" AllowSpinOnMouseWheel="False">
+            <dxe:ComboBoxEditItem Content="بدون محدودیت"/>
+            <dxe:ComboBoxEditItem Content="كیلو بایت"/>
+            <dxe:ComboBoxEditItem Content="مگا بایت"/>
+        </dxe:ComboBoxEdit>
+        
+        <TextBlock Margin="3" Text="حداكثر اندازه فایل :"/>
+        <dxe:SpinEdit Margin="3" Mask="d" MaskType="Numeric" Name="teSize" FlowDirection="LeftToRight" MaxValue="999" MinValue="0"/>
+        <!--<dxe:TextEdit Margin="3" Mask="d3" MaskType="Numeric" Name="teSize" FlowDirection="LeftToRight" IsEnabled="False"/>-->
+        <dxe:CheckEdit Margin="3" Content="اجباری" Name="cbRequired"/>
+    </StackPanel>
+</UserControl>

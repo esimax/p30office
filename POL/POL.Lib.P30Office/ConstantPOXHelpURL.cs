@@ -1,0 +1,172 @@
+namespace POL.Lib.XOffice
+{
+    public class ConstantPOXHelpURL
+    {
+#if ictcrm24
+        public const string POXHelp01 = "";
+        public const string POXHelp02 = "";
+        public const string POXHelp03 = "";
+        public const string POXHelp04 = "";
+        public const string POXHelp05 = "";
+        public const string POXHelp06 = "";
+        public const string POXHelp07 = "";
+        public const string POXHelp08 = "";
+        public const string POXHelp09 = "";
+        public const string POXHelp10 = "";
+        public const string POXHelp11 = "";
+        public const string POXHelp12 = "";
+        public const string POXHelp13 = "";
+        public const string POXHelp14 = "";
+#else
+        public const string POXHelp01 = "http://www.p30office.com/auto-update-2/";
+        public const string POXHelp02 = "";
+        public const string POXHelp03 = "http://www.p30office.com/optional-columns/";
+        public const string POXHelp04 = "";
+        public const string POXHelp05 = "http://www.p30office.com/database/";
+        public const string POXHelp06 = "http://www.p30office.com/cid-setting/";
+        public const string POXHelp07 = "http://www.p30office.com/centeral-setting-2/";
+        public const string POXHelp08 = "http://www.p30office.com/email-setting/";
+        public const string POXHelp09 = "http://www.p30office.com/email-setting/";
+        public const string POXHelp10 = "http://www.p30office.com/licenseing/";
+        public const string POXHelp11 = "http://www.p30office.com/licenseing/";
+        public const string POXHelp12 = "http://www.p30office.com/network-setting/";
+        public const string POXHelp13 = "http://www.p30office.com/sms-pox/";
+        public const string POXHelp14 = "http://www.p30office.com/telecom-setting/";
+#endif
+    }
+
+    public class ConstantPOCHelpURL
+    {
+#if ictcrm24
+        public const string POCHelp01 = "";
+        public const string POCHelp02 = "";
+        public const string POCHelp03 = "";
+        public const string POCHelp04 = "";
+        public const string POCHelp05 = "";
+        public const string POCHelp06 = "";
+        public const string POCHelp07 = "";
+        public const string POCHelp08 = "";
+        public const string POCHelp09 = "";
+        public const string POCHelp10 = "";
+        public const string POCHelp11 = "";
+        public const string POCHelp12 = "";
+        public const string POCHelp13 = "";
+        public const string POCHelp14 = "";
+        public const string POCHelp15 = "";
+        public const string POCHelp16 = "";
+        public const string POCHelp17 = "";
+        public const string POCHelp18 = "";
+        public const string POCHelp19 = "";
+        public const string POCHelp20 = "";
+        public const string POCHelp21 = "";
+        public const string POCHelp22 = "";
+        public const string POCHelp23 = "";
+        public const string POCHelp24 = "";
+        public const string POCHelp25 = "";
+        public const string POCHelp26 = "";
+        public const string POCHelp27 = "";
+        public const string POCHelp28 = "";
+        public const string POCHelp29 = "";
+        public const string POCHelp30 = "";
+        public const string POCHelp31 = "";
+        public const string POCHelp32 = "";
+        public const string POCHelp33 = "";
+        public const string POCHelp34 = "";
+        public const string POCHelp35 = "";
+        public const string POCHelp36 = "";
+        public const string POCHelp37 = "";
+        public const string POCHelp38 = "";
+        public const string POCHelp39 = "";
+        public const string POCHelp40 = "";
+        public const string POCHelp41 = "";
+        public const string POCHelp42 = "";
+        public const string POCHelp43 = "";
+        public const string POCHelp44 = "";
+        public const string POCHelp45 = "";
+        public const string POCHelp46 = "";
+        public const string POCHelp47 = "";
+        public const string POCHelp48 = "";
+        public const string POCHelp49 = "";
+        public const string POCHelp50 = "";
+        public const string POCHelp51 = "";
+        public const string POCHelp52 = "";
+        public const string POCHelp53 = "";
+        public const string POCHelp54 = "";
+        public const string POCHelp55 = "";
+        public const string POCHelp56 = "";
+        public const string POCHelp57 = "";
+        public const string POCHelp58 = "";
+        public const string POCHelp59 = "";
+        public const string POCHelp60 = "";
+        public const string POCHelp61 = "";
+        public const string POCHelp62 = "";
+        public const string POCHelp63 = "";
+        public const string POCHelp64 = "";
+#else
+        public const string POCHelp01 = "";
+        public const string POCHelp02 = "";
+        public const string POCHelp03 = "http://www.p30office.com/panel-parts/";
+        public const string POCHelp04 = "";
+        public const string POCHelp05 = "";
+        public const string POCHelp06 = "http://www.p30office.com/profiles/";
+        public const string POCHelp07 = "http://www.p30office.com/profiles/";
+        public const string POCHelp08 = "http://www.p30office.com/base-table/";
+        public const string POCHelp09 = "";
+        public const string POCHelp10 = "";
+        public const string POCHelp11 = "";
+        public const string POCHelp12 = "";
+        public const string POCHelp13 = "";
+        public const string POCHelp14 = "";
+        public const string POCHelp15 = "http://www.p30office.com/automation/";
+        public const string POCHelp16 = "http://www.p30office.com/automation/";
+        public const string POCHelp17 = "http://www.p30office.com/automation/";
+        public const string POCHelp18 = "http://www.p30office.com/automation/";
+        public const string POCHelp19 = "http://www.p30office.com/automation/";
+        public const string POCHelp20 = "http://www.p30office.com/automation/";
+        public const string POCHelp21 = "http://www.p30office.com/calendar/";
+        public const string POCHelp22 = "http://www.p30office.com/calls/";
+        public const string POCHelp23 = "http://www.p30office.com/profiles/";
+        public const string POCHelp24 = "";
+        public const string POCHelp25 = "http://www.p30office.com/calls/";
+        public const string POCHelp26 = "http://www.p30office.com/profiles/";
+        public const string POCHelp27 = "http://www.p30office.com/profiles/";
+        public const string POCHelp28 = "http://www.p30office.com/profiles/";
+        public const string POCHelp29 = "http://www.p30office.com/base-table/";
+        public const string POCHelp30 = "http://www.p30office.com/base-table/";
+        public const string POCHelp31 = "http://www.p30office.com/profiles/";
+        public const string POCHelp32 = "";
+        public const string POCHelp33 = "http://www.p30office.com/forms/";
+        public const string POCHelp34 = "http://www.p30office.com/profiles/";
+        public const string POCHelp35 = "http://www.p30office.com/area-code/";
+        public const string POCHelp36 = "http://www.p30office.com/area-code/";
+        public const string POCHelp37 = "http://www.p30office.com/area-code/";
+        public const string POCHelp38 = "";
+        public const string POCHelp39 = "http://www.p30office.com/email/";
+        public const string POCHelp40 = "http://www.p30office.com/profiles/";
+        public const string POCHelp41 = "http://www.p30office.com/email/";
+        public const string POCHelp42 = "http://www.p30office.com/calls/";
+        public const string POCHelp43 = "http://www.p30office.com/base-table/";
+        public const string POCHelp44 = "http://www.p30office.com/email/";
+        public const string POCHelp45 = "http://www.p30office.com/profiles/";
+        public const string POCHelp46 = "http://www.p30office.com/profiles/";
+        public const string POCHelp47 = "http://www.p30office.com/profiles/";
+        public const string POCHelp48 = "http://www.p30office.com/profiles/";
+        public const string POCHelp49 = "http://www.p30office.com/numbers/";
+        public const string POCHelp50 = "http://www.p30office.com/profiles/";
+        public const string POCHelp51 = "http://www.p30office.com/profiles/";
+        public const string POCHelp52 = "http://www.p30office.com/base-table/";
+        public const string POCHelp53 = "http://www.p30office.com/forms/";
+        public const string POCHelp54 = "http://www.p30office.com/profiles/";
+        public const string POCHelp55 = "http://www.p30office.com/list-reports/";
+        public const string POCHelp56 = "http://www.p30office.com/form-reports/";
+        public const string POCHelp57 = "http://www.p30office.com/list-2/";
+        public const string POCHelp58 = "http://www.p30office.com/list-2/";
+        public const string POCHelp59 = "http://www.p30office.com/form-reports/";
+        public const string POCHelp60 = "http://www.p30office.com/base-table/";
+        public const string POCHelp61 = "http://www.p30office.com/base-table/";
+        public const string POCHelp62 = "http://www.p30office.com/sms/";
+        public const string POCHelp63 = "http://www.p30office.com/sms/";
+        public const string POCHelp64 = "http://www.p30office.com/sms/";
+        #endif
+    }
+}

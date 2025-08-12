@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="POC.Module.Call.Views.UPopupCallerID"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             >
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,*">
+        <TabControl Grid.Row="1" TabStripPlacement="Right" VerticalAlignment="Top">
+            <TabItem Padding="0">
+                <TabItem.Header>
+                    <Image Margin="0" Width="16" Height="16" Stretch="Fill" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Phone2.png"/>
+                </TabItem.Header>
+                <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" pol_ap:ApGrid.ColumnDefinitions="auto,*">
+                    <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="100">
+                        <dxe:ImageEdit   
+                                   Margin="3" Width="64" Height="64" Stretch="UniformToFill" 
+                                   Visibility="{Binding HasImage}" 
+                                   EditValue="{Binding ImageSource,Mode=OneWay}" 
+                                   VerticalAlignment="Top" IsReadOnly="True" ShowErrorToolTip="False"/>
+                        
+                        <TextBlock Margin="6" Text="{Binding LastTalk}" />
+                    </StackPanel>
+                    
+                    <TextBlock Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding LineTitle}" />
+                    <!--<Button Grid.Row="0" Margin="3" Style="{StaticResource LinkButton}" Content="{Binding PhoneNumberFull}" FlowDirection="LeftToRight" HorizontalAlignment="Center" />-->
+                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding PhoneNumberFull}"  FlowDirection="LeftToRight" Name="tbPhoneNumberFull"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding PhoneInternal}" />
+                    <Button Grid.Row="3" Grid.Column="1" Margin="3" 
+                            Style="{DynamicResource LinkButton}"  
+                            Content="{Binding ContactTitle}" 
+                            Command="{Binding cmdContactClick}" />
+                    <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Visibility="{Binding TodayStatVisibility}">
+                        <TextBlock Margin="3" Text="امروز :" Width="60"/>
+                        <Border Width="7" Height="7" Margin="3" VerticalAlignment="Center" Background="#FF47FF58"  BorderThickness="1" BorderBrush="#FF00A60F" CornerRadius="2" ToolTip="تعداد تماس دریافتی"/>
+                        <TextBlock  Margin="3" Text="{Binding TodayStatCountIn}" ToolTip="تعداد تماس دریافتی"/>
+                        <Border Width="7" Height="7" Margin="3" VerticalAlignment="Center" Background="Tomato"  BorderThickness="1" BorderBrush="Red" CornerRadius="2" ToolTip="تعداد تماس ارسالی"/>
+                        <TextBlock  Margin="3" Text="{Binding TodayStatCountOut}" ToolTip="تعداد تماس ارسالی"/>
+                        <Border Width="7" Height="7" Margin="3" VerticalAlignment="Center" Background="#FFA961FF"  BorderThickness="1" BorderBrush="#FF7900DE" CornerRadius="2" ToolTip="تعداد تماس ناموفق"/>
+                        <TextBlock  Margin="3" Text="{Binding TodayStatCountMiss}" ToolTip="تعداد تماس ناموفق"/>
+
+                        <Image Width="12" Height="12" VerticalAlignment="Center" Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_12_clock.png" ToolTip="آخرین زمان تماس"/>
+                        <TextBlock  Margin="3" Text="{Binding TodayStatLastCallElapsed}" ToolTip="آخرین زمان تماس"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Visibility="{Binding OldStatVisibility}">
+                        <TextBlock Margin="3" Text="كل سابقه :" Width="60"/>
+                        <Border Width="7" Height="7" Margin="3" VerticalAlignment="Center" Background="#FF47FF58"  BorderThickness="1" BorderBrush="#FF00A60F" CornerRadius="2" ToolTip="تعداد تماس دریافتی"/>
+                        <TextBlock  Margin="3" Text="{Binding StatCountIn}" ToolTip="تعداد تماس دریافتی"/>
+                        <Border Width="7" Height="7" Margin="3" VerticalAlignment="Center" Background="Tomato"  BorderThickness="1" BorderBrush="Red" CornerRadius="2" ToolTip="تعداد تماس ارسالی"/>
+                        <TextBlock  Margin="3" Text="{Binding StatCountOut}" ToolTip="تعداد تماس ارسالی"/>
+                        <Border Width="7" Height="7" Margin="3" VerticalAlignment="Center" Background="#FFA961FF"  BorderThickness="1" BorderBrush="#FF7900DE" CornerRadius="2" ToolTip="تعداد تماس ناموفق"/>
+                        <TextBlock  Margin="3" Text="{Binding StatCountMiss}" ToolTip="تعداد تماس ناموفق"/>
+
+                        <Image Width="12" Height="12" VerticalAlignment="Center" Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_12_clock.png" ToolTip="آخرین زمان تماس"/>
+                        <TextBlock  Margin="3" Text="{Binding StatLastCallElapsed}" ToolTip="آخرین زمان تماس"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="6" Grid.Column="1">
+                        <TextBlock Margin="3" Text="{Binding ContactCreator}" Visibility="{Binding ContactCreatorVisibility}"/>
+                        <TextBlock Margin="3" Text="{Binding ContactCreated}" Visibility="{Binding ContactCreatedVisibility}"/>
+                        <TextBlock Margin="3" Text="{Binding ContactEditor}" Visibility="{Binding ContactEditorVisibility}"/>
+                        <TextBlock Margin="3" Text="{Binding ContactEdited}" Visibility="{Binding ContactEditedVisibility}"/>
+                        <DockPanel Visibility="{Binding CallNoteVisibility}">
+                            <Button DockPanel.Dock="Left" Command="{Binding CommandChangeNoteImage}" Margin="3" Padding="0">
+                                <Image Width="16" Height="16" Margin="1,0" Source="{Binding NoteImage}"/>
+                            </Button>
+                            <dxe:TextEdit Margin="3" EditValue="{Binding NoteText,UpdateSourceTrigger=PropertyChanged}" MaxLength="256"/>
+                        </DockPanel>
+                    
+                    </StackPanel>
+                    <StackPanel Name="spProfile" Grid.Row="7" Grid.Column="1">
+                        
+                    </StackPanel>
+                    <Button Grid.Row="8" Grid.Column="1" Margin="3" 
+                            Style="{DynamicResource LinkButton}"  
+                            Content="ثبت در كارتابل" 
+                            Command="{Binding CommandCardTableClick}" Visibility="{Binding CardTableClickEnabled}"/>
+                    <TextBlock Grid.Row="9" Grid.Column="1" Margin="3" Text="{Binding ExtraCodeTitle}" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

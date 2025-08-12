@@ -1,0 +1,287 @@
+﻿<UserControl x:Class="POC.Module.Profile.Views.UProfileList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600"
+             
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:poc_conv="clr-namespace:POL.WPF.Controles.Conv;assembly=POL.WPF.Controles"
+             xmlns:pol_comm="clr-namespace:POL.Lib.Common;assembly=POL.Lib.Common"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:POC.Module.Profile.Models">
+
+    <UserControl.Resources>
+        <!--<poc_conv:ConvDummy x:Key="dummy"/>-->
+        <local:ConvTemplateBool x:Key="convTemplateBool"/>
+        <local:ConvTemplateCheckList x:Key="convTemplateCheckList"/>
+        <local:ConvTemplateColor x:Key="convTemplateColor"/>
+
+        <local:ConvTemplateDate x:Key="convTemplateDateDefualt" CalType="ApplicationSettings" />
+        <local:ConvTemplateDate x:Key="convTemplateDateShamsi" CalType="Shamsi"/>
+        <local:ConvTemplateDate x:Key="convTemplateDateHijri" CalType="Hijri"/>
+        <local:ConvTemplateDate x:Key="convTemplateDateGregorian" CalType="Gregorian" />
+
+        <local:ConvTemplateDateTime x:Key="convTemplateDateTimeDefualt" CalType="ApplicationSettings" />
+        <local:ConvTemplateDateTime x:Key="convTemplateDateTimeShamsi" CalType="Shamsi"/>
+        <local:ConvTemplateDateTime x:Key="convTemplateDateTimeHijri" CalType="Hijri"/>
+        <local:ConvTemplateDateTime x:Key="convTemplateDateTimeGregorian" CalType="Gregorian" />
+
+        <local:ConvTemplateTime x:Key="convTemplateTime" />
+
+
+        <DataTemplate x:Key="ctBool">
+            <dxe:CheckEdit
+                    Margin="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FlowDirection="LeftToRight"
+                    IsReadOnly="True"
+                    IsChecked="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateBool}}"
+                />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctDouble_n0">
+            <dxe:TextEdit Name="PART_Editor" MaskType="Numeric" Mask="n0" MaskUseAsDisplayFormat="True" FlowDirection="LeftToRight" HorizontalContentAlignment="Right" IsReadOnly="True" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDouble_d">
+            <dxe:TextEdit Name="PART_Editor" MaskType="Numeric" Mask="d" MaskUseAsDisplayFormat="True" FlowDirection="LeftToRight" HorizontalContentAlignment="Right" IsReadOnly="True" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDouble_n2">
+            <dxe:TextEdit Name="PART_Editor" MaskType="Numeric" Mask="n2" MaskUseAsDisplayFormat="True" FlowDirection="LeftToRight" HorizontalContentAlignment="Right" IsReadOnly="True" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDouble_n6">
+            <dxe:TextEdit Name="PART_Editor" MaskType="Numeric" Mask="n6" MaskUseAsDisplayFormat="True" FlowDirection="LeftToRight" HorizontalContentAlignment="Right" IsReadOnly="True" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDouble_P0">
+            <dxe:TextEdit Name="PART_Editor" MaskType="Numeric" Mask="P0" MaskUseAsDisplayFormat="True" FlowDirection="LeftToRight" HorizontalContentAlignment="Right" IsReadOnly="True" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDouble_P2">
+            <dxe:TextEdit Name="PART_Editor" MaskType="Numeric" Mask="P2" MaskUseAsDisplayFormat="True" FlowDirection="LeftToRight" HorizontalContentAlignment="Right" IsReadOnly="True" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctCountry">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctCity">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctLocation">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" VerticalAlignment="Center"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctString">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" VerticalAlignment="Center" />
+        </DataTemplate>
+        <DataTemplate x:Key="ctStringLTR">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctStringRTL">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" FlowDirection="RightToLeft" VerticalAlignment="Center"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctMemo">
+            <!--<dxe:MemoEdit Name="PART_Editor" EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}"/>-->
+            <dxe:TextEdit Name="PART_Editor" EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" AcceptsReturn="True"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctMemoLTR">
+            <!--<dxe:MemoEdit Name="PART_Editor" FlowDirection="LeftToRight"  EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}"/>-->
+            <dxe:TextEdit Name="PART_Editor" FlowDirection="LeftToRight"  EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" AcceptsReturn="True"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctMemoRTL">
+            <!--<dxe:MemoEdit Name="PART_Editor" FlowDirection="RightToLeft"  EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}"/>-->
+            <dxe:TextEdit Name="PART_Editor" FlowDirection="RightToLeft"  EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" AcceptsReturn="True"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctCombo">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctComboLTR">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" FlowDirection="LeftToRight"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctComboRTL">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" FlowDirection="RightToLeft"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctCheckList">
+            <dxe:MemoEdit EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateCheckList}}" IsReadOnly="True" />
+        </DataTemplate>
+        <DataTemplate x:Key="ctCheckListLTR">
+            <dxe:MemoEdit EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateCheckList}}" FlowDirection="LeftToRight" IsReadOnly="True"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctCheckListRTL">
+            <dxe:MemoEdit EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateCheckList}}" FlowDirection="RightToLeft" IsReadOnly="True"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctColor">
+            <!--<dxe:PopupColorEdit FlowDirection="LeftToRight" IsReadOnly="True" EditValue="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateColor}}" VerticalAlignment="Center"/>-->
+            <Grid Margin="2,3" Background="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateColor}}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctFile">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctImage">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" VerticalAlignment="Center"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctDateDefault">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateDateDefualt}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDateShamsi">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateDateShamsi}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDateHijri">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateDateHijri}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDateGregorian">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateDateGregorian}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctTime">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateTime}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="ctDateTimeDefault">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateDateTimeDefualt}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDateTimeShamsi">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateDateTimeShamsi}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDateTimeHijri">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateDateTimeHijri}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ctDateTimeGregorian">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource convTemplateDateTimeGregorian}}" Margin="3,1,3,1" FlowDirection="LeftToRight" VerticalAlignment="Center"/>
+        </DataTemplate>
+
+
+
+        <DataTemplate x:Key="ctContact">
+            <TextBlock Text="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" VerticalAlignment="Center"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ctList">
+            <Button Content="{Binding DataContext.Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="3,1,3,1" />
+        </DataTemplate>
+    </UserControl.Resources>
+    <dxb:BarManager>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem Content="بازخوانی" Name="biRefresh" Command="{Binding CommandRefresh}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Refresh.png" />
+            <dxb:BarButtonItem Content="جدید" Name="biDataNew" Command="{Binding CommandDataNew}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Add.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Add.png"/>
+            <dxb:BarButtonItem Content="ویرایش" Name="biDataEdit" Command="{Binding CommandDataEdit}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_EditBlue.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EditBlue.png"/>
+            <dxb:BarButtonItem Content="حذف" Name="biDataDelete" Command="{Binding CommandDataDelete}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Delete2.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_Delete2.png"/>
+            
+            
+            <dxb:BarButtonItem Content="استخراج به اكسل" Name="biExportXls" Command="{Binding CommandExportXls}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_ExportExcel.png" />
+            <dxb:BarButtonItem Content="تنظیم ستون" Name="biBestFitColumn" Command="{Binding CommandBestFitColumn}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_TableSelectColumn.png" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_TableSelectColumn.png"/>
+
+            <dxb:BarButtonItem Content="راهنما" Name="biHelp" Command="{Binding CommandHelp}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Help.png"/>
+        </dxb:BarManager.Items>
+
+        <Grid pol_ap:ApGrid.RowDefinitions="auto,*">
+            <dxr:RibbonControl x:Name="theRibbon" Grid.Row="0" RibbonStyle="Office2010">
+                <dxr:RibbonDefaultPageCategory>
+                    <dxr:RibbonPage Caption="گزارش فرم ها" MergeOrder="0">
+                        <dxr:RibbonPageGroup Caption="مدیریت" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biRefresh" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biDataNew" />
+                            <dxb:BarButtonItemLink BarItemName="biDataEdit" />
+                            <dxb:BarButtonItemLink BarItemName="biDataDelete" />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="مدیریت" ShowCaptionButton="False">
+                            <dxb:BarButtonItemLink BarItemName="biBestFitColumn" />
+                            <dxb:BarButtonItemLink BarItemName="biExportXls" />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="راهنما" >
+                            <dxb:BarButtonItemLink BarItemName="biHelp" />
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                    
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+
+            <Grid Grid.Row="1" pol_ap:ApGrid.RowDefinitions="auto,*" pol_ap:ApGrid.ColumnDefinitions="*" >
+                <StackPanel Orientation="Horizontal" Margin="9"  Grid.Row="0" Grid.Column="0">
+                    <TextBlock  Text="لیست :" Margin="3" VerticalAlignment="Center"/>
+                    <dxe:ComboBoxEdit Margin="3" Width="200" ItemsSource="{Binding ProfileListList}" SelectedItem="{Binding SelectedProfilrList}" 
+                                      IsTextEditable="False" AllowSpinOnMouseWheel="False">
+                    </dxe:ComboBoxEdit>
+
+                    <TextBlock Text="دسته :" Margin="3" VerticalAlignment="Center"/>
+                    <dxe:ComboBoxEdit Name="cbeContactCat" Margin="3" IsTextEditable="False"  Width="220" AllowSpinOnMouseWheel="False"
+                                      ApplyItemTemplateToSelectedItem="True" ItemsSource="{Binding ContactCatList}"
+                                      SelectedItem="{Binding SelectedContactCat,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                      NullText="(همه دسته ها)">
+                        <dxe:ComboBoxEdit.Buttons>
+                            <dxe:ButtonInfo GlyphKind="Refresh" ToolTip="بازخوانی مجدد" Command="{Binding CommandCategoryRefresh}"/>
+                        </dxe:ComboBoxEdit.Buttons>
+                        <dxe:ComboBoxEdit.EditNonEditableTemplate>
+                            <ControlTemplate>
+                                <TextBlock Text="{Binding EditValue}" Margin="3"/>
+                            </ControlTemplate>
+                        </dxe:ComboBoxEdit.EditNonEditableTemplate>
+                    </dxe:ComboBoxEdit>
+                </StackPanel>
+                
+
+                <dxg:GridControl Grid.Row="1" Grid.Column="0" x:Name="gcList" ItemsSource="{Binding DataList}" Grid.ColumnSpan="2">
+                    <dxg:GridControl.TotalSummary>
+                        <dxg:GridSummaryItem DisplayFormat=" {0}" FieldName="" ShowInColumn="Contact.Code" SummaryType="Count" />
+                    </dxg:GridControl.TotalSummary>
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn Name="colCode" Width="65" FieldName="Contact.Code" Header="كد" SortMode="Value" AllowGrouping="true" AllowFocus="True" Fixed="Left"/>
+                        <dxg:GridColumn Name="colTitle" FieldName="Contact.Title" Header="عنوان" AllowGrouping="true" AllowFocus="True" Fixed="Left"/>
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView Name="tvReport"
+                               AllowCascadeUpdate="True"
+                               AllowColumnFiltering="true"
+                               AllowEditing="False"
+                               AllowFilterEditor="true"
+                               AllowGrouping="true"
+                               AllowPerPixelScrolling="True"
+                               AllowSorting="true"
+                               BestFitMode="VisibleRows"
+                               FocusedRow="{Binding FocusedData,Mode=TwoWay}"
+                               IsColumnMenuEnabled="True"
+                               IsGroupPanelMenuEnabled="False"
+                               IsTotalSummaryMenuEnabled="False"
+                               MultiSelectMode="Cell"
+                               NavigationStyle="Cell"
+                               ShowGroupPanel="true"
+                               ShowIndicator="true"
+                               ShowTotalSummary="True" 
+                               ShowSearchPanelMode="Never"
+                               >
+
+                            <!--<dxg:TableView.RowCellMenuCustomizations>
+                                <dxb:BarButtonItemLink BarItemName="biRefreshContact" />
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarButtonItemLink BarItemName="biNew" />
+                                <dxb:BarButtonItemLink BarItemName="biEdit" />
+                                <dxb:BarButtonItemLink BarItemName="biDelete" />
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarButtonItemLink BarItemName="biBasketAdd" />
+                                <dxb:BarButtonItemLink BarItemName="biBasketAddAll" />
+                                <dxb:BarButtonItemLink BarItemName="biBasketRemove" />
+                                <dxb:BarButtonItemLink BarItemName="biBasketClear" />
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarButtonItemLink BarItemName="biCategoryLink" />
+                                <dxb:BarButtonItemLink BarItemName="biContactSendSMS" />
+                            </dxg:TableView.RowCellMenuCustomizations>-->
+
+                        </dxg:TableView>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </Grid>
+        </Grid>
+    </dxb:BarManager>
+</UserControl>

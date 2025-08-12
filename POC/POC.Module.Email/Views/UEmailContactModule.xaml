@@ -1,0 +1,340 @@
+﻿<UserControl xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="POC.Module.Email.Views.UEmailContactModule"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+             xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:pol_conv="clr-namespace:POL.WPF.Controles.Conv;assembly=POL.WPF.Controles"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" d:DesignHeight="600" d:DesignWidth="700"
+             
+             xmlns:model="clr-namespace:POC.Module.Email.Models"
+             xmlns:common="clr-namespace:POL.Lib.Common;assembly=POL.Lib.Common">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/POL.WPF.DXControls;component/Resources/RTLGridPrintingTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <model:ReadByToVisibilityConverter x:Key="ReadByToVisibilityConverter"/>
+            <model:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+            <model:EmailDateConverter x:Key="EmailDateConverter"/>
+            <model:ReadByToVisibilityInverseConverter x:Key="ReadByToVisibilityInverseConverter"/>
+            <dx:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <model:CurrentRowToOpacityConverter x:Key="CurrentRowToOpacityConverter"/>
+            
+            <DataTemplate x:Key="toolbarCustomization">
+                <dxb:BarManagerActionContainer>
+                    <dxb:RemoveBarItemAndLinkAction ItemName="exportToWindow" />
+                    <dxb:RemoveBarItemAndLinkAction ItemName="open" />
+                    <dxb:RemoveBarItemAndLinkAction ItemName="save" />
+                    <dxb:RemoveBarItemAndLinkAction ItemName="email" />
+                </dxb:BarManagerActionContainer>
+            </DataTemplate>
+            <DataTemplate x:Key="ctEmailDate">
+                <TextBlock
+                    Margin="3,1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    FlowDirection="LeftToRight"
+                    Text="{Binding DataContext.Value, Converter={StaticResource EmailDateConverter}, RelativeSource={RelativeSource TemplatedParent}}"/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <dxb:BarManager IsEnabled="{Binding RootEnable}">
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem Content="ایمیل جدید" Name="biNewAddress" Command="{Binding CommandNewAccount}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Add.png"/>
+            <dxb:BarButtonItem Content="ویرایش" Name="biEditAddress" Command="{Binding CommandEditAccount}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_EditBlue.png"/>
+            <dxb:BarButtonItem Content="حذف" Name="biDeleteAddress" Command="{Binding CommandDeleteAccount}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Delete2.png"/>
+
+            <dxb:BarButtonItem Content="ارسال جدید" Name="biNewSend" Command="{Binding CommandNew}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_EmailNew.png"/>
+            <dxb:BarButtonItem Content="ارسال فوری" Name="biSendEmailNow" 
+                               Command="{Binding CommandSendEmailNow}" 
+                               LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_EmailSent.png"
+                               Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EmailSent.png"/>
+            <dxb:BarButtonItem Content="پاسخ دهید" Name="biReply" Command="{Binding CommandReply}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EmailReply.png"/>
+            <dxb:BarButtonItem Content="پاسخ به همه" Name="biReplyAll" Command="{Binding CommandReplyAll}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EmailReplyAll.png"/>
+            <dxb:BarButtonItem Content="ارجاع دهید" Name="biForward" Command="{Binding CommandForward}" Glyph="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EmailForward.png"/>
+            <dxb:BarButtonItem Content="حذف" Name="biTrash" Command="{Binding CommandDelete}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_EmailTrash.png"/>
+            <dxb:BarButtonItem Content="بازخوانی" Name="biRefresh" Command="{Binding CommandRefresh}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Refresh.png"/>
+
+            <dxb:BarButtonItem Content="راهنما" Name="biHelp" Command="{Binding CommandHelp}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Help.png"/>
+            <!--<dxb:BarButtonItem Content="ساده" Name="biViewSimple" Command="{Binding CommandViewSimple}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Special/32/_32_MenuItem.png"/>
+            <dxb:BarButtonItem Content="كامل" Name="biViewFull" Command="{Binding CommandViewFull}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_List2.png"/>-->
+
+            <!--<dxb:BarButtonItem Content="چاپ" Name="biPrint" Command="{Binding CommandPrint}" LargeGlyph="pack://application:,,,/POL.Lib.Resources;component/Standard/32/_32_Printer.png"/>-->
+        </dxb:BarManager.Items>
+
+        <Grid  pol_ap:ApGrid.RowDefinitions="auto,auto,auto,*" IsEnabled="{Binding RootEnable}">
+            <dxr:RibbonControl Grid.Row="0" x:Name="emailRibbon" RibbonStyle="Office2010">
+                <dxr:RibbonPageCategory  Name="rpcEmail">
+                    <dxr:RibbonPage Name="rpEmail" Caption="ایمیل" MergeOrder="4">
+                        <!--MergeOrder="9"-->
+                        <dxr:RibbonPageGroup Caption="صندوق" >
+                            <dxb:BarButtonItemLink BarItemName="biNewAddress" />
+                            <dxb:BarButtonItemLink BarItemName="biEditAddress" />
+                            <dxb:BarButtonItemLink BarItemName="biDeleteAddress" />
+                        </dxr:RibbonPageGroup>
+
+                        <dxr:RibbonPageGroup Caption="ایمیل" >
+                            <dxb:BarButtonItemLink BarItemName="biNewSend" />
+                            <dxb:BarButtonItemLink BarItemName="biReply" />
+                            <dxb:BarButtonItemLink BarItemName="biReplyAll" />
+                            <dxb:BarButtonItemLink BarItemName="biForward" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biTrash" />
+                            <dxb:BarButtonItemLink BarItemName="biRefresh" />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="راهنما" >
+                            <dxb:BarButtonItemLink BarItemName="biHelp" />
+                        </dxr:RibbonPageGroup>
+                        <!--<dxr:RibbonPageGroup Caption="نمایش" >
+                            <dxb:BarButtonItemLink BarItemName="biViewSimple" />
+                            <dxb:BarButtonItemLink BarItemName="biViewFull" />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarButtonItemLink BarItemName="biPrint" />
+                        </dxr:RibbonPageGroup>-->
+                    </dxr:RibbonPage>
+                </dxr:RibbonPageCategory>
+            </dxr:RibbonControl>
+
+            <dxe:ComboBoxEdit Grid.Row="1" Grid.Column="0" Margin="3" IsTextEditable="false" AllowSpinOnMouseWheel="False"
+                              ItemsSource="{Binding EmailAccountList}" SelectedItem="{Binding FocusedEmailAccount}"/>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <ToggleButton Margin="3" IsChecked="{Binding IsReceive}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="3" Width="16" Height="16" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EmailInbox.png"/>
+                        <TextBlock Margin="3" VerticalAlignment="Center" Text="دریافتی"/>
+                    </StackPanel>
+                </ToggleButton>
+
+                <ToggleButton Margin="3" IsChecked="{Binding IsSend}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="3" Width="16" Height="16" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EmailSent.png"/>
+                        <TextBlock Margin="3" VerticalAlignment="Center" Text="ارسالی"/>
+                    </StackPanel>
+                </ToggleButton>
+
+                <ToggleButton Margin="3" IsChecked="{Binding IsWait}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="3" Width="16" Height="16" Source="pack://application:,,,/POL.Lib.Resources;component/Standard/16/_16_EmailSent.png"/>
+                        <TextBlock Margin="3" VerticalAlignment="Center" Text="در نوبت ارسال"/>
+                    </StackPanel>
+                </ToggleButton>
+            </StackPanel>
+
+            <dxlc:LayoutControl Grid.Row="3" Grid.Column="0" Orientation="Vertical" StretchContentVertically="True" StretchContentHorizontally="True" Padding="0" Margin="3">
+                <dxg:GridControl x:Name="receiveGrid" Margin="0,0,0,4" ItemsSource="{Binding ReceiveList}"  AutoExpandAllGroups="True">
+                    <!--CustomColumnDisplayText="grid_CustomColumnDisplayText"-->
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn Name="colRPriority" FieldName="Priority" Width="20" AllowResizing="False">
+                            <dxg:GridColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Image Stretch="None" Width="13" Height="13" VerticalAlignment="Center" 
+                                           Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_13_EmailHigh.png">
+                                        <RenderOptions.BitmapScalingMode>NearestNeighbor</RenderOptions.BitmapScalingMode>
+                                    </Image>
+                                </DataTemplate>
+                            </dxg:GridColumn.HeaderTemplate>
+                            <dxg:GridColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <Image Stretch="None" Width="13" Height="13" 
+                                               Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_13_EmailHigh.png">
+                                            <RenderOptions.BitmapScalingMode>NearestNeighbor</RenderOptions.BitmapScalingMode>
+                                            <Image.Visibility>
+                                                <Binding Path="RowData.Row.Priority">
+                                                    <Binding.Converter>
+                                                        <model:PriorityToVisibilityConverter VisiblePriority="High"/>
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </Image.Visibility>
+                                        </Image>
+                                        <Image Stretch="None" Width="13" Height="13" 
+                                               Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_13_EmailLow.png">
+                                            <RenderOptions.BitmapScalingMode>NearestNeighbor</RenderOptions.BitmapScalingMode>
+                                            <Image.Visibility>
+                                                <Binding Path="RowData.Row.Priority">
+                                                    <Binding.Converter>
+                                                        <model:PriorityToVisibilityConverter VisiblePriority="Low"/>
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </Image.Visibility>
+                                        </Image>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </dxg:GridColumn.CellTemplate>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn Name="colRRead" FieldName="Read" Width="40" AllowResizing="False">
+                            <dxg:GridColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Image Stretch="None" Width="13" Height="13" VerticalAlignment="Center" 
+                                           Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_13_IsUnreadHeader.png">
+                                        <RenderOptions.BitmapScalingMode>NearestNeighbor</RenderOptions.BitmapScalingMode>
+                                    </Image>
+                                </DataTemplate>
+                            </dxg:GridColumn.HeaderTemplate>
+                            <dxg:GridColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel VerticalAlignment="Center">
+                                        <Image Stretch="None" HorizontalAlignment="Center" VerticalAlignment="Center" Width="13" Height="13" 
+                                               Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_13_EmailRead.png" 
+                                               Visibility="{Binding Path=RowData.Row.ReadBy, Converter={StaticResource ReadByToVisibilityConverter}}">
+                                            <RenderOptions.BitmapScalingMode>NearestNeighbor</RenderOptions.BitmapScalingMode>
+                                        </Image>
+                                        <Image Stretch="None" HorizontalAlignment="Center" VerticalAlignment="Center" Width="13" Height="13" 
+                                               Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_13_EmailUnread.png" 
+                                               Visibility="{Binding Path=RowData.Row.ReadBy, Converter={StaticResource ReadByToVisibilityInverseConverter}}">
+                                            <RenderOptions.BitmapScalingMode>NearestNeighbor</RenderOptions.BitmapScalingMode>
+                                        </Image>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </dxg:GridColumn.CellTemplate>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn Name="colRAttachmentCount" FieldName="AttachmentCount" Width="40" AllowResizing="False">
+                            <dxg:GridColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Image Stretch="None" Width="13" Height="13" 
+                                           Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_13_Attachment.png">
+                                        <RenderOptions.BitmapScalingMode>NearestNeighbor</RenderOptions.BitmapScalingMode>
+                                    </Image>
+                                </DataTemplate>
+                            </dxg:GridColumn.HeaderTemplate>
+                            <dxg:GridColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Stretch="None" Width="13" Height="13" 
+                                           Source="pack://application:,,,/POL.Lib.Resources;component/Special/XX/_13_Attachment.png" 
+                                           Visibility="{Binding Path=RowData.Row.AttachmentCount, Converter={StaticResource IntToVisibilityConverter}}">
+                                        <RenderOptions.BitmapScalingMode>NearestNeighbor</RenderOptions.BitmapScalingMode>
+                                    </Image>
+                                </DataTemplate>
+                            </dxg:GridColumn.CellTemplate>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn Name="colRSubject" FieldName="Subject" Header="موضوع" ColumnFilterMode="DisplayText"/>
+                        <dxg:GridColumn Name="colTitle" FieldName="EmailApp.Title" Header="از" Width="70"/>
+                        <dxg:GridColumn Name="colAddress" FieldName="EmailApp.Email" Header="از" Width="70"/>
+                        <dxg:GridColumn Name="coRlDate" FieldName="Date" Header="تاریخ" Width="85"  SortOrder="Descending" CellTemplate="{StaticResource ctEmailDate}" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView x:Name="receiveTableView" 
+                                               HeaderPanelMinHeight="24" 
+                                               RowMinHeight="22" 
+                                               AutoWidth="False" 
+                                               ShowSearchPanelMode="Always" 
+                                       ShowGroupedColumns="True" 
+                                       AllowEditing="False" 
+                                       NavigationStyle="Row" 
+                                       FocusedRow="{Binding Path=ReceiveFocusedEmail, Mode=TwoWay}" 
+                                       ShowVerticalLines="False" 
+                                       MultiSelectMode="Row"
+                                       >
+                            <dxg:TableView.RowCellMenuCustomizations>
+                                <dxb:BarButtonItemLink BarItemName="biNewSend"/>
+                                <dxb:BarButtonItemLink BarItemName="biSendEmailNow"/>
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarButtonItemLink BarItemName="biReply"/>
+                                <dxb:BarButtonItemLink BarItemName="biReplyAll"/>
+                                <dxb:BarButtonItemLink BarItemName="biForward"/>
+                                <dxb:BarItemLinkSeparator/>
+                                <dxb:BarButtonItemLink BarItemName="biTrash"/>
+                                <dxb:BarButtonItemLink BarItemName="biRefresh"/>
+                            </dxg:TableView.RowCellMenuCustomizations>
+                        </dxg:TableView>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+
+
+
+
+                <Grid Margin="0,4,0,0" dxlc:LayoutControl.AllowHorizontalSizing="True" dxlc:LayoutControl.AllowVerticalSizing="True">
+                    <TextBlock Text="ایمیلی انتخاب نشده است." FontFamily="B Koodak" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.5"/>
+                    <Grid>
+                        <Grid.Visibility>
+                            <Binding Path="ReceiveFocusedEmail">
+                                <Binding.Converter>
+                                    <dx:ObjectToVisibilityConverter HandleList="False"/>
+                                </Binding.Converter>
+                            </Binding>
+                        </Grid.Visibility>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!--<Border BorderThickness="0,0,0,1" BorderBrush="Black" Background="White">
+                                    <ContentControl Foreground="Black">
+                                        <Grid Opacity="{Binding Path=FocusedRow, ElementName=view, Converter={StaticResource CurrentRowToOpacityConverter}}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Path=FocusedEmail.Subject}" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Margin="4,0,0,8"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="از :" FontSize="11" TextWrapping="Wrap" Margin="4,0,4,2"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=FocusedEmail.FromAddress}" Margin="4,0,0,2" FontSize="11" TextWrapping="Wrap"/>
+                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="تاریخ :" FontSize="11" TextWrapping="Wrap" Margin="4,0,4,4"/>
+                                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=FocusedEmail.Date}" FontSize="11" Margin="4,0,0,4" TextWrapping="Wrap"/>
+                                        </Grid>
+                                    </ContentControl>
+                                </Border>-->
+                        <WebBrowser Name="wbReceive" Grid.Row="1"/>
+                        <ListBox Grid.Row="2" 
+                                 Visibility="{Binding ReceiveHasAttachments,Converter={StaticResource ResourceKey=BoolToVisibilityConverter}}" 
+                                 ItemsSource="{Binding ReceiveAttachmentList}" 
+                                 FlowDirection="LeftToRight" 
+                                 MaxHeight="140"
+                                 HorizontalContentAlignment="Stretch"
+                                 SelectedItem="{Binding ReceiveFocusedAttachment}"
+                                 >
+                            <ListBox.Resources>
+                                <pol_ap:BindingProxy x:Key="DataContextProxy" Data="{Binding}" />
+                            </ListBox.Resources>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="3" Text="{Binding FileName}" VerticalAlignment="Center" />
+                                        <TextBlock Margin="3" VerticalAlignment="Center" FontWeight="Bold">
+                                            <TextBlock.Text>
+                                                <Binding Path="Size">
+                                                    <Binding.Converter>
+                                                        <common:ConvFileSize/>
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                        <StackPanel.ContextMenu>
+                                            <ContextMenu FontFamily="Tahoma">
+                                                <MenuItem Header="ذخیره" Command="{Binding Path=Data.CommandReceiveAttachmentSave,  Source={StaticResource DataContextProxy}}"/>
+                                                <MenuItem Header="ذخیره همه" Command="{Binding Path=Data.CommandReceiveAttachmentSaveAll,  Source={StaticResource DataContextProxy}}"/>
+                                                <!--<Separator/>
+                                                <MenuItem Header="حذف" Command="{Binding Path=Data.CommandReceiveAttachmentDelete,  Source={StaticResource DataContextProxy}}"/>
+                                                <MenuItem Header="حذف همه" Command="{Binding Path=Data.CommandReceiveAttachmentDeleteAll,  Source={StaticResource DataContextProxy}}"/>-->
+                                            </ContextMenu>
+                                        </StackPanel.ContextMenu>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+
+
+            </dxlc:LayoutControl>
+
+        </Grid>
+    </dxb:BarManager>
+</UserControl>

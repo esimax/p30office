@@ -1,0 +1,93 @@
+﻿<dx:DXWindow
+    x:Class="POC.Module.Email.Views.WEmailSelect"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Title="{Binding WindowTitle}"
+    Icon="{DynamicResource ApplicationIcon}"
+    
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize" 
+    
+    FontFamily="{DynamicResource ApplicationFontFamily}" 
+    FontSize="{DynamicResource ApplicationFontSize}"
+    
+    Width="600"
+    Height="400"
+    >
+
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,auto,*,auto" 
+          pol_ap:ApGrid.ColumnDefinitions="*" Margin="9" 
+          FlowDirection="{DynamicResource ApplicationFlowDirection}">
+
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+            <dxe:ButtonEdit Margin="3" NullText="جستجو ..."
+                                    AllowDefaultButton="False" EditValue="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
+                                    Width="200">
+                <dxe:ButtonInfo ButtonKind="Simple"
+                            GlyphKind="Cancel"
+                            ToolTip="پاكسازی جستجو" 
+                            Command="{Binding CommandClearSearchText}" />
+            </dxe:ButtonEdit>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" />
+
+        <dxg:GridControl Grid.Row="2" Grid.Column="0" x:Name="gridEmail" ItemsSource="{Binding EmailList}" Margin="3" >
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem DisplayFormat=" {0}" FieldName="Contact.Code" ShowInColumn="Code" SummaryType="Count" />
+            </dxg:GridControl.TotalSummary>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Name="colContactCode" Width="65" FieldName="Contact.Code" Header="كد" SortMode="Value" />
+                <dxg:GridColumn Name="colContactTitle" FieldName="Contact.Title" Header="عنوان" />
+                <dxg:GridColumn Name="colEmailAddress" FieldName="Address" Header="آدرس ایمیل" />
+                <dxg:GridColumn Name="colEmailTitle" FieldName="Title" Header="نوع" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView Name="tvEmail"
+                               AllowCascadeUpdate="True"
+                               AllowColumnFiltering="False"
+                               AllowEditing="False"
+                               AllowFilterEditor="False"
+                               AllowGrouping="False"
+                               AllowPerPixelScrolling="True"
+                               BestFitMode="VisibleRows"
+                               FocusedRow="{Binding FocusedEmail,Mode=TwoWay}"
+                               IsColumnMenuEnabled="False"
+                               IsGroupPanelMenuEnabled="False"
+                               IsTotalSummaryMenuEnabled="False"
+                               MultiSelectMode="Row"
+                               ShowGroupPanel="False"
+                               ShowIndicator="False"
+                               ShowTotalSummary="True"
+                               AutoWidth="True">
+                </dxg:TableView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+
+
+
+
+        <StackPanel Grid.Row="1000" Grid.ColumnSpan="1000" Orientation="Horizontal" Margin="3" HorizontalAlignment="Right">
+            <Button Margin="0" Padding="6,3" MinWidth="80" IsDefault="True"
+                    Command="{Binding CommandOK}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageOK16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="تایید"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="12,0,0,0" Padding="6,3" MinWidth="80" IsCancel="True"
+                    Command="{Binding CommandCancel}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Style="{DynamicResource ImageCancel16}" />
+                    <TextBlock Margin="3" VerticalAlignment="Center" Text="لغو"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>

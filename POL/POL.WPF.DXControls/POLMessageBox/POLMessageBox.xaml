@@ -1,0 +1,39 @@
+﻿<dx:DXWindow
+    x:Class="POL.WPF.DXControls.POLMessageBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:pol_ap="clr-namespace:POL.WPF.Controles.AttachProperties;assembly=POL.WPF.Controles"
+    Height="300" Width="600"
+
+    FontFamily="{DynamicResource ApplicationFontFamily}"
+    FontSize="{DynamicResource ApplicationFontSize}"
+    Icon="{DynamicResource ApplicationIcon}"
+
+
+    xmlns:local="clr-namespace:POL.WPF.DXControls">
+
+
+    <Grid pol_ap:ApGrid.RowDefinitions="auto,*,auto"
+          pol_ap:ApGrid.ColumnDefinitions="auto,auto,*"
+          FlowDirection="{DynamicResource ApplicationFlowDirection}"
+          Margin="9">
+
+        <Image Name="imgIcon" Grid.Row="0" Grid.Column="0" Stretch="Fill" Width="32" Height="32" Margin="6"
+               VerticalAlignment="Top" />
+        <TextBlock Name="tbMessage" Grid.Row="0" Grid.Column="1" Margin="6" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Right"
+                    Margin="0,3,-6,3">
+            <Button Name="bOK" Margin="3,9,9,0" Padding="6"
+                    Content="{local:POLMessageBoxStringIdExtension StringId=Ok }" MinWidth="80" Click="bOK_Click" />
+            <Button Name="bYes" Margin="3,9,9,0" Padding="6"
+                    Content="{local:POLMessageBoxStringIdExtension StringId=Yes }" MinWidth="80" Click="bYes_Click" />
+            <Button Name="bNo" Margin="3,9,9,0" Padding="6"
+                    Content="{local:POLMessageBoxStringIdExtension StringId=No }" MinWidth="80" Click="bNo_Click" />
+            <Button Name="bCancel" Margin="3,9,9,0" Padding="6"
+                    Content="{local:POLMessageBoxStringIdExtension StringId=Cancel }" MinWidth="80"
+                    Click="bCancel_Click" />
+        </StackPanel>
+    </Grid>
+</dx:DXWindow>
